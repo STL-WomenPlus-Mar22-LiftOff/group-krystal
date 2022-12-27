@@ -5,12 +5,15 @@ import { AppComponent } from './app.component';
 import { SymptomManagementFormComponent } from './symptom-management-form/symptom-management-form.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TestComponent } from './test/test.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     SymptomManagementFormComponent,
-    TestComponent
+    TestComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,

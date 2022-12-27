@@ -5,10 +5,14 @@ import { AppModule } from './app.module';
 import { SymptomManagementFormComponent } from './symptom-management-form/symptom-management-form.component';
 import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const appRoutes: Routes = [
   { path: 'symptomManageForm', 
     component: SymptomManagementFormComponent 
+  },
+  { path: 'dashboard',
+    component: DashboardComponent
   },
   {
     path: '',
