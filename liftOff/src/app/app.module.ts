@@ -6,6 +6,7 @@ import { SymptomManagementFormComponent } from './symptom-management-form/sympto
 import { AppRoutingModule } from './app-routing.module';
 import { TestComponent } from './test/test.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     SymptomManagementFormComponent,
     TestComponent,
     DashboardComponent,
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,
