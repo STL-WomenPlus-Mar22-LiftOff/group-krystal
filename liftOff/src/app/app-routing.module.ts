@@ -6,10 +6,14 @@ import { SymptomManagementFormComponent } from './symptom-management-form/sympto
 import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
 import { DailyTrackerFormComponent } from './daily-tracker-form/daily-tracker-form.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 const appRoutes: Routes = [
   { path: 'symptomManageForm', 
     component: SymptomManagementFormComponent 
+  },
+  { path: 'dashboard',
+    component: DashboardComponent
   },
   {
     path: 'dailyTrackerForm',

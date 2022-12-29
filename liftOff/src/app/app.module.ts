@@ -6,6 +6,7 @@ import { SymptomManagementFormComponent } from './symptom-management-form/sympto
 import { AppRoutingModule } from './app-routing.module';
 import { TestComponent } from './test/test.component';
 import { DailyTrackerFormComponent } from './daily-tracker-form/daily-tracker-form.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { DailyTrackerFormComponent } from './daily-tracker-form/daily-tracker-fo
     SymptomManagementFormComponent,
     TestComponent,
     DailyTrackerFormComponent
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
