@@ -1,22 +1,13 @@
-.wrapper {
-    list-style-type: none;
-    padding: 0;
-    border-radius: 3px;
-  }
-
 .row {
     display: flex;
     justify-content: flex-start;
-    flex-direction: row;
+    flex-direction: column;
     padding: .5em;
   }
   .row > label {
-    padding: .5em 1em .5em 0;
-    flex: 1;
+    padding: .5rem 1rem .5rem 0;
   }
-  .row > input {
-    flex: 2;
-  }
+ 
 
 datalist{ 
     display: flex;
@@ -24,15 +15,10 @@ datalist{
     width: auto;
 }
 
-input[type="range"] {
-    width: auto;
-    margin: 0;
+.slider{
+    width:100%;
+}
+.slider-bar{
+    width: 95%;
 }
 
-.slide-bar{
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
-  align-content: stretch;
-  flex-flow: row wrap;
-}
