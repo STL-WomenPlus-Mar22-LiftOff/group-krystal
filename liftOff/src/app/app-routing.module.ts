@@ -5,14 +5,24 @@ import { AppModule } from './app.module';
 import { SymptomManagementFormComponent } from './symptom-management-form/symptom-management-form.component';
 import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
+import { DailyTrackerFormComponent } from './daily-tracker-form/daily-tracker-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 const appRoutes: Routes = [
+  { path: 'home', 
+    component: LandingPageComponent
+  },
+
   { path: 'symptomManageForm', 
-    component: SymptomManagementFormComponent 
+    component: SymptomManagementFormComponent
   },
   { path: 'dashboard',
     component: DashboardComponent
+  },
+  {
+    path: 'dailyTrackerForm',
+    component: DailyTrackerFormComponent
   },
   {
     path: '',
