@@ -1,0 +1,24 @@
+.row {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    padding: .5em;
+  }
+  .row > label {
+    padding: .5rem 1rem .5rem 0;
+  }
+ 
+
+datalist{ 
+    display: flex;
+    justify-content: flex-start;
+    width: auto;
+}
+
+.slider{
+    width:100%;
+}
+.slider-bar{
+    width: 95%;
+}
+

@@ -1,0 +1,48 @@
+<div class="container col-md-7">
+    <h1>Daily Tracker</h1>
+
+<div>
+    <form action="" method="post">
+        <div class="row">
+            <label for="date">Date:</label>
+            <input type="text" id="date" name="selected_date" disabled value={{currentDate}}/>
+            <!-- once we allow users to select their own date instead of default value, use simple date picker instead:
+                <input type="date" id="date" name="selected_date"> -->
+        </div>
+        <div class="row">
+            <label for="symptom">Choose Symptom:</label>
+                <select>
+            <!-- placeholder text for symptoms- will need to be changed once database and add symptom button/option connected -->
+                <option value="symptom1" id="symptom" name="selected_symptom">Symptom 1</option>
+            </select>
+        </div>
+        <div class="row">
+            <label for="rating">Rate how you are feeling today:</label>
+            <div >
+                <input type="range" class="slider-bar" min="0" max="10" step="1"list="steplist" id="rating" name="selected_rating"> 
+                    <datalist id="steplist">
+                        <option class="slider" value="0" label="0"></option>
+                        <option class="slider" value="1" label="1"></option>
+                        <option class="slider" value="2" label="2"></option>
+                        <option class="slider" value="3" label="3"></option>
+                        <option class="slider" value="4" label="4"></option>
+                        <option class="slider" value="5" label="5"></option>
+                        <option class="slider" value="6" label="6"></option>
+                        <option class="slider" value="7" label="7"></option>
+                        <option class="slider" value="8" label="8"></option>
+                        <option class="slider" value="9" label="9"></option>
+                        <option class="slider" value="10" label="10"></option>
+                    </datalist>
+            </div>
+        </div>
+        <div class="row">
+            <small id="ratingHelpBlock" class="form-text text-muted">
+                0 = No symptom today <br> 10 = Symptom is at its most intense
+              </small>
+        </div>
+        <div class="row">
+            <input type="submit" value="Submit my day!" class="btn btn-primary">
+        </div>
+    </form>
+</div>
+
