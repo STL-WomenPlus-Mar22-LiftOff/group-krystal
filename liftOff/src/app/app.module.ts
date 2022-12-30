@@ -14,7 +14,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
     AppComponent,
     SymptomManagementFormComponent,
     TestComponent,
-    DailyTrackerFormComponent
+    DailyTrackerFormComponent,
     DashboardComponent,
     LandingPageComponent,
   ],
