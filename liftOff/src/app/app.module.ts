@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { TestComponent } from './test/test.component';
 import { DailyTrackerFormComponent } from './daily-tracker-form/daily-tracker-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     TestComponent,
     DailyTrackerFormComponent
     DashboardComponent,
+    LandingPageComponent,
   ],
   imports: [
     BrowserModule,
