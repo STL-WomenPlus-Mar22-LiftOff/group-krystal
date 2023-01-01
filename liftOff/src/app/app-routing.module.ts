@@ -8,6 +8,7 @@ import { TestComponent } from './test/test.component';
 import { DailyTrackerFormComponent } from './daily-tracker-form/daily-tracker-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
+import { UserComponent } from './user/user.component';
 
 const appRoutes: Routes = [
   { path: 'home', 
@@ -31,6 +32,10 @@ const appRoutes: Routes = [
   {
     path: 'test',
     component: TestComponent
+  },
+  {
+    path: 'user',
+    component: UserComponent
   }
   // {
   //   path: 'what will show up on the URL aka the mapping',
