@@ -17,7 +17,6 @@ export class LandingPageComponent implements OnInit {
 
   //connects submit button function to get request
   loginUser(): void {
-    // console.log('user logged in');
     this.userService.getUser();
   }
   
