@@ -10,26 +10,28 @@ import { UserService } from '../user.service';
 })
 export class SignUpPageComponent implements OnInit {
   user: User;
-  users: User[] = [];
+   
   constructor(private userService: UserService, 
               private router: Router, //connects component with URL
               private activatedRoute: ActivatedRoute ) { //provides access to info in this route/component pair such as path and URL params 
     this.user = new User;
-    this.users = [];
+    
   }
 
   ngOnInit(): void {
   }
 
+ goToDashboard() {
+   this.router.navigate([`/dashboard`]); //when called will redirect to this URL path
+ }
+
   onSubmit(password: String, confirmPassword: String) {
+    console.log(this.user.name);
     if(password === confirmPassword) {
-      sessionStorage.setItem('username', 'password');
+      //sessionStorage.setItem('username', 'password');
       this.userService.save(this.user).subscribe((result) => this.goToDashboard());
     }
  }
 
- goToDashboard() {
-   this.router.navigate([`/dashboard`]);
- }
 
 }
