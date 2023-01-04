@@ -7,29 +7,38 @@ import { User } from './model/user';
   providedIn: 'root'
 })
 
-export class UserService {
+// export class UserService {
 
-  private baseUrl = "http://localhost:8080/user"; //backend endpoint
+//   private baseUrl = "http://localhost:8080/user"; //backend endpoint
 
-  constructor(private http: HttpClient) { }
+//   constructor(private http: HttpClient) { }
 
-  getUser(): any {
-    return this.http.get(this.baseUrl)
-    .subscribe(response => response);
-  }
-}
+//   getUser(): any {
+//     return this.http.get(this.baseUrl)
+//     .subscribe(response => response);
+//   }
+// }
 
 //Originally we had below but unsure how to keep type Observable when using subscribe-> keep getting errors
-/*
+
 export class UserService {
 
-  private baseUrl = "http://localhost:8080/user"; //backend endpoint
+  private baseUrl:string; //backend endpoint
  
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
+    this.baseUrl = "http://localhost:8080/user";
+  }
 
   getUser(): Observable<User[]>{
     return this.http.get<User[]>(`${this.baseUrl}`);
   }
+
+  public findAll(): Observable<User[]> {
+    return this.http.get<User[]>(this.baseUrl);
+ }
+ public save(user:User) {
+   return this.http.post<User>(this.baseUrl, user);
+ }
 }
 
-*/
+

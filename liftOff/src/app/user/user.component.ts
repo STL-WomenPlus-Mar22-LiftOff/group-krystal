@@ -19,4 +19,8 @@ export class UserComponent implements OnInit {
     });
   }
 
+  // ngOnInit() { //(this is from AroundTown)
+  //   this.userService.getUser().subscribe(data => {
+  //     this.users = data;})
+  // }
 }
