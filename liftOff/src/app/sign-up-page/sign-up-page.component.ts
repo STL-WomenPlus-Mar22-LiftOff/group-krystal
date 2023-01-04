@@ -26,10 +26,10 @@ export class SignUpPageComponent implements OnInit {
  }
 
   onSubmit(password: String, confirmPassword: String) {
-    console.log(this.user.name);
+    console.log(this.user.name); 
     if(password === confirmPassword) {
-      //sessionStorage.setItem('username', 'password');
-      this.userService.save(this.user).subscribe((result) => this.goToDashboard());
+      //sessionStorage.setItem('username', 'password'); // will need this later i assume
+      this.userService.save(this.user).subscribe((result) => this.goToDashboard()); //this calls the save function in the user.service.ts file
     }
  }
 

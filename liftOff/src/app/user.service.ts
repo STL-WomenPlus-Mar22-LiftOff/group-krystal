@@ -37,7 +37,9 @@ export class UserService {
     return this.http.get<User[]>(this.baseUrl);
  }
  public save(user:User) {
-   return this.http.post<User>(this.baseUrl, user);
+   return this.http.post<User>(this.baseUrl, user); 
+   // sends user model with input info to post at "/user", there is a controller in intellij that will actually do the saving to the db.
+   // it doesnt seem to show a post request if you inspect the page, but it still works somehow
  }
 }
 
