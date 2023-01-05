@@ -22,12 +22,16 @@ public class User {
     @NotNull
     private String password;
 
+    @NotNull
+    private String confirmPassword;
+
     public User(){};
 
-    public User(String name, String email, String password) {
+    public User(String name, String email, String password, String confirmPassword) {
         this.email = email;
         this.password = password;
         this.name = name;
+        this.confirmPassword = confirmPassword;
     }
 
     public String getName() {
@@ -56,6 +60,14 @@ public class User {
 
     public int getId() {
         return id;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
     @Override
