@@ -7,10 +7,13 @@ import { Component } from '@angular/core';
   <router-outlet></router-outlet>
   <!-- can eventually add a header <app-footer></app-footer> here -->
   `,
-  styles: []
+  styles: [],
   //templateUrl: './app.component.html',
-  //styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css']
 })
+
 export class AppComponent {
-  title = 'liftOff';
+title = 'liftOff';
+
 }
+   
