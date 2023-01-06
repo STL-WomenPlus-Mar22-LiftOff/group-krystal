@@ -3,9 +3,11 @@ package org.launchcode.trackerappbackend.models;
 import com.sun.istack.NotNull;
 import org.springframework.data.annotation.Id;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import java.util.Objects;
 
+@Entity
 public class Symptom {
 
     @Id
@@ -15,12 +17,12 @@ public class Symptom {
     @NotNull
     private String symptomName;
 
-    public Symptom () {}
-
-    public Symptom (int id, String symptomName){
+    public Symptom(int id, String symptomName){
         this.id= id;
         this.symptomName = symptomName;
     }
+
+    public Symptom() {}
 
     public int getId() {
         return id;
@@ -47,3 +49,5 @@ public class Symptom {
         return Objects.hash(id);
     }
 }
+
+//do i need entity and add relationships
