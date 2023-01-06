@@ -2,6 +2,7 @@ package org.launchcode.trackerappbackend.controllers;
 
 import org.launchcode.trackerappbackend.data.SymptomRepository;
 import org.launchcode.trackerappbackend.models.Symptom;
+import org.launchcode.trackerappbackend.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +18,8 @@ public class SymptomController {
     private SymptomRepository symptomRepository;
 
     @GetMapping("")
-    public Iterable<Symptom> getSymptom {
+    public Iterable<Symptom> getSymptom(){
         return symptomRepository.findAll();
     }
+
 }
