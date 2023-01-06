@@ -1,8 +1,8 @@
 package org.launchcode.trackerappbackend.models;
 
 import com.sun.istack.NotNull;
-import org.springframework.data.annotation.Id;
 
+import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import java.util.Objects;
@@ -16,6 +16,11 @@ public class Symptom {
 
     @NotNull
     private String symptomName;
+
+    @OneToOne(cascade = CascadeType.ALL)
+//    @Valid
+    @NotNull
+    private User user;
 
     public Symptom(int id, String symptomName){
         this.id= id;
@@ -49,5 +54,3 @@ public class Symptom {
         return Objects.hash(id);
     }
 }
-
-//do i need entity and add relationships

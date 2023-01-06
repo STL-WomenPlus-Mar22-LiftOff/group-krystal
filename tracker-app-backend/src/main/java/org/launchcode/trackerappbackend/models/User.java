@@ -1,10 +1,7 @@
 package org.launchcode.trackerappbackend.models;
 
 import com.sun.istack.NotNull;
-
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class User {
@@ -27,7 +24,8 @@ public class User {
 
     public User(){};
 
-    public User(String name, String email, String password, String confirmPassword) {
+    public User(int id, String name, String email, String password, String confirmPassword) {
+        this.id = id;
         this.email = email;
         this.password = password;
         this.name = name;
