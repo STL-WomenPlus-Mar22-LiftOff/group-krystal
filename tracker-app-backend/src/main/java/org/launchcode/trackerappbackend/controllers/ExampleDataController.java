@@ -22,42 +22,6 @@ public class ExampleDataController {
     @Autowired
     private DataRepository dataRepository;
 
-    //this provides the data for the x-axis, but these are converted to strings
-//    @GetMapping("")
-//    public ArrayList<ArrayList<String>> getData() {
-//        //this is the ArrayList that will house both the x axis and y axis arraylists
-//        ArrayList<ArrayList<String>> data = new ArrayList<>();
-//
-//        // X AXIS: first, add all dates in list to an array
-//        ArrayList<Date> dates = new ArrayList<>();
-//        for (ExampleData i : dataRepository.findAll()) {
-//            dates.add(i.getDate());
-//        }
-//        // X AXIS: second, sort all dates in the list, in case there is an entry that is edited, so that the dates are not in correct order
-//        Collections.sort(dates);
-//        // X AXIS: last, edit all date objects to string to correct display format
-//        ArrayList<String> datestoStrings = new ArrayList<>();
-//        for (Date i : dates) {
-//            datestoStrings.add(new SimpleDateFormat("MM-dd-yy").format(i));
-//        }
-//
-//        // Y AXIS: first, add all ratings in list to an array
-//        ArrayList<Integer> ratings = new ArrayList<>();
-//        for (ExampleData i : dataRepository.findAll()) {
-//            ratings.add(i.getRating());
-//        }
-//
-//        // second, sort all  in the list, in case there is an entry that is edited, so that the dates are not in correct order
-//        Collections.sort(dates);
-//        // last, edit all date objects to string to correct display format
-//        ArrayList<String> datestoStrings = new ArrayList<>();
-//        for (Date i : dates) {
-//            datestoStrings.add(new SimpleDateFormat("MM-dd-yy").format(i));
-//        }
-//
-//        return data;
-//    }
-
     @GetMapping("")
     public ArrayList<ArrayList<String>> getData() {
         //this is the ArrayList that will house both the x axis and y axis arraylists
