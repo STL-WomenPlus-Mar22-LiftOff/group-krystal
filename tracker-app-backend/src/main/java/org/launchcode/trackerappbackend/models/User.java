@@ -21,8 +21,7 @@ public class User {
 
     @NotNull
     private String confirmPassword;
-
-
+    
     public User(){};
 
     public User(String name, String email, String password, String confirmPassword) {
