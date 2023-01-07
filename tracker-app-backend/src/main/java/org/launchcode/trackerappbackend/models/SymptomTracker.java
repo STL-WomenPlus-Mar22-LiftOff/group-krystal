@@ -2,9 +2,7 @@ package org.launchcode.trackerappbackend.models;
 
 import com.sun.istack.NotNull;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 import java.util.Objects;
 
@@ -19,6 +17,16 @@ public class SymptomTracker {
 
     @NotNull
     private Date date;
+
+    @ManyToOne
+    @NotNull
+//    @Valid (will need to add in once Symptom model is merged to main, validation dependency does not exist in this branch
+    private User user;
+
+    //Once Symptom model is merged with main, will need to add ManyToOne relationship to Symptom as seen below. Will also need to add OneToMany relationship for Symptom to Symptom Tracker in Symptom model)
+//    @ManyToOne
+//    @NotNull
+//    private Symptom symptom;
 
     public SymptomTracker() {}
 
