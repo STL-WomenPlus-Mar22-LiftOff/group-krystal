@@ -6,6 +6,7 @@ import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import java.util.Objects;
+import javax.validation.Valid;
 
 @Entity
 public class Symptom {
@@ -17,13 +18,13 @@ public class Symptom {
     @NotNull
     private String symptomName;
 
-    @OneToOne(cascade = CascadeType.ALL)
-//    @Valid
+    @OneToOne
+    @JoinColumn(name = "user_id")
     @NotNull
+    @Valid
     private User user;
 
-    public Symptom(int id, String symptomName){
-        this.id= id;
+    public Symptom(String symptomName){
         this.symptomName = symptomName;
     }
 
@@ -52,5 +53,10 @@ public class Symptom {
     @Override
     public int hashCode() {
         return Objects.hash(id);
+    }
+
+    @Override
+    public String toString() {
+        return symptomName;
     }
 }

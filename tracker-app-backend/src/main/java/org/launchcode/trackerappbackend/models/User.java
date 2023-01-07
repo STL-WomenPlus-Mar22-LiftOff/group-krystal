@@ -22,10 +22,10 @@ public class User {
     @NotNull
     private String confirmPassword;
 
+
     public User(){};
 
-    public User(int id, String name, String email, String password, String confirmPassword) {
-        this.id = id;
+    public User(String name, String email, String password, String confirmPassword) {
         this.email = email;
         this.password = password;
         this.name = name;
