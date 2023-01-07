@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Chart} from 'chart.js';
+import {ChartService} from './chart.service'
 
 @Component({
   selector: 'app-charts',
@@ -9,48 +10,34 @@ import {Chart} from 'chart.js';
 
 export class ChartsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private  chartService: ChartService) {}  
 
   ngOnInit(): void {
-    this.createChart();
+    this.chartService.getData().subscribe((data: any) => {
+      console.log(data);
+      this.createChart(data[0],data[1]);
+    })
   }
 
   public chart: any;
 
-  data = {
-    datasets: [{
-      label: 'Scatter Dataset',
-      data: [{
-        x: -10,
-        y: 0
-      }, {
-        x: 0,
-        y: 10
-      }, {
-        x: 10,
-        y: 5
-      }, {
-        x: 0.5,
-        y: 5.5
-      }],
-      backgroundColor: 'rgb(255, 99, 132)'
-    }],
-  };
-
-  createChart(){
+  createChart(dates: Array<String>, ratings: Array<String>){
   
     this.chart = new Chart("MyChart", {
-      type: 'scatter',
-      data: this.data,
+      type: 'line',
+      data: {
+        labels: dates,
+        datasets: [{
+          label: 'Testing Data Points',
+          data: ratings,
+          borderColor: "#3e95cd",
+          fill: false
+        }]
+      },
       options: {
-        scales: {
-          x: {
-            type: 'linear',
-            position: 'bottom'
-          }
-        }
-      }
+        responsive: true,
     }
+  }
   );
   }
 }
