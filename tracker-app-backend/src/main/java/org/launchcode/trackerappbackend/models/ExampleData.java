@@ -5,7 +5,7 @@ import com.sun.istack.NotNull;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import java.sql.Date;
+import java.util.Date;
 
 @Entity
 public class ExampleData {
