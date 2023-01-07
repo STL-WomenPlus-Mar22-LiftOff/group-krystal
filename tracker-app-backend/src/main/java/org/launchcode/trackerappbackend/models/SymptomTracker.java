@@ -3,6 +3,7 @@ package org.launchcode.trackerappbackend.models;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Objects;
 
@@ -16,7 +17,7 @@ public class SymptomTracker {
     private Rating rating;
 
     @NotNull
-    private Date date;
+    private SimpleDateFormat date = new SimpleDateFormat("MM-dd-yyyy");
 
     @ManyToOne
     @NotNull
@@ -28,9 +29,11 @@ public class SymptomTracker {
 //    @NotNull
 //    private Symptom symptom;
 
+
+
     public SymptomTracker() {}
 
-    public SymptomTracker(Rating rating, Date date) {
+    public SymptomTracker(Rating rating, SimpleDateFormat date) {
         this.rating = rating;
         this.date = date;
     }
@@ -43,11 +46,11 @@ public class SymptomTracker {
         this.rating = rating;
     }
 
-    public Date getDate() {
+    public SimpleDateFormat getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(SimpleDateFormat date) {
         this.date = date;
     }
 
