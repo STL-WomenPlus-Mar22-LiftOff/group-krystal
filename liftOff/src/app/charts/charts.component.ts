@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Chart} from 'chart.js';
+import {Chart, registerables} from 'chart.js';
 import {ChartService} from './chart.service'
 
 @Component({
@@ -10,7 +10,9 @@ import {ChartService} from './chart.service'
 
 export class ChartsComponent implements OnInit {
 
-  constructor(private  chartService: ChartService) {}  
+  constructor(private  chartService: ChartService) {
+    Chart.register(...registerables);
+  }  
 
   ngOnInit(): void {
     this.chartService.getData().subscribe((data: any) => {
