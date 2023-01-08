@@ -18,6 +18,7 @@ public class SymptomTracker {
 
     @NotNull
     private SimpleDateFormat date = new SimpleDateFormat("MM-dd-yyyy");
+    //if this causes issues with chart JS, we can ty changing to a Date data type; however, the SimpleDateFormat data type allows you to modify how date is formatted, which seems like it would be better with the JavaScript Date object in the client, which also allows formatting.
 
     @ManyToOne
     @NotNull
