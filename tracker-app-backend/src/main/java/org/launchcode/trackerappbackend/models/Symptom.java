@@ -5,6 +5,8 @@ import com.sun.istack.NotNull;
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import javax.validation.Valid;
 
@@ -23,6 +25,10 @@ public class Symptom {
     @NotNull
     @Valid
     private User user;
+
+    // Will also need to add OneToMany relationship for Symptom to Symptom Tracker in Symptom model)
+    @OneToMany
+    private List<SymptomTracker> symptomTracker = new ArrayList<>();
 
     public Symptom(String symptomName){
         this.symptomName = symptomName;

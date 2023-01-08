@@ -4,8 +4,8 @@ import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Objects;
+import javax.validation.Valid;
 
 @Entity
 public class SymptomTracker {
@@ -21,14 +21,12 @@ public class SymptomTracker {
 
     @ManyToOne
     @NotNull
-//    @Valid (will need to add in once Symptom model is merged to main, validation dependency does not exist in this branch
+    @Valid
     private User user;
 
-    //Once Symptom model is merged with main, will need to add ManyToOne relationship to Symptom as seen below. Will also need to add OneToMany relationship for Symptom to Symptom Tracker in Symptom model)
-//    @ManyToOne
-//    @NotNull
-//    private Symptom symptom;
-
+    @ManyToOne
+    @NotNull
+    private Symptom symptom;
 
 
     public SymptomTracker() {}
