@@ -9,10 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
+import java.util.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -24,6 +21,14 @@ public class ExampleDataController {
 
     @GetMapping("")
     public ArrayList<ArrayList<String>> getData() {
+
+        //Adding example data, comment this out after first bootrun
+//        dataRepository.save(new ExampleData(new GregorianCalendar(2022,00,01).getTime(),5));
+//        dataRepository.save(new ExampleData(new GregorianCalendar(2022,00,02).getTime(),6));
+//        dataRepository.save(new ExampleData(new GregorianCalendar(2022,00,10).getTime(),2));
+//        dataRepository.save(new ExampleData(new GregorianCalendar(2022,00,04).getTime(),7));
+//        dataRepository.save(new ExampleData(new GregorianCalendar(2022,00,06).getTime(),3));
+
         //this is the ArrayList that will house both the x axis and y axis arraylists
         ArrayList<ArrayList<String>> data = new ArrayList<>();
 
