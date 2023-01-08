@@ -13,7 +13,7 @@ public enum Rating {
     NINE (9),
     TEN (10);
 
-    private final int numericRating;
+    private final Integer numericRating;
 
     private Rating(int numericRating) {
         this.numericRating = numericRating;
@@ -23,4 +23,8 @@ public enum Rating {
         return numericRating;
     }
 
+    @Override
+    public String toString() {
+        return numericRating.toString();
+    }
 }

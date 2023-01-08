@@ -10,10 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
-import java.util.HashMap;
+import java.util.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -25,6 +22,13 @@ public class SymptomTrackerController {
 
     @GetMapping("")
     public ArrayList<ArrayList<String>> getSymptomTrackerData() {
+
+        //Adding example data, comment this out after first bootrun
+//        symptomTrackerRepository.save(new SymptomTracker(Rating.ONE,new GregorianCalendar(2022,00,01).getTime()));
+//        symptomTrackerRepository.save(new SymptomTracker(Rating.TWO,new GregorianCalendar(2022,00,04).getTime()));
+//        symptomTrackerRepository.save(new SymptomTracker(Rating.FIVE,new GregorianCalendar(2022,00,10).getTime()));
+//        symptomTrackerRepository.save(new SymptomTracker(Rating.TEN,new GregorianCalendar(2022,00,02).getTime()));
+
 
         //this is the ArrayList that will house both the x axis and y axis arraylists
         ArrayList<ArrayList<String>> data = new ArrayList<>();
