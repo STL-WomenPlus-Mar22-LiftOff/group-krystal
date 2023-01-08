@@ -33,7 +33,7 @@ export class ChartsComponent implements OnInit {
           label: 'Testing Data Points',
           data: ratings,
           borderColor: "#3e95cd",
-          fill: false
+          fill: true
         }]
       },
       options: {
