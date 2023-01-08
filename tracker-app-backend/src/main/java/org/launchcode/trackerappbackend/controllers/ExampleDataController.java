@@ -28,6 +28,7 @@ public class ExampleDataController {
 //        dataRepository.save(new ExampleData(new GregorianCalendar(2022,00,10).getTime(),2));
 //        dataRepository.save(new ExampleData(new GregorianCalendar(2022,00,04).getTime(),7));
 //        dataRepository.save(new ExampleData(new GregorianCalendar(2022,00,06).getTime(),3));
+        dataRepository.save(new ExampleData(new GregorianCalendar(2022,00,11).getTime(),9));
 
         //this is the ArrayList that will house both the x axis and y axis arraylists
         ArrayList<ArrayList<String>> data = new ArrayList<>();
