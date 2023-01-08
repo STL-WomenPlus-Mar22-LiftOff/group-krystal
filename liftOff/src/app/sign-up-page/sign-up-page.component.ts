@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../model/user';
-import { UserService } from '../user.service';
+import { UserService } from '../service/user.service';
 
 @Component({
   selector: 'app-sign-up-page',
@@ -14,8 +14,7 @@ export class SignUpPageComponent implements OnInit {
   constructor(private userService: UserService, 
               private router: Router, //connects component with URL
               private activatedRoute: ActivatedRoute ) { //provides access to info in this route/component pair such as path and URL params 
-    this.user = new User;
-    
+    this.user = new User; 
   }
 
   ngOnInit(): void {
