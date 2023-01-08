@@ -10,6 +10,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { UserComponent } from './user/user.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
+import { ChartsComponent } from './charts/charts.component';
 
 const appRoutes: Routes = [
   { path: 'home', 
@@ -47,6 +48,10 @@ const appRoutes: Routes = [
   {
     path: 'signUp',
     component: SignUpPageComponent
+  },
+  {
+    path: 'chart',
+    component: ChartsComponent
   }
   // {
   //   path: 'what will show up on the URL aka the mapping',

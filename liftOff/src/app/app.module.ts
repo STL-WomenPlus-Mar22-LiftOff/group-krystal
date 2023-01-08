@@ -11,6 +11,7 @@ import { UserComponent } from './user/user.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { FormsModule } from '@angular/forms';
+import { ChartsComponent } from './charts/charts.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { FormsModule } from '@angular/forms';
     LandingPageComponent,
     UserComponent,
     SignUpPageComponent,
+    ChartsComponent,
   ],
   imports: [
     BrowserModule,
