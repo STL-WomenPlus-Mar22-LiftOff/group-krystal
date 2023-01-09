@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service'; //imports function from user service
+import { UserService } from '../service/user.service'; //imports function from user service
+import { Router } from '@angular/router';
+import { User } from '../model/user';
+import { AutheticationService } from '../service/authetication.service';
+
+// import {NgForm, FormGroup, FormControl, FormArray} from '@angular/forms';
 
 
 @Component({
@@ -7,18 +12,38 @@ import { UserService } from '../user.service'; //imports function from user serv
   templateUrl: './landing-page.component.html',
   styleUrls: ['./landing-page.component.css'],
   providers: [ UserService ]
+
 })
 export class LandingPageComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  email ="";
+  password ="";
+  user: User;
 
-  ngOnInit(): void {
+  constructor(private router: Router, private loginservice : AutheticationService ) {
+    this.user = new User();
+   }
+
+
+  ngOnInit() {}
+
+  loginFailSuccess(results: any) {
+    console.log(results);
+    if (results.status === "success") {
+      sessionStorage.setItem("email", this.email);
+      this.router.navigate([`/dashboard`]);
+    } else {
+      console.log("failure");
+    }
   }
 
-  //connects submit button function to get request
-  loginUser(): void {
-    //this.userService.getUser();
-  }
-  
+  checkLogin() {
+    this.loginservice.authenticate(this.user).subscribe((result) => {
+      this.loginFailSuccess(result);
+    },
+    error => {
+      console.log("Authentication Error");
+    })
+  } 
 
 }

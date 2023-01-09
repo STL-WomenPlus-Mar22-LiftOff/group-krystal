@@ -13,7 +13,6 @@ import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { FormsModule } from '@angular/forms';
 import { ChartsComponent } from './charts/charts.component';
 
-
 @NgModule({
   declarations: [
     AppComponent,
