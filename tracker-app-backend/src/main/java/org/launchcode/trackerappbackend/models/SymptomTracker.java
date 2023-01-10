@@ -2,10 +2,13 @@ package org.launchcode.trackerappbackend.models;
 
 import com.sun.istack.NotNull;
 
-import javax.persistence.*;
-import java.text.SimpleDateFormat;
-import java.util.Objects;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.Valid;
+import java.util.Date;
+import java.util.Objects;
 
 @Entity
 public class SymptomTracker {
@@ -17,7 +20,8 @@ public class SymptomTracker {
     private Rating rating;
 
     @NotNull
-    private SimpleDateFormat date = new SimpleDateFormat("MM-dd-yyyy");
+    private Date date = new Date();
+    //private SimpleDateFormat date = new SimpleDateFormat("MM-dd-yyyy");
     //if this causes issues with chart JS, we can ty changing to a Date data type; however, the SimpleDateFormat data type allows you to modify how date is formatted, which seems like it would be better with the JavaScript Date object in the client, which also allows formatting.
 
     @ManyToOne
@@ -32,7 +36,7 @@ public class SymptomTracker {
 
     public SymptomTracker() {}
 
-    public SymptomTracker(Rating rating, SimpleDateFormat date) {
+    public SymptomTracker(Rating rating, Date date) {
         this.rating = rating;
         this.date = date;
     }
@@ -45,11 +49,11 @@ public class SymptomTracker {
         this.rating = rating;
     }
 
-    public SimpleDateFormat getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(SimpleDateFormat date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
