@@ -1,4 +1,4 @@
-package org.launchcode.trackerappbackend.models;
+package org.launchcode.TrackfullyServer.models;
 
 import com.sun.istack.NotNull;
 

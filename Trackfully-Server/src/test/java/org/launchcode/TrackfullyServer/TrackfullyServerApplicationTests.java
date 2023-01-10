@@ -1,10 +1,10 @@
-package org.launchcode.trackerappbackend;
+package org.launchcode.TrackfullyServer;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class TrackerAppBackendApplicationTests {
+class TrackfullyServerApplicationTests {
 
 	@Test
 	void contextLoads() {

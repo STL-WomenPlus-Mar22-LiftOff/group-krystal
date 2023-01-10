@@ -1,6 +1,6 @@
-package org.launchcode.trackerappbackend.data;
+package org.launchcode.TrackfullyServer.data;
 
-import org.launchcode.trackerappbackend.models.User;
+import org.launchcode.TrackfullyServer.models.User;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
