@@ -8,8 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class NavigationBarComponent implements OnInit {
 
   menuItems = [
-    {linkId: 1, linkName: 'Daily Tracker', linkUrl: 'symptomManageForm'}, 
-    {linkId: 2, linkName: 'Sign Out'}
+    {linkId: 1, linkName: 'Dashboard', linkUrl: 'dashboard'},
+    {linkId: 2, linkName: 'Daily Tracker', linkUrl: 'symptomManageForm'}, 
+    {linkId: 3, linkName: 'Sign Out'}
   ];
 
   constructor() { }
