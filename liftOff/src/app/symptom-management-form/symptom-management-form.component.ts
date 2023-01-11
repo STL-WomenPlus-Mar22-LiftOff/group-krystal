@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Symptom } from '../model/symptom';
 
 
 @Component({
@@ -9,9 +10,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SymptomManagementFormComponent implements OnInit {
 
-  constructor( ) { }
+  symptom: Symptom;
+  constructor(private ) { }
 
   ngOnInit(): void {
   }
+
+  goToTrackerForm() {
+    this.router.navigate([`/daily-tracker-form`]); //when called will redirect to this URL path
+  }
+ 
+   onSubmit(symptomName: string) {
+     console.log(this.symptom.name); 
+     this.userService.save(this.symptom).subscribe((result) => this.goToTrackerForm()); //this calls the save function in the symptom.service.ts file
+   }
 
 }
