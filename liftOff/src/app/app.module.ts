@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { FormsModule } from '@angular/forms';
 import { ChartsComponent } from './charts/charts.component';
+import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ChartsComponent } from './charts/charts.component';
     UserComponent,
     SignUpPageComponent,
     ChartsComponent,
+    NavigationBarComponent,
   ],
   imports: [
     BrowserModule,

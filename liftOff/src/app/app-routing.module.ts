@@ -12,6 +12,7 @@ import { UserComponent } from './user/user.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { ChartsComponent } from './charts/charts.component';
 
+
 const appRoutes: Routes = [
   { path: '', 
     component: LandingPageComponent
