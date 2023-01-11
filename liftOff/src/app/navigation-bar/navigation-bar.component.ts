@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavigationBarComponent implements OnInit {
 
+  menuItems = [
+    {linkId: 1, linkName: 'Daily Tracker', linkUrul: 'symptomManageForm'}, 
+    {linkId: 2, linkName: 'Sign Out'}
+  ];
+
   constructor() { }
 
   ngOnInit(): void {
