@@ -18,6 +18,10 @@ export class SymptomService {
     return this.http.get<Symptom[]>(`${this.url}`);
   }
 
+  public findAll(): Observable<Symptom[]>{
+    return this.http.get<Symptom[]>(`${this.url}`);
+  }
+
   public save(symptom: Symptom) {
     return this.http.post<Symptom>(this.url, symptom);
   }

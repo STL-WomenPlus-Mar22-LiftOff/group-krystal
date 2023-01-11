@@ -26,7 +26,7 @@ export class SymptomManagementFormComponent implements OnInit {
     this.router.navigate([`/daily-tracker-form`]); //when called will redirect to this URL path
   }
  
-   onSubmit(symptomName: string) {
+   onSubmit(symptomName: String) {
      console.log(this.symptom.symptomName); 
      this.symptomService.save(this.symptom).subscribe((result) => this.goToTrackerForm()); //this calls the save function in the symptom.service.ts file
    }
