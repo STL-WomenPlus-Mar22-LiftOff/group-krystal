@@ -18,7 +18,7 @@ const appRoutes: Routes = [
     component: LandingPageComponent
   },
 
-  { path: 'symptom-manange-form', 
+  { path: 'symptom-manage-form', 
     component: SymptomManagementFormComponent
   },
 
