@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Symptom } from '../model/symptom';
+import { SymptomService } from '../service/symptom/symptom.service';
 
 
 @Component({
@@ -11,7 +12,12 @@ import { Symptom } from '../model/symptom';
 export class SymptomManagementFormComponent implements OnInit {
 
   symptom: Symptom;
-  constructor(private ) { }
+
+  constructor(private symptomService: SymptomService,
+              private router: Router,
+              private activatedRoute: ActivatedRoute) { 
+    this.symptom = new Symptom;
+  }
 
   ngOnInit(): void {
   }
@@ -21,8 +27,8 @@ export class SymptomManagementFormComponent implements OnInit {
   }
  
    onSubmit(symptomName: string) {
-     console.log(this.symptom.name); 
-     this.userService.save(this.symptom).subscribe((result) => this.goToTrackerForm()); //this calls the save function in the symptom.service.ts file
+     console.log(this.symptom.symptomName); 
+     this.symptomService.save(this.symptom).subscribe((result) => this.goToTrackerForm()); //this calls the save function in the symptom.service.ts file
    }
 
 }
