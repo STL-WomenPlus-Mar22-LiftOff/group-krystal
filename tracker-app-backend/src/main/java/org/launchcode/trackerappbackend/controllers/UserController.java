@@ -5,6 +5,9 @@ import org.launchcode.trackerappbackend.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Optional;
+
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("user")
@@ -28,5 +31,25 @@ public class UserController {
     void addUser(@RequestBody User user) {
         User newUser = new User(user.getName(), user.getEmail(), user.getPassword(), user.getConfirmPassword());
         userRepository.save(newUser);
+    }
+
+    @PostMapping("authenticate")
+    public HashMap<String, String> authenticate (@RequestBody User user) {
+
+        Optional<User> userData = userRepository.findByEmail(user.getEmail());
+
+        HashMap<String, String> map = new HashMap<>();
+
+        if (userData.isPresent()) {
+            User userInfo = userData.get();
+            if (user.getPassword().equals(userInfo.getPassword())) {
+                map.put("status","success");
+            } else {
+                map.put("status","failure");
+            }
+        } else {
+            map.put("status","failure");
+        }
+        return map;
     }
 }
