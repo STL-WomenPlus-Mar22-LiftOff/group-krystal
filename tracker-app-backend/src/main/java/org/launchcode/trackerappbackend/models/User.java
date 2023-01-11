@@ -4,11 +4,7 @@ import com.sun.istack.NotNull;
 import javax.persistence.*;
 
 @Entity
-public class User {
-
-    @Id
-    @GeneratedValue
-    private int id;
+public class User extends AbstractEntity{
 
     @NotNull
     private String name;
@@ -55,10 +51,6 @@ public class User {
         this.password = password;
     }
 
-    public int getId() {
-        return id;
-    }
-
     public String getConfirmPassword() {
         return confirmPassword;
     }
@@ -67,16 +59,4 @@ public class User {
         this.confirmPassword = confirmPassword;
     }
 
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return id == user.id;
-    }
 }

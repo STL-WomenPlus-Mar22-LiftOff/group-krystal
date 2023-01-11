@@ -11,11 +11,7 @@ import java.util.Date;
 import java.util.Objects;
 
 @Entity
-public class SymptomTracker {
-
-    @Id
-    @GeneratedValue
-    private int id;
+public class SymptomTracker extends AbstractEntity {
 
     private Rating rating;
 
@@ -57,16 +53,4 @@ public class SymptomTracker {
         this.date = date;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        SymptomTracker that = (SymptomTracker) o;
-        return id == that.id;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }
