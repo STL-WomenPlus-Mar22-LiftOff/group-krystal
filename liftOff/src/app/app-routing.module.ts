@@ -13,11 +13,11 @@ import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { ChartsComponent } from './charts/charts.component';
 
 const appRoutes: Routes = [
-  { path: 'home', 
+  { path: '', 
     component: LandingPageComponent
   },
 
-  { path: 'symptomManageForm', 
+  { path: 'symptom-manange-form', 
     component: SymptomManagementFormComponent
   },
 
@@ -26,12 +26,12 @@ const appRoutes: Routes = [
   },
 
   {
-    path: 'dailyTrackerForm',
+    path: 'daily-tracker-form',
     component: DailyTrackerFormComponent
   },
 
   {
-    path: '',
+    path: 'home',
     component:AppComponent
   },
 
@@ -46,7 +46,7 @@ const appRoutes: Routes = [
   },
   
   {
-    path: 'signUp',
+    path: 'sign-up',
     component: SignUpPageComponent
   },
   {
