@@ -1,7 +1,7 @@
-package org.launchcode.trackerappbackend.controllers;
+package org.launchcode.TrackfullyServer.controllers;
 
-import org.launchcode.trackerappbackend.data.UserRepository;
-import org.launchcode.trackerappbackend.models.User;
+import org.launchcode.TrackfullyServer.data.UserRepository;
+import org.launchcode.TrackfullyServer.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

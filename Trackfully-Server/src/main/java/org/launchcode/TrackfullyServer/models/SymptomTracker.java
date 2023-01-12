@@ -1,14 +1,11 @@
-package org.launchcode.trackerappbackend.models;
+package org.launchcode.TrackfullyServer.models;
 
 import com.sun.istack.NotNull;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import java.util.Date;
-import java.util.Objects;
 
 @Entity
 public class SymptomTracker extends AbstractEntity {
