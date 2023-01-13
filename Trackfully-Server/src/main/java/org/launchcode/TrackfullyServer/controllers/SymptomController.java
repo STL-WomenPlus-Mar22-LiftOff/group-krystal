@@ -1,7 +1,7 @@
-package org.launchcode.trackerappbackend.controllers;
+package org.launchcode.TrackfullyServer.controllers;
 
-import org.launchcode.trackerappbackend.data.SymptomRepository;
-import org.launchcode.trackerappbackend.models.Symptom;
+import org.launchcode.TrackfullyServer.data.SymptomRepository;
+import org.launchcode.TrackfullyServer.models.Symptom;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;

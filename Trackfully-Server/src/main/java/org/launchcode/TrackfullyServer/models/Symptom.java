@@ -1,11 +1,9 @@
-package org.launchcode.trackerappbackend.models;
+package org.launchcode.TrackfullyServer.models;
 
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import java.util.Objects;
 import javax.validation.Valid;
 
 @Entity
