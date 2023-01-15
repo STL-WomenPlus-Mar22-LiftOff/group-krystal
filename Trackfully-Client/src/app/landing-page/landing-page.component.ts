@@ -17,10 +17,10 @@ import { Validators, FormGroup, FormControl } from '@angular/forms';
 
 })
 export class LandingPageComponent implements OnInit {
-  isInvalidForm = false;
+  isValidForm = true;
   
   user: User;
-  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$";
+  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"; //regex for email validation
 
   constructor(private router: Router, private loginservice : AutheticationService ) {
     this.user = new User();
@@ -31,20 +31,18 @@ export class LandingPageComponent implements OnInit {
 
   loginFailSuccess(results: any) {
     console.log("results: " + results.status);
-    if (results.status === "success") {
+    if (results.status === "success" && this.user.email.trim.length!==0 && this.user.password.length !== 0) {
       sessionStorage.setItem("email", this.user.email);
       this.router.navigate([`/symptom-manage-form`]); //should route to desktop for exisiting user
-      this.isInvalidForm = false;
+      this.isValidForm = true;
     } else {
-      console.log("failure");
       this.router.navigate([`/`]);
-      this.isInvalidForm = true;
+      this.isValidForm = false;
     }
   }
 
   checkLogin() {
     console.log(this.user);
-    //if(this.isValidFormSubmitted){
     this.loginservice.authenticate(this.user).subscribe((result) => {
       this.loginFailSuccess(result);
     }
@@ -52,7 +50,7 @@ export class LandingPageComponent implements OnInit {
     error => {
       console.log("Authentication Error");
     })
-//  }
+
 }
   
 }
