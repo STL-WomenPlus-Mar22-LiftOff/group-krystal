@@ -5,8 +5,11 @@
       <div class="col-md-8 col-lg-7 col-xl-6">
         <img src="https://www.excel-easy.com/examples/images/line-chart/line-chart-with-one-data-series.png" alt="hello">
       </div>
+
+
       <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
         <h1>Login</h1>
+        <small class="text-danger" *ngIf="isInvalidForm">Username or password was incorrect. Please try again.</small>
         <form #signInForm="ngForm">
           <!-- Email input -->
           <div class="form-outline mb-4 form-group">
@@ -15,19 +18,21 @@
               id="email" 
               #email="ngModel" 
               [(ngModel)]="user.email" 
+              required [pattern]="emailPattern"
               name="email" 
               class="form-control form-control-lg"
-              [ngClass]="{ 'is-invalid': email.invalid && email.touched}"
-              pattern="[a-zA-Z0-9._% -] @[a-zA-Z0-9.-] \.[a-zA-Z]{2,4}$"
-              required/>
-             <!-- [ngClass] above is making the text entry box red when the email is not meeting requirements. 
-                  Pattern is a regex(regular expression) which makes sure the email is formatted as an email address.
-                  below, the ngIf div is making the error messages show up-->
-             <div *ngIf="email.errors && (email.invalid && email.touched)">
-              <small class="text-danger" *ngIf="email.errors.required">Email is required</small>
-              <small class="text-danger" *ngIf="email.errors.pattern">Please provide a valid email address</small>
-            </div>
-          </div> 
+              />
+              <div *ngIf="email.errors"> 
+                <small class="text-danger" *ngIf="email.errors.required && email.touched"> 
+                    Email is required.
+                </small>			   
+                <small class="text-danger" *ngIf="email.errors.pattern"> 
+                    Email is not valid.
+                </small>	
+             </div> 
+
+            </div> 
+
 
           <!-- Password input -->
           <div class="form-outline mb-4">
