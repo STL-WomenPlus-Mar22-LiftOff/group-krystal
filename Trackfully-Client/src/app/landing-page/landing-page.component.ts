@@ -31,7 +31,7 @@ export class LandingPageComponent implements OnInit {
     console.log(results);
     if (results.status === "success") {
       sessionStorage.setItem("email", this.email);
-      this.router.navigate([`/dashboard`]);
+      this.router.navigate([`/symptom-manage-form`]);
     } else {
       console.log("failure");
     }
