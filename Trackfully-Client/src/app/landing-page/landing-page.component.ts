@@ -31,7 +31,7 @@ export class LandingPageComponent implements OnInit {
 
   loginFailSuccess(results: any) {
     console.log("results: " + results.status);
-    if (results.status === "success" && this.user.email.trim.length!==0 && this.user.password.length !== 0) {
+    if (results.status === "success") {
       sessionStorage.setItem("email", this.user.email);
       this.router.navigate([`/symptom-manage-form`]); //should route to desktop for exisiting user
       this.isValidForm = true;
@@ -43,6 +43,7 @@ export class LandingPageComponent implements OnInit {
 
   checkLogin() {
     console.log(this.user);
+    if(this.user.email.trim.length!==0 && this.user.password.length !== 0) {
     this.loginservice.authenticate(this.user).subscribe((result) => {
       this.loginFailSuccess(result);
     }
@@ -50,7 +51,10 @@ export class LandingPageComponent implements OnInit {
     error => {
       console.log("Authentication Error");
     })
-
+  }
+  else {
+    this.isValidForm = false;
+  }
 }
   
 }
