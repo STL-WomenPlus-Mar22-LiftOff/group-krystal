@@ -16,11 +16,13 @@ export class AutheticationService {
     return this.httpClient.post(this.baseUrl,user);
   }
 
+  //checks if user is signed in, if not, will return null
   isUserLoggedIn() {
     let user = sessionStorage.getItem('email');
     return !(user === null);
   }
 
+  //removes user from session
   logOut() {
     sessionStorage.removeItem('email')
     // items to check that user has been logged out:

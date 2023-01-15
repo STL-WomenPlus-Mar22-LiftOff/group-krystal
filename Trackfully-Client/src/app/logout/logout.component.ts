@@ -11,6 +11,7 @@ export class LogoutComponent implements OnInit {
 
   constructor(private autheticationService: AutheticationService, private router: Router) { }
 
+  // when users log out, it will log them out and send them back to the landing page
   ngOnInit(): void {
     this.autheticationService.logOut();
     this.router.navigate(['']);
