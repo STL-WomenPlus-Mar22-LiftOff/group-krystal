@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../service/user.service'; //imports function from user service
+import { UserService } from '../service/user/user.service'; //imports function from user service
 import { Router } from '@angular/router';
 import { User } from '../model/user';
-import { AutheticationService } from '../service/authetication.service';
+import { AutheticationService } from '../service/authentication/authetication.service';
 
 // import {NgForm, FormGroup, FormControl, FormArray} from '@angular/forms';
 
