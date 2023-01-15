@@ -13,6 +13,7 @@ import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { FormsModule } from '@angular/forms';
 import { ChartsComponent } from './charts/charts.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
     SignUpPageComponent,
     ChartsComponent,
     NavigationBarComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,
