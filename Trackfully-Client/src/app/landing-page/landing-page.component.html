@@ -10,7 +10,8 @@
         <form #signInForm="ngForm">
           <!-- Email input -->
           <div class="form-outline mb-4 form-group">
-            <input type="email" 
+            <input type="email"
+              placeholder="Enter email"
               id="email" 
               #email="ngModel" 
               [(ngModel)]="user.email" 
@@ -26,12 +27,12 @@
               <small class="text-danger" *ngIf="email.errors.required">Email is required</small>
               <small class="text-danger" *ngIf="email.errors.pattern">Please provide a valid email address</small>
             </div>
-            <label>Email address</label>
           </div> 
 
           <!-- Password input -->
           <div class="form-outline mb-4">
             <input type="password" 
+              placeholder="Enter password"
               id="password" 
               #password="ngModel" 
               [(ngModel)]="user.password" 
@@ -43,7 +44,6 @@
               <div *ngIf="password.errors && (password.invalid && password.touched)">
                 <small class="text-danger" *ngIf="password.errors.required">Password is required</small>
               </div>
-              <label>Password</label>
           </div>
         
         
