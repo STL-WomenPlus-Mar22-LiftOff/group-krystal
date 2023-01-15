@@ -2,14 +2,6 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
-<!--      <module name="org.launchcode.tracker-app-backend" target="11" />-->
-<!--      <module name="org.launchcode.tracker-app-backend.main" target="11" />-->
-<!--      <module name="org.launchcode.tracker-app-backend.main~1" target="11" />-->
-<!--      <module name="org.launchcode.tracker-app-backend.main~2" target="11" />-->
-<!--      <module name="org.launchcode.tracker-app-backend.test" target="11" />-->
-<!--      <module name="org.launchcode.tracker-app-backend.test~1" target="11" />-->
-<!--      <module name="org.launchcode.tracker-app-backend.test~2" target="11" />-->
-<!--      <module name="tracker-app-backend" target="11" />-->
       <module name="org.launchcode.TrackfullyServer" target="11" />
       <module name="org.launchcode.TrackfullyServer.main" target="11" />
       <module name="org.launchcode.TrackfullyServer.main~1" target="11" />
@@ -17,7 +9,7 @@
       <module name="org.launchcode.TrackfullyServer.test" target="11" />
       <module name="org.launchcode.TrackfullyServer.test~1" target="11" />
       <module name="org.launchcode.TrackfullyServer.test~2" target="11" />
-      <module name="TrackfullyServer" target="11" />
+      <module name="tracker-app-backend" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>
