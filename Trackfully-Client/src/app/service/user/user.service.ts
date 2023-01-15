@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../../model/user';
+import { DataSharingService } from '../data-sharing/data-sharing.service';
 
 @Injectable({
   providedIn: 'root'
