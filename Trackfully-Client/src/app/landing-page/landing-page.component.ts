@@ -41,7 +41,7 @@ export class LandingPageComponent implements OnInit {
 
   checkLogin() {
     console.log(this.user);
-    if(this.user.email.trim.length!==0 && this.user.password.length !== 0) {
+  
     this.loginservice.authenticate(this.user).subscribe((result) => {
       this.loginFailSuccess(result);
     }
@@ -49,10 +49,6 @@ export class LandingPageComponent implements OnInit {
     error => {
       console.log("Authentication Error");
     })
-  }
-  else {
-    this.isValidForm = false;
-  }
 }
   
 }
