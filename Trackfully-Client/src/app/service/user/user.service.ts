@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { User } from '../../model/user';
-import { DataSharingService } from '../data-sharing/data-sharing.service';
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +31,11 @@ export class UserService {
 
   getUser(): Observable<User[]>{
     return this.http.get<User[]>(`${this.baseUrl}`);
+  }
+
+  //gets User by Id for Symptom User Service to use to submit a symptom with a user id
+  getUserById(id: number): Observable<User> {
+    return this.http.get<User>(`${this.baseUrl}/${id}`);
   }
 
   public findAll(): Observable<User[]> {

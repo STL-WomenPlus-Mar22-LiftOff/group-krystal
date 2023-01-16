@@ -27,6 +27,11 @@ public class UserController {
         return userRepository.findAll();
     }
 
+//    @GetMapping("")
+//    public Optional<User> getUserById(int id){
+//        return userRepository.findById(id);
+//    }
+
     @PostMapping("")
     void addUser(@RequestBody User user) {
         User newUser = new User(user.getName(), user.getEmail(), user.getPassword(), user.getConfirmPassword());
