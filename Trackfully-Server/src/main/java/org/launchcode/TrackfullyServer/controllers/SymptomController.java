@@ -28,5 +28,6 @@ public class SymptomController {
             symptomRepository.save(newSymptom);
         }
     }
+    //added in get User Id
 
 }
