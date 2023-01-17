@@ -31,6 +31,7 @@ export class LandingPageComponent implements OnInit {
     console.log("results: " + results.status);
     if (results.status === "success") {
       sessionStorage.setItem("email", this.user.email);
+      sessionStorage.setItem("loggedInUserId", `${this.user.id}`); // `this is a string ${}` - changed to string, doesn't like type int
       this.router.navigate([`/symptom-manage-form`]); //should route to desktop for exisiting user
       this.isValidForm = true;
     } else {
