@@ -14,6 +14,7 @@ export class DailyTrackerService {
   }
 
   public save(dailyEntry: DailyEntry) {
+    console.log(dailyEntry);
     return this.http.post<DailyEntry>(`${this.url}/add-daily`, dailyEntry);
   }
 }

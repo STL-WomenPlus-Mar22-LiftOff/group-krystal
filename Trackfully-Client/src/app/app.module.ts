@@ -14,6 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { ChartsComponent } from './charts/charts.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { LogoutComponent } from './logout/logout.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { LogoutComponent } from './logout/logout.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
