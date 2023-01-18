@@ -27,7 +27,7 @@ public class UserController {
         return userRepository.findAll();
     }
 
-    @GetMapping("")
+    @GetMapping("/id")
     public Optional <User> getSpecificUser(@RequestParam User user) {
         Optional <User> userId = userRepository.findById(user.getId());
         return userId;
