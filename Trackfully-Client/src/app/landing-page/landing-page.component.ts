@@ -27,6 +27,7 @@ export class LandingPageComponent implements OnInit {
 
   ngOnInit() {}
 
+  //checks to see if entries match user database
   loginFailSuccess(results: any) {
     console.log("results: " + results.status);
     if (results.status === "success") {
@@ -39,16 +40,17 @@ export class LandingPageComponent implements OnInit {
     }
   }
 
+  //when submitting the form, will check to see if user email and password match in database.
   checkLogin() {
-    console.log(this.user);
-  
-    this.loginservice.authenticate(this.user).subscribe((result) => {
+      this.loginservice.authenticate(this.user).subscribe((result) => {
       this.loginFailSuccess(result);
-    }
-  ,
-    error => {
-      console.log("Authentication Error");
-    })
-}
-  
+    },
+    // this is in AroundTown but does not get called, and possibly is a duplicate funcitonality, so I've left it out
+    // error => {
+    //   console.log("Authentication Error");
+    // }
+      )
+  } 
+
+
 }
