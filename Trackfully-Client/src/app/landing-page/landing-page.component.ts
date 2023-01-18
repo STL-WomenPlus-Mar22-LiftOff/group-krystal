@@ -15,10 +15,10 @@ import { AutheticationService } from '../service/authentication/authetication.se
 
 })
 export class LandingPageComponent implements OnInit {
-
-  email ="";
-  password ="";
+  isValidForm = true;
+  
   user: User;
+  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"; //regex for email validation
 
   constructor(private router: Router, private loginservice : AutheticationService ) {
     this.user = new User();
@@ -29,12 +29,14 @@ export class LandingPageComponent implements OnInit {
 
   //checks to see if entries match user database
   loginFailSuccess(results: any) {
-    console.log(results);
+    console.log("results: " + results.status);
     if (results.status === "success") {
-      sessionStorage.setItem("email", this.email);
-      this.router.navigate([`/dashboard`]);
+      sessionStorage.setItem("email", this.user.email);
+      this.router.navigate([`/symptom-manage-form`]); //should route to desktop for exisiting user
+      this.isValidForm = true;
     } else {
-      console.log("failure");
+      this.router.navigate([`/`]);
+      this.isValidForm = false;
     }
   }
 
@@ -49,5 +51,6 @@ export class LandingPageComponent implements OnInit {
     // }
       )
   } 
+
 
 }
