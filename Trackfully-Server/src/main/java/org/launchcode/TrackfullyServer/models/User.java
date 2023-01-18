@@ -1,6 +1,8 @@
 package org.launchcode.TrackfullyServer.models;
 
 import com.sun.istack.NotNull;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import javax.persistence.*;
 
 @Entity
@@ -12,8 +14,10 @@ public class User extends AbstractEntity{
     @NotNull
     private String email;
 
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+
     @NotNull
-    private String password;
+    private String pwHash;
 
     @NotNull
     private String confirmPassword;
@@ -22,7 +26,7 @@ public class User extends AbstractEntity{
 
     public User(String name, String email, String password, String confirmPassword) {
         this.email = email;
-        this.password = password;
+        this.pwHash = encoder.encode(password);
         this.name = name;
         this.confirmPassword = confirmPassword;
     }
