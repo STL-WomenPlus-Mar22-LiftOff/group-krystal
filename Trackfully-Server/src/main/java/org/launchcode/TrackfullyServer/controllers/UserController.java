@@ -21,7 +21,7 @@ public class UserController {
     public Iterable<User> getAllUser(){
 
       //  uncomment this section for the first bootrun for hardcoded data to be added in MySQL, re-comment for any additional bootruns- otherwise will get error since you are adding the exact same data twice
-//            userRepository.save(ngitew User("Emma", "emma@gmail.com", "emma123"));
+//            userRepository.save(new User("Emma", "emma@gmail.com", "emma123"));
 //            userRepository.save(new User("Emily", "emily@gmail.com", "emily123"));
 
         return userRepository.findAll();
