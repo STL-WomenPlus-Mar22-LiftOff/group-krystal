@@ -24,7 +24,7 @@ public class SymptomController {
     @PostMapping("")
     void addSymptom(@RequestBody @Valid Symptom symptom, Errors errors) {
         if (!errors.hasErrors()) {
-            Symptom newSymptom = new Symptom(symptom.getSymptomName());
+            Symptom newSymptom = new Symptom(symptom.getSymptomName(), symptom.getUserId());
             symptomRepository.save(newSymptom);
         }
     }
