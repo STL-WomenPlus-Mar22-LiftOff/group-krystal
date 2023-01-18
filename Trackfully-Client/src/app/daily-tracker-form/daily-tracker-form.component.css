@@ -22,3 +22,14 @@ datalist{
     width: 95%;
 }
 
+.container col-md-7{
+  position: relative;
+  top: 40px;
+}
+
+h1{
+  position: relative;
+  padding: 50px;
+  top: 40px;
+}
+
