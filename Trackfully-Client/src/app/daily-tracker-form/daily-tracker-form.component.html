@@ -2,14 +2,14 @@
     <h1>Daily Tracker</h1>
 
 <div>
-    <form action="" method="post">
-        <div class="row">
+    <form action="" method="post" [formGroup]="trackerForm" (ngSubmit)="onSubmit()">
+        <div class="row form-group">
             <label for="date">Date:</label>
-            <input type="text" id="date" name="selected_date" disabled value={{currentDate}}/>
+            <input type="text" id="date" class="form-control" name="selected_date" disabled value={{currentDate}}/>
             <!-- once we allow users to select their own date instead of default value, use simple date picker instead:
                 <input type="date" id="date" name="selected_date"> -->
         </div>
-        <div class="row">
+        <div class="row form-group">
             <label for="symptom">Choose Symptom:</label>
                 <select>
             <!-- placeholder text for symptoms- will need to be changed once database and add symptom button/option connected -->
@@ -19,7 +19,7 @@
         <div class="row">
             <label for="rating">Rate how you are feeling today:</label>
             <div >
-                <input type="range" class="slider-bar" min="0" max="10" step="1"list="steplist" id="rating" name="selected_rating"> 
+                <input type="range" class="slider-bar form-control" min="0" max="10" step="1"list="steplist" id="rating" name="selected_rating"> 
                     <datalist id="steplist">
                         <option class="slider" value="0" label="0"></option>
                         <option class="slider" value="1" label="1"></option>
