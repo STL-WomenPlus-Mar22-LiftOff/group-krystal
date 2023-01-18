@@ -20,7 +20,7 @@ export class LandingPageComponent implements OnInit {
   user: User;
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"; //regex for email validation
 
-  constructor(private router: Router, private loginservice : AutheticationService ) {
+  constructor(private router: Router, private loginservice : AutheticationService, private userService: UserService) {
     this.user = new User();
    }
 
@@ -36,8 +36,8 @@ export class LandingPageComponent implements OnInit {
   loginFailSuccess(results: any) {
     console.log("results: " + results.status);
     if (results.status === "success") {
-      sessionStorage.setItem("email", this.user.email);
-      sessionStorage.setItem("loggedInUserId", `${this.user.id}`); // `this is a string ${}` - changed to string, doesn't like type int
+      this.userService.getUserId(this.user.email).subscribe((result) => {
+      sessionStorage.setItem("id", result.toString())});
       console.log(this.user);
       this.router.navigate([`/symptom-manage-form`]); //should route to desktop for exisiting user
       this.isValidForm = true;
@@ -48,8 +48,6 @@ export class LandingPageComponent implements OnInit {
   }
 
   checkLogin() {
-    console.log(this.user);
-  
     this.loginservice.authenticate(this.user).subscribe((result) => {
       this.loginFailSuccess(result);
     }

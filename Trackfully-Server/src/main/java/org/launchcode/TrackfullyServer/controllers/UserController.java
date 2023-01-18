@@ -21,16 +21,23 @@ public class UserController {
     public Iterable<User> getAllUser(){
 
       //  uncomment this section for the first bootrun for hardcoded data to be added in MySQL, re-comment for any additional bootruns- otherwise will get error since you are adding the exact same data twice
-//            userRepository.save(new User("Emma", "emma@gmail.com", "emma123"));
+//            userRepository.save(ngitew User("Emma", "emma@gmail.com", "emma123"));
 //            userRepository.save(new User("Emily", "emily@gmail.com", "emily123"));
 
         return userRepository.findAll();
     }
 
-    @GetMapping("/id")
+    @GetMapping("search/id")
     public Optional <User> getSpecificUser(@RequestParam User user) {
         Optional <User> userId = userRepository.findById(user.getId());
         return userId;
+    }
+
+    @GetMapping("{email}/id")
+    public Integer getUserId(@PathVariable("email") String email) {
+        Optional<User> userData = userRepository.findByEmail(email);
+        User foundUser = userData.get();
+        return foundUser.getId();
     }
 
     @PostMapping("")

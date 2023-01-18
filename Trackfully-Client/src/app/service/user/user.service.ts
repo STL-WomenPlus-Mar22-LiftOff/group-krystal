@@ -55,6 +55,9 @@ export class UserService {
    // it doesnt seem to show a post request if you inspect the page, but it still works somehow
  }
 
+ public getUserId(email: String) {
+  return this.http.get<number>(`${this.baseUrl}/${email}/id`);
+ }
 
 }
 
