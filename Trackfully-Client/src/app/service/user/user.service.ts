@@ -33,6 +33,19 @@ export class UserService {
     return this.http.get<User[]>(`${this.baseUrl}`);
   }
 
+  // getUserId(): Observable<User[]>{
+  //   return this.http.get<User[["id"]]>(`${this.baseUrl}`);
+  // }
+
+  //trying to get part of user object (just id and name) through GET REQUEST
+//   public getUserId(id): Observable<User[]> {
+//     const searchParam = 'id';
+//     const urlPath = this.baseUrl + searchParam;
+//     return this.http.get(urlPath).pipe(map(
+//       res => res.map(({id, name})=>({id, name})) 
+//     ));
+// }
+
   public findAll(): Observable<User[]> {
     return this.http.get<User[]>(this.baseUrl);
  }

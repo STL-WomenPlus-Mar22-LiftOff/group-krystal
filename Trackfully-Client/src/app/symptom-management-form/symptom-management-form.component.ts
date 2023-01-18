@@ -26,6 +26,10 @@ export class SymptomManagementFormComponent implements OnInit {
 }
 
   ngOnInit(): void {
+    //would need to get GET request from DB for userID
+    
+    this.getUserSessionId();
+    console.log(this.getUserSessionId());
   }
 
   goToTrackerForm() {
@@ -46,8 +50,16 @@ export class SymptomManagementFormComponent implements OnInit {
 
   //instead should be just sending symptom (also changed in html file)
       onSubmit(symptom: Symptom) {
-        this.getUserSessionId();
-        console.log(this.getUserSessionId());
+        // this.getUserSessionId();
+        // console.log(this.getUserSessionId());
+        // symptom.userId = number.toString([symptom.userId]);
+        let num = new Number(symptom.userId);
+        let id = this.getUserSessionId();
+        id = num.toString();
+
+        //  = number.toString( [this.getUserSessionId()] );
+        // num : String = this.getUserSessionId();
+        //might need to make symptom.userId as a string
         console.log(symptom); 
         console.log("symptom User Id" + sessionStorage.getItem("loggedInUserId"));
         this.symptomService.save(this.symptom).subscribe((result) => this.goToTrackerForm()); //this calls the save function in the symptom.service.ts file

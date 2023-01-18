@@ -18,6 +18,7 @@ export class SignUpPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  
   }
 
  goToDashboard() {
@@ -27,6 +28,7 @@ export class SignUpPageComponent implements OnInit {
   onSubmit(password: String, confirmPassword: String) {
     console.log(this.user.name); 
     if(password === confirmPassword) {
+      sessionStorage.setItem("loggedInUserId", `${this.user.id}`); // `this is a string ${}` - changed to string, doesn't like type int
       //sessionStorage.setItem('username', 'password'); // will need this later i assume
       this.userService.save(this.user).subscribe((result) => this.goToDashboard()); //this calls the save function in the user.service.ts file
     }
