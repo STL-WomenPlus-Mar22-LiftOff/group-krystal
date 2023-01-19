@@ -33,11 +33,12 @@ export class LandingPageComponent implements OnInit {
 //   this.users = data;
 // });
 
+  //checks to see if entries match user database
   loginFailSuccess(results: any) {
     console.log("results: " + results.status);
     if (results.status === "success") {
       this.saveUserInfo();
-      this.router.navigate([`/symptom-manage-form`]); //should route to desktop for exisiting user
+      this.router.navigate([`/dashboard`]); //should route to desktop for exisiting user
       this.isValidForm = true;
     } else {
       this.router.navigate([`/`]);
@@ -56,11 +57,13 @@ export class LandingPageComponent implements OnInit {
   checkLogin() {
     this.loginservice.authenticate(this.user).subscribe((result) => {
       this.loginFailSuccess(result);
-    }
-  ,
-    error => {
-      console.log("Authentication Error");
-    })
-}
-  
+    },
+    // this is in AroundTown but does not get called, and possibly is a duplicate funcitonality, so I've left it out
+    // error => {
+    //   console.log("Authentication Error");
+    // }
+      )
+  } 
+
+
 }
