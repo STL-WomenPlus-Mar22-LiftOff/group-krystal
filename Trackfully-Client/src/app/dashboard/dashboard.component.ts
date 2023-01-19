@@ -8,16 +8,17 @@ import { User } from '../model/user';
 })
 export class DashboardComponent implements OnInit {
 
-  user: User;
+  // I don't think we need this currently?
+  // user: User;
 
   constructor() { 
-    this.user = new User();
+    // this.user = new User();
   }
 
   ngOnInit(): void {
-    console.log("dashboard id from session:"+sessionStorage.getItem("id"));
-    console.log("dashboard name from session:"+sessionStorage.getItem("name"));
-    console.log("dashboard email from session: "+sessionStorage.getItem("email"));
+    // console.log("dashboard id from session:"+sessionStorage.getItem("id"));
+    // console.log("dashboard name from session:"+sessionStorage.getItem("name"));
+    // console.log("dashboard email from session: "+sessionStorage.getItem("email"));
   }
 
 }

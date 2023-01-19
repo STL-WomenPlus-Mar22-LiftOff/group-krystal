@@ -38,7 +38,6 @@ export class LandingPageComponent implements OnInit {
     console.log("results: " + results.status);
     if (results.status === "success") {
       this.saveUserInfo();
-      this.router.navigate([`/dashboard`]); //should route to desktop for exisiting user
       this.isValidForm = true;
     } else {
       this.router.navigate([`/`]);
@@ -46,22 +45,22 @@ export class LandingPageComponent implements OnInit {
     }
   }
 
+  //Adjusted this to only use information about user directly sent from back end. Move routing to dashboard here to ensure data is set in session first before moving to dashboard
   saveUserInfo() {
     this.userService.getUserInfo(this.user.email).subscribe((result) => {
       sessionStorage.setItem("name", result.name);
       sessionStorage.setItem("email", result.email);
       sessionStorage.setItem("id",result.id.toString());
-      console.log(this.user);
+      this.router.navigate([`/dashboard`]); //should route to desktop for exisiting user
+    //   console.log("login id from session:"+sessionStorage.getItem("id"));
+    //   console.log("login name from session:"+sessionStorage.getItem("name"));
+    //   console.log("login email from session: "+sessionStorage.getItem("email"));
   })}
 
   checkLogin() {
     this.loginservice.authenticate(this.user).subscribe((result) => {
       this.loginFailSuccess(result);
     },
-    // this is in AroundTown but does not get called, and possibly is a duplicate funcitonality, so I've left it out
-    // error => {
-    //   console.log("Authentication Error");
-    // }
       )
   } 
 
