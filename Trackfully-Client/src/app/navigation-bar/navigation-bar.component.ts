@@ -10,7 +10,7 @@ export class NavigationBarComponent implements OnInit {
   menuItems = [
     {linkId: 1, linkName: 'Dashboard', linkUrl: 'dashboard'},
     {linkId: 2, linkName: 'Daily Tracker', linkUrl: 'daily-tracker-form'}, 
-    {linkId: 3, linkName: 'Sign Out'}
+    {linkId: 3, linkName: 'Sign Out', linkUrl: 'logout'}
   ];
 
   constructor() { }
