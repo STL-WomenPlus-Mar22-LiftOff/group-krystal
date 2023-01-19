@@ -40,6 +40,22 @@ public class UserController {
         return foundUser.getId();
     }
 
+    @GetMapping("{email}")
+    public HashMap<String, String> getUserInfo (@PathVariable("email") String email) {
+
+        Optional<User> userData = userRepository.findByEmail(email);
+
+        HashMap<String, String> map = new HashMap<>();
+
+        if (userData.isPresent()) {
+            User user = userData.get();
+             map.put("id",Integer.toString(user.getId()));
+             map.put("email",user.getEmail());
+             map.put("name", user.getName());
+        }
+        return map;
+    }
+
     @PostMapping("")
     void addUser(@RequestBody User user) {
         User newUser = new User(user.getName(), user.getEmail(), user.getPassword(), user.getConfirmPassword());

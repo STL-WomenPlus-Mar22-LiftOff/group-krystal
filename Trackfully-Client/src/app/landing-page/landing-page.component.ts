@@ -36,16 +36,25 @@ export class LandingPageComponent implements OnInit {
   loginFailSuccess(results: any) {
     console.log("results: " + results.status);
     if (results.status === "success") {
-      this.userService.getUserId(this.user.email).subscribe((result) => {
-      sessionStorage.setItem("id", result.toString())});
-      console.log(this.user);
-      console.log(sessionStorage.getItem("id"));
+      this.saveUserInfo();
       this.router.navigate([`/symptom-manage-form`]); //should route to desktop for exisiting user
       this.isValidForm = true;
     } else {
       this.router.navigate([`/`]);
       this.isValidForm = false;
     }
+  }
+
+  saveUserInfo() {
+    this.userService.getUserInfo(this.user.email).subscribe((result) => {
+      this.user.email = result.email;
+      this.user.name = result.name;
+      this.user.id = result.id;
+      sessionStorage.setItem("id", this.user.id.toString())});
+      console.log(this.user);
+      console.log(sessionStorage.getItem("id"));
+      console.log(this.user.name);
+      console.log(this.user.id);
   }
 
   checkLogin() {
