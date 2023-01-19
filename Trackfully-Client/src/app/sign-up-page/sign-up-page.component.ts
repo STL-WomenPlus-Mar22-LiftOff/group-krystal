@@ -25,14 +25,18 @@ export class SignUpPageComponent implements OnInit {
    this.router.navigate([`/dashboard`]); //when called will redirect to this URL path
  }
 
-  onSubmit(password: String, confirmPassword: String) {
-    console.log(this.user.name); 
-    if(password === confirmPassword) {
-      sessionStorage.setItem("loggedInUserId", `${this.user.id}`); // `this is a string ${}` - changed to string, doesn't like type int
-      //sessionStorage.setItem('username', 'password'); // will need this later i assume
-      this.userService.save(this.user).subscribe((result) => this.goToDashboard()); //this calls the save function in the user.service.ts file
-    }
+ setSessionInformation(result: any) {
+  sessionStorage.setItem("name", result.name);
+  sessionStorage.setItem("email", result.email);
+  sessionStorage.setItem("id",result.id.toString());
+  this.goToDashboard();
  }
 
+  onSubmit(password: String, confirmPassword: String) {
+    if(password === confirmPassword) {
+      this.userService.save(this.user).subscribe((result) => this.userService.getUserInfo(this.user.email).subscribe((result) => this.setSessionInformation(result))); //this calls the save function in the user.service.ts file
+      
+    }
+ }
 
 }
