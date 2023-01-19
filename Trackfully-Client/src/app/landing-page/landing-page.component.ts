@@ -50,9 +50,13 @@ export class LandingPageComponent implements OnInit {
       this.user.email = result.email;
       this.user.name = result.name;
       this.user.id = result.id;
+      //this sets the id in session from backend
       sessionStorage.setItem("id", this.user.id.toString())});
+      //this prints to console the user
       console.log(this.user);
+      //this double checks that the id in the session matches the backend
       console.log(sessionStorage.getItem("id"));
+      //this checks the "name" and id value of user, which is blank/0 as it's populating from log in form?
       console.log(this.user.name);
       console.log(this.user.id);
   }
