@@ -27,10 +27,33 @@ public class UserController {
         return userRepository.findAll();
     }
 
-    @GetMapping("/id")
+    @GetMapping("search/id")
     public Optional <User> getSpecificUser(@RequestParam User user) {
         Optional <User> userId = userRepository.findById(user.getId());
         return userId;
+    }
+
+    @GetMapping("{email}/id")
+    public Integer getUserId(@PathVariable("email") String email) {
+        Optional<User> userData = userRepository.findByEmail(email);
+        User foundUser = userData.get();
+        return foundUser.getId();
+    }
+
+    @GetMapping("{email}")
+    public HashMap<String, String> getUserInfo (@PathVariable("email") String email) {
+
+        Optional<User> userData = userRepository.findByEmail(email);
+
+        HashMap<String, String> map = new HashMap<>();
+
+        if (userData.isPresent()) {
+            User user = userData.get();
+             map.put("id",Integer.toString(user.getId()));
+             map.put("email",user.getEmail());
+             map.put("name", user.getName());
+        }
+        return map;
     }
 
     @PostMapping("")

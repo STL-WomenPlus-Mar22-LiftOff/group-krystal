@@ -20,7 +20,7 @@ export class LandingPageComponent implements OnInit {
   user: User;
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"; //regex for email validation
 
-  constructor(private router: Router, private loginservice : AutheticationService ) {
+  constructor(private router: Router, private loginservice : AutheticationService, private userService: UserService) {
     this.user = new User();
    }
 
@@ -36,9 +36,7 @@ export class LandingPageComponent implements OnInit {
   loginFailSuccess(results: any) {
     console.log("results: " + results.status);
     if (results.status === "success") {
-      sessionStorage.setItem("email", this.user.email);
-      sessionStorage.setItem("loggedInUserId", `${this.user.id}`); // `this is a string ${}` - changed to string, doesn't like type int
-      console.log(this.user);
+      this.saveUserInfo();
       this.router.navigate([`/symptom-manage-form`]); //should route to desktop for exisiting user
       this.isValidForm = true;
     } else {
@@ -47,9 +45,23 @@ export class LandingPageComponent implements OnInit {
     }
   }
 
+  saveUserInfo() {
+    this.userService.getUserInfo(this.user.email).subscribe((result) => {
+      this.user.email = result.email;
+      this.user.name = result.name;
+      this.user.id = result.id;
+      //this sets the id in session from backend
+      sessionStorage.setItem("id", this.user.id.toString())});
+      //this prints to console the user
+      console.log(this.user);
+      //this double checks that the id in the session matches the backend
+      console.log(sessionStorage.getItem("id"));
+      //this checks the "name" and id value of user, which is blank/0 as it's populating from log in form?
+      console.log(this.user.name);
+      console.log(this.user.id);
+  }
+
   checkLogin() {
-    console.log(this.user);
-  
     this.loginservice.authenticate(this.user).subscribe((result) => {
       this.loginFailSuccess(result);
     }
