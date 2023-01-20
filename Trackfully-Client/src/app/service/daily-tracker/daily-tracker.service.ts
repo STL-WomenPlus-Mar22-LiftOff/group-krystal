@@ -10,7 +10,7 @@ export class DailyTrackerService {
   private url: string;
 
   constructor(private http: HttpClient) { 
-    this.url = "http://localhost:8080/symptomtracker";
+    this.url = "http://localhost:8080/symptom-tracker";
   }
 
   public save(dailyEntry: DailyEntry) {
