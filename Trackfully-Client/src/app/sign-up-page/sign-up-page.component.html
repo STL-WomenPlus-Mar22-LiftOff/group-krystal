@@ -21,11 +21,15 @@
                        id="name" 
                        name="name"
                        required [pattern] = "namePattern"
+                       required size = 1
                 class="form-control form-control-lg" />
                 <div *ngIf="name.errors">   
                   <small class="text-danger" *ngIf="name.errors.pattern"> 
                     Name can only include letters.
                 </small>		 
+                <small class="text-danger" *ngIf="name.errors.required && name.touched">
+                  Name must not be blank.
+                </small>
                </div> 
             </div>
 
@@ -48,7 +52,7 @@
                   </small>			  
                   <small class="text-danger" *ngIf="email.errors.pattern && email.touched"> 
                     Email not valid.
-                </small>		 
+                </small>		 	  
                </div> 
                <div [hidden]="emailAvailable" class="text-danger">Email is not available.</div>
             </div>
