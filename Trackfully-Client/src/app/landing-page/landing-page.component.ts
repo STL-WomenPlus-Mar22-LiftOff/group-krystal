@@ -33,11 +33,11 @@ export class LandingPageComponent implements OnInit {
 //   this.users = data;
 // });
 
+  //checks to see if entries match user database
   loginFailSuccess(results: any) {
     console.log("results: " + results.status);
     if (results.status === "success") {
       this.saveUserInfo();
-      this.router.navigate([`/symptom-manage-form`]); //should route to desktop for exisiting user
       this.isValidForm = true;
     } else {
       this.router.navigate([`/`]);
@@ -45,30 +45,24 @@ export class LandingPageComponent implements OnInit {
     }
   }
 
+  //Adjusted this to only use information about user directly sent from back end. Move routing to dashboard here to ensure data is set in session first before moving to dashboard
   saveUserInfo() {
     this.userService.getUserInfo(this.user.email).subscribe((result) => {
-      this.user.email = result.email;
-      this.user.name = result.name;
-      this.user.id = result.id;
-      //this sets the id in session from backend
-      sessionStorage.setItem("id", this.user.id.toString())});
-      //this prints to console the user
-      console.log(this.user);
-      //this double checks that the id in the session matches the backend
-      console.log(sessionStorage.getItem("id"));
-      //this checks the "name" and id value of user, which is blank/0 as it's populating from log in form?
-      console.log(this.user.name);
-      console.log(this.user.id);
-  }
+      sessionStorage.setItem("name", result.name);
+      sessionStorage.setItem("email", result.email);
+      sessionStorage.setItem("id",result.id.toString());
+      this.router.navigate([`/dashboard`]); //should route to desktop for exisiting user
+    //   console.log("login id from session:"+sessionStorage.getItem("id"));
+    //   console.log("login name from session:"+sessionStorage.getItem("name"));
+    //   console.log("login email from session: "+sessionStorage.getItem("email"));
+  })}
 
   checkLogin() {
     this.loginservice.authenticate(this.user).subscribe((result) => {
       this.loginFailSuccess(result);
-    }
-  ,
-    error => {
-      console.log("Authentication Error");
-    })
-}
-  
+    },
+      )
+  } 
+
+
 }

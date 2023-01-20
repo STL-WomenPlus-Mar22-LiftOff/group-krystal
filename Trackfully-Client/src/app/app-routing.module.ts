@@ -11,6 +11,7 @@ import { LandingPageComponent } from './landing-page/landing-page.component';
 import { UserComponent } from './user/user.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { ChartsComponent } from './charts/charts.component';
+import { LogoutComponent } from './logout/logout.component';
 
 
 const appRoutes: Routes = [
@@ -53,7 +54,13 @@ const appRoutes: Routes = [
   {
     path: 'chart',
     component: ChartsComponent
+  },
+
+  {
+    path: 'logout',
+    component: LogoutComponent
   }
+
   // {
   //   path: 'what will show up on the URL aka the mapping',
   //   component: name of the component in angular formatted like above
