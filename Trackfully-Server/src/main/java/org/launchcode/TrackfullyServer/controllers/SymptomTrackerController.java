@@ -24,10 +24,10 @@ public class SymptomTrackerController {
     public ArrayList<ArrayList<String>> getSymptomTrackerData() {
 
         //Adding example data, comment this out after first bootrun
-//        symptomTrackerRepository.save(new SymptomTracker(Rating.ONE,new GregorianCalendar(2022,00,01).getTime()));
-//        symptomTrackerRepository.save(new SymptomTracker(Rating.TWO,new GregorianCalendar(2022,00,04).getTime()));
-//        symptomTrackerRepository.save(new SymptomTracker(Rating.FIVE,new GregorianCalendar(2022,00,10).getTime()));
-//        symptomTrackerRepository.save(new SymptomTracker(Rating.TEN,new GregorianCalendar(2022,00,02).getTime()));
+        symptomTrackerRepository.save(new SymptomTracker(Rating.ONE,new GregorianCalendar(2022,00,01).getTime()));
+        symptomTrackerRepository.save(new SymptomTracker(Rating.TWO,new GregorianCalendar(2022,00,04).getTime()));
+        symptomTrackerRepository.save(new SymptomTracker(Rating.FIVE,new GregorianCalendar(2022,00,10).getTime()));
+        symptomTrackerRepository.save(new SymptomTracker(Rating.TEN,new GregorianCalendar(2022,00,02).getTime()));
 
 
         //this is the ArrayList that will house both the x axis and y axis arraylists

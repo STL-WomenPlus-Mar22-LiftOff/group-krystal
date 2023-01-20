@@ -15,10 +15,10 @@ import { AutheticationService } from '../service/authentication/authetication.se
 
 })
 export class LandingPageComponent implements OnInit {
-
-  email ="";
-  password ="";
+  isValidForm = true;
+  
   user: User;
+  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"; //regex for email validation
 
   constructor(private router: Router, private loginservice : AutheticationService ) {
     this.user = new User();
@@ -27,23 +27,30 @@ export class LandingPageComponent implements OnInit {
 
   ngOnInit() {}
 
+  //checks to see if entries match user database
   loginFailSuccess(results: any) {
-    console.log(results);
+    console.log("results: " + results.status);
     if (results.status === "success") {
-      sessionStorage.setItem("email", this.email);
-      this.router.navigate([`/dashboard`]);
+      sessionStorage.setItem("email", this.user.email);
+      this.router.navigate([`/dashboard`]); 
+      this.isValidForm = true;
     } else {
-      console.log("failure");
+      this.router.navigate([`/`]);
+      this.isValidForm = false;
     }
   }
 
+  //when submitting the form, will check to see if user email and password match in database.
   checkLogin() {
-    this.loginservice.authenticate(this.user).subscribe((result) => {
+      this.loginservice.authenticate(this.user).subscribe((result) => {
       this.loginFailSuccess(result);
     },
-    error => {
-      console.log("Authentication Error");
-    })
+    // this is in AroundTown but does not get called, and possibly is a duplicate funcitonality, so I've left it out
+    // error => {
+    //   console.log("Authentication Error");
+    // }
+      )
   } 
+
 
 }

@@ -41,6 +41,10 @@ export class UserService {
    // sends user model with input info to post at "/user", there is a controller in intellij that will actually do the saving to the db.
    // it doesnt seem to show a post request if you inspect the page, but it still works somehow
  }
+ 
+ public checkEmail(email: String) {
+  return this.http.get<boolean>(`${this.baseUrl}/confirm/${email}`);
+ }
 }
 
 

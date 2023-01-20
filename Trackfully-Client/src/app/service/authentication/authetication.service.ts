@@ -16,14 +16,18 @@ export class AutheticationService {
     return this.httpClient.post(this.baseUrl,user);
   }
 
+  //checks if user is signed in, if not, will return null
   isUserLoggedIn() {
     let user = sessionStorage.getItem('email');
     return !(user === null);
   }
 
-  //from AroundTown, I assumed we will need later
-  // logOut() {
-  //   sessionStorage.removeItem('username')
-  // }
+  //removes user from session
+  logOut() {
+    sessionStorage.removeItem('email')
+    // items to check that user has been logged out:
+    // console.log(sessionStorage.getItem('email'));
+    // return console.log("user has been logged out");
+  }
 
 }
