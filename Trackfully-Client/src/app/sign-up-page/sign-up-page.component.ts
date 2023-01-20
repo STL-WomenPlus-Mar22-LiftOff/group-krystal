@@ -22,7 +22,7 @@ export class SignUpPageComponent implements OnInit {
   }
 
  goToDashboard() {
-   this.router.navigate([`/dashboard`]); //when called will redirect to this URL path
+   this.router.navigate([`/symptom-manage-form`]); //when called will redirect to this URL path
  }
 
  setSessionInformation(result: any) {

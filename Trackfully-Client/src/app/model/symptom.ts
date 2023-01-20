@@ -1,5 +1,5 @@
 export class Symptom {
     id: number = 0;
     symptomName: string = "";
-    userId: number = 0;
+    userId: string = "0";
 }

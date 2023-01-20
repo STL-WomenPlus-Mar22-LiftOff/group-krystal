@@ -29,7 +29,12 @@ export class SymptomManagementFormComponent implements OnInit {
     //would need to get GET request from DB for userID
     
     this.getUserSessionId();
-    console.log(this.getUserSessionId());
+    console.log("user sessionid " + this.getUserSessionId());
+    // this.symptom.userId.toString();
+    this.symptom.userId = this.getUserSessionId() || ""; //added "" because symptom userID cannot be null, even though it is stored to user session ID, getting null error without or clause for empty string
+    console.log("symptom user id" + this.symptom.userId);
+    console.log("symptom user id type" +typeof(this.symptom.userId));
+    console.log("symptom session user id type" + typeof(this.getUserSessionId()));
   }
 
   goToTrackerForm() {
@@ -44,7 +49,7 @@ export class SymptomManagementFormComponent implements OnInit {
 
 
     getUserSessionId() {
-      return sessionStorage.getItem("loggedInUserId");
+      return sessionStorage.getItem("id");
     }
     
 
@@ -61,7 +66,7 @@ export class SymptomManagementFormComponent implements OnInit {
         // num : String = this.getUserSessionId();
         //might need to make symptom.userId as a string
         console.log(symptom); 
-        console.log("symptom User Id" + sessionStorage.getItem("loggedInUserId"));
+        console.log("symptom User Id" + sessionStorage.getItem("id"));
         this.symptomService.save(this.symptom).subscribe((result) => this.goToTrackerForm()); //this calls the save function in the symptom.service.ts file
       };
     }
