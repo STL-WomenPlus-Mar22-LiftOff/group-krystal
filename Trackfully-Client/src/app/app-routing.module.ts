@@ -12,6 +12,8 @@ import { UserComponent } from './user/user.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { ChartsComponent } from './charts/charts.component';
 import { LogoutComponent } from './logout/logout.component';
+import { AuthGuardService } from './service/auth-guard.service';
+import { AutheticationService } from './service/authentication/authetication.service';
 
 
 const appRoutes: Routes = [
@@ -20,16 +22,19 @@ const appRoutes: Routes = [
   },
 
   { path: 'symptom-manage-form', 
-    component: SymptomManagementFormComponent
+    component: SymptomManagementFormComponent,
+    canActivate: [AuthGuardService]
   },
 
   { path: 'dashboard',
-    component: DashboardComponent
+    component: DashboardComponent,
+    canActivate: [AuthGuardService]
   },
 
   {
     path: 'daily-tracker-form',
-    component: DailyTrackerFormComponent
+    component: DailyTrackerFormComponent,
+    canActivate: [AuthGuardService]
   },
 
   {

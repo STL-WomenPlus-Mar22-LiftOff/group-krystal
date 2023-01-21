@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { ChartsComponent } from './charts/charts.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { LogoutComponent } from './logout/logout.component';
+import { AuthGuardService } from './service/auth-guard.service';
+import { AutheticationService } from './service/authentication/authetication.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,7 @@ import { LogoutComponent } from './logout/logout.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [AuthGuardService, AutheticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
