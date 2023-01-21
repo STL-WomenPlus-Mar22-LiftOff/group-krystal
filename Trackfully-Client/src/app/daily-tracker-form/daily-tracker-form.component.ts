@@ -27,9 +27,9 @@ export class DailyTrackerFormComponent implements OnInit {
     this.router.navigate([`/dashboard`]);
   }
 
-  onSubmit() {
-    console.log(this.dailyEntry.dateToday);
-    console.log(this.dailyEntry.symptLevel);
+  onSubmit(dateToday: String, symptLevel: Number) {
+    console.log("onSubmit");
+    console.log(this.dailyEntry);
     this.dailyTrackerService.save(this.dailyEntry).subscribe((result) => this.goToDashboard()); 
   }
 }
