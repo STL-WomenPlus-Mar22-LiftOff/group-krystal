@@ -8,7 +8,6 @@ import { TestComponent } from './test/test.component';
 import { DailyTrackerFormComponent } from './daily-tracker-form/daily-tracker-form.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
-import { UserComponent } from './user/user.component';
 import { SignUpPageComponent } from './sign-up-page/sign-up-page.component';
 import { ChartsComponent } from './charts/charts.component';
 import { LogoutComponent } from './logout/logout.component';
@@ -40,11 +39,6 @@ const appRoutes: Routes = [
   {
     path: 'test',
     component: TestComponent
-  },
-
-  {
-    path: 'user',
-    component: UserComponent
   },
   
   {
