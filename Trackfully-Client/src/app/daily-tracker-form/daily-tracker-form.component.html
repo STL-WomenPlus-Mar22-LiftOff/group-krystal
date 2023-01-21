@@ -2,7 +2,7 @@
     <h1>Daily Tracker</h1>
 
 <div>
-    <form action="/dashboard" method="post" (ngSubmit)="onSubmit(dailyEntry.date,dailyEntry.rating)">
+    <form action="/dashboard" method="post" (ngSubmit)="onSubmit(dailyEntry.date, dailyEntry.rating, symptomInfo)">
         <div class="row form-group">
             <label for="date">Date:</label>
             <!-- <input type="text" id="date" class="form-control" name="selected_date" value={{currentDate}} [(ngModel)]="dailyEntry.dateToday"/> -->
@@ -13,10 +13,10 @@
             <label for="symptom">Choose Symptom:</label>
                 <select>
             <!-- placeholder text for symptoms- will need to be changed once database and add symptom button/option connected -->
-                <option value="symptom1" 
-                        id="symptom" 
-                        name="selected_symptom"
-                        >Symptom 1</option>
+                <option value="symptomName" 
+                        id="symptomName" 
+                        name="symptomName"
+                        >{{symptomInfo.symptomName}}</option>
             </select>
         </div>
         <div class="row">

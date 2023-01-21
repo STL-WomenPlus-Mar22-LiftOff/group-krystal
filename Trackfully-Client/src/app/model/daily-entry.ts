@@ -8,11 +8,10 @@ export class DailyEntry {
     date: string = "";
     rating: number = 0;
    
-    symptom: Symptom ={id: 0, symptomName:""};
-    // symptomId: number = 0;
+    symptom: Symptom ={id: 0, symptomName:"", user: {id: 0, name: "", email: "", password: "", confirmPassword: ""}};
+    
 
 
-//add which symptom is associated with this entry?
     // constructor() {
         
     // }
