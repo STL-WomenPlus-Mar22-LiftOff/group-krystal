@@ -7,6 +7,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -27,6 +28,11 @@ public class SymptomController {
             Symptom newSymptom = new Symptom(symptom.getSymptomName());
             symptomRepository.save(newSymptom);
         }
+    }
+
+    @GetMapping("/{id}")
+    public Optional<Symptom> getSymptomById(@PathVariable("id") int id) {
+        return symptomRepository.findById(id);
     }
 
 }

@@ -1,20 +1,21 @@
 package org.launchcode.TrackfullyServer.controllers;
 
+import org.launchcode.TrackfullyServer.data.SymptomRepository;
 import org.launchcode.TrackfullyServer.data.SymptomTrackerRepository;
 import org.launchcode.TrackfullyServer.models.Rating;
+import org.launchcode.TrackfullyServer.models.Symptom;
 import org.launchcode.TrackfullyServer.models.SymptomTracker;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("symptomtracker")
+@RequestMapping("symptom-tracker")
 public class SymptomTrackerController {
 
     @Autowired
@@ -54,6 +55,9 @@ public class SymptomTrackerController {
         // Convert xaxis and y axis arrays to strings
         ArrayList<String> datestoString = new ArrayList<>();
         for (Date i : dates) {
+//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-YY");
+//            datestoString.add(formatter.format(i));
+//            System.out.println(formatter.format(i));
             datestoString.add(new SimpleDateFormat("MM-dd-yy").format(i));
         }
 
@@ -65,7 +69,19 @@ public class SymptomTrackerController {
         //add converted dates and ratings to data arraylist
         data.add(datestoString);
         data.add(ratingsToString);
-
+        System.out.println("data");
         return data;
+    }
+
+
+    @PostMapping("add-daily")
+    public void addDailySymptomData (@RequestBody @Valid SymptomTracker dailyEntry) {
+        //String date = dailyEntry.getDate().toString().substring(0,10);
+        symptomTrackerRepository.save(dailyEntry);
+    }
+
+    @GetMapping("{id}")
+    public Optional<SymptomTracker> getSymptomTracker(@PathVariable("id") int id) {
+        return symptomTrackerRepository.findById(id);
     }
 }
