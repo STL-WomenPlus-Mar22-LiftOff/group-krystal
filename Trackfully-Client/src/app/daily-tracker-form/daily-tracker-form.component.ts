@@ -28,6 +28,7 @@ export class DailyTrackerFormComponent implements OnInit {
     //if(isUserLoggedIn())
     //if user is logged in, get user id, 
     //use user id to find associated symptom id
+    //rn uses hardcoded symptomId
     this.symptomService.getSymptomById(55).subscribe(response => {this.symptomInfo = response;})
   }
 
@@ -35,10 +36,8 @@ export class DailyTrackerFormComponent implements OnInit {
     this.router.navigate([`/dashboard`]);
   }
 
-  onSubmit(dateToday: String, symptLevel: Number, symptomInfo: Symptom) {
-    console.log("onSubmit");
-    console.log(this.dailyEntry);
-    this.dailyEntry.symptom = symptomInfo;
+  onSubmit() {
+    this.dailyEntry.symptom = this.symptomInfo;
     this.dailyTrackerService.save(this.dailyEntry).subscribe((result) => this.goToDashboard()); 
   }
 
