@@ -12,23 +12,30 @@ import { SymptomService } from '../service/symptom/symptom.service';
 export class SymptomManagementFormComponent implements OnInit {
 
   symptom: Symptom;
-  constructor(private symptomService: SymptomService,
+  constructor(
+    private symptomService: SymptomService,
     private router: Router,
     private activatedRoute: ActivatedRoute) { 
-this.symptom = new Symptom;
+    this.symptom = new Symptom;
 }
 
   ngOnInit(): void {
+    this.getUserSessionId();
+    this.symptom.userId = this.getUserSessionId() || ""; //added "" because symptom userID cannot be null, even though it is stored to user session ID, getting null error without or clause for empty string
   }
 
   goToTrackerForm() {
     this.router.navigate([`/daily-tracker-form`]); //when called will redirect to this URL path
   }
 
-   onSubmit(symptomName: String) {
-    console.log(this.symptom.symptomName); 
-     this.symptomService.save(this.symptom).subscribe((result) => this.goToTrackerForm()); //this calls the save function in the symptom.service.ts file
-     
-   }
+    getUserSessionId() {
+      return sessionStorage.getItem("id");
+    }
+    
+      onSubmit(symptom: Symptom) {
+        this.symptomService.save(this.symptom).subscribe((result) => this.goToTrackerForm()); //this calls the save function in the symptom.service.ts file
+      };
+    }
+      
+    
 
-}

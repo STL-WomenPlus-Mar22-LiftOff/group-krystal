@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Symptom } from 'src/app/model/symptom';
+//do we need to import user here?
 
 @Injectable({
   providedIn: 'root'
@@ -25,4 +26,9 @@ export class SymptomService {
   public save(symptom: Symptom) {
     return this.http.post<Symptom>(this.url, symptom);
   }
+
+
+
+
+
 }
