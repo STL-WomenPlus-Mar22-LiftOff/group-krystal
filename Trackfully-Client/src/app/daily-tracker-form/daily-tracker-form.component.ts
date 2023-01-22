@@ -12,14 +12,13 @@ import { Symptom } from '../model/symptom';
   styleUrls: ['./daily-tracker-form.component.css'],
 })
 export class DailyTrackerFormComponent implements OnInit {
-  
+
   currentDate = formatDate(new Date(), 'EEEE, MMMM d, y', 'en');
   dailyEntry: DailyEntry;
   symptomInfo: Symptom;
   
   constructor(private dailyTrackerService: DailyTrackerService,
-              private router: Router,
-              private activatedRoute: ActivatedRoute) {
+              private router: Router) {
       this.dailyEntry = new DailyEntry;
       this.symptomInfo = new Symptom;
     }
@@ -27,7 +26,7 @@ export class DailyTrackerFormComponent implements OnInit {
     //if(isUserLoggedIn())
     //if user is logged in, get user id, 
     //use user id to find associated symptom id
-    this.dailyTrackerService.getSymptomById(55).subscribe(response => {this.symptomInfo = response; console.log(this.symptomInfo);})
+    this.dailyTrackerService.getSymptomById(55).subscribe(response => {this.symptomInfo = response;})
   }
 
   goToDashboard() {

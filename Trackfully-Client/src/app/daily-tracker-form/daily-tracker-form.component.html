@@ -7,7 +7,10 @@
             <label for="date">Date:</label>
             <!-- <input type="text" id="date" class="form-control" name="selected_date" value={{currentDate}} [(ngModel)]="dailyEntry.dateToday"/> -->
             <!-- once we allow users to select their own date instead of default value, use simple date picker instead:-->
-                <input type="date" id="date" name="selected_date" [(ngModel)]="dailyEntry.date" /> 
+                <input type="date" id="date" name="selected_date" [(ngModel)]="dailyEntry.date" />
+                <script>
+                    document.getElementById('date').value = new Date().toISOString().substring(0, 10);
+                </script> 
         </div>
         <div class="row form-group">
             <label for="symptom">Choose Symptom:</label>

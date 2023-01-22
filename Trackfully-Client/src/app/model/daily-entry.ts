@@ -7,12 +7,7 @@ export class DailyEntry {
    
     date: string = "";
     rating: number = 0;
-   
-    symptom: Symptom ={id: 0, symptomName:"", user: {id: 0, name: "", email: "", password: "", confirmPassword: ""}};
-    
-
-
-    // constructor() {
-        
-    // }
+    symptom: Symptom ={id: 0, 
+                       symptomName:"", 
+                       user: {id: 0, name: "", email: "", password: "", confirmPassword: ""}};
 }
