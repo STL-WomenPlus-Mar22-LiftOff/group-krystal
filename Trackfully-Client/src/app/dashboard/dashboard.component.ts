@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../model/user';
 
 @Component({
   selector: 'app-dashboard',
@@ -7,8 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  // I don't think we need this currently?
+  // user: User;
 
-  ngOnInit(): void { }
+  constructor() { 
+    // this.user = new User();
+  }
+
+  ngOnInit(): void {
+    // console.log("dashboard id from session:"+sessionStorage.getItem("id"));
+    // console.log("dashboard name from session:"+sessionStorage.getItem("name"));
+    // console.log("dashboard email from session: "+sessionStorage.getItem("email"));
+  }
 
 }

@@ -33,6 +33,19 @@ export class UserService {
     return this.http.get<User[]>(`${this.baseUrl}`);
   }
 
+  // getUserId(): Observable<User[]>{
+  //   return this.http.get<User[["id"]]>(`${this.baseUrl}`);
+  // }
+
+  //trying to get part of user object (just id and name) through GET REQUEST
+//   public getUserId(id): Observable<User[]> {
+//     const searchParam = 'id';
+//     const urlPath = this.baseUrl + searchParam;
+//     return this.http.get(urlPath).pipe(map(
+//       res => res.map(({id, name})=>({id, name})) 
+//     ));
+// }
+
   public findAll(): Observable<User[]> {
     return this.http.get<User[]>(this.baseUrl);
  }
@@ -41,10 +54,16 @@ export class UserService {
    // sends user model with input info to post at "/user", there is a controller in intellij that will actually do the saving to the db.
    // it doesnt seem to show a post request if you inspect the page, but it still works somehow
  }
- 
- public checkEmail(email: String) {
-  return this.http.get<boolean>(`${this.baseUrl}/confirm/${email}`);
+
+// Removed as we do not use it currently
+//  public getUserId(email: String) {
+//   return this.http.get<number>(`${this.baseUrl}/${email}/id`);
+//  }
+
+ public getUserInfo(email: String) {
+  return this.http.get<any>(`${this.baseUrl}/${email}`);
  }
+
 }
 
 
