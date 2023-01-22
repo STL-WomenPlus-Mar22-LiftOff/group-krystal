@@ -29,7 +29,7 @@ export class DailyTrackerFormComponent implements OnInit {
     //if user is logged in, get user id, 
     //use user id to find associated symptom id
     //rn uses hardcoded symptomId
-    this.symptomService.getSymptomById(68).subscribe(response => {this.symptomInfo = response;})
+    this.symptomService.getSymptomById(144).subscribe(response => {this.symptomInfo = response;})
   }
 
   goToDashboard() {
