@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Optional;
 
 @RestController
@@ -80,5 +81,16 @@ public class UserController {
             map.put("status","failure");
         }
         return map;
+    }
+
+    @GetMapping("/confirm/{email}")
+    public boolean checkEmail(@PathVariable("email") String email) {
+        Iterable<User> allUsers = getAllUsers();
+        for (User user : allUsers) {
+            if (email.equalsIgnoreCase(user.getEmail())) {
+                return false;
+            }
+        }
+        return true;
     }
 }
