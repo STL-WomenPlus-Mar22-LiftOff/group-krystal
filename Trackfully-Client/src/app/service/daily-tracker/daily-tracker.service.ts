@@ -7,6 +7,7 @@ import { HttpHeaders } from '@angular/common/http';
 
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -27,11 +28,9 @@ export class DailyTrackerService {
   public save(dailyEntry: DailyEntry) {
     return this.http.post<DailyEntry>(`${this.url}/add-daily`, dailyEntry);
   }
-  
 
-  //retrieve Symptom so its name can be displayed in Daily Tracker form and it can be sent with 
-  //daily tracker Daily Entry
-  getSymptomById(id: number): Observable<Symptom>{
-    return this.http.get<Symptom>(`${this.url}/add-daily/${id}`);
+  getSymptomTrackerById(id: number): Observable<DailyEntry>{
+    return this.http.get<DailyEntry>(`${this.url}/${id}`);
   }
+  
 }

@@ -25,4 +25,10 @@ export class SymptomService {
   public save(symptom: Symptom) {
     return this.http.post<Symptom>(this.url, symptom);
   }
+
+  //retrieve Symptom so its name can be displayed in Daily Tracker form and it can be sent with 
+  //daily tracker Daily Entry
+  getSymptomById(id: number): Observable<Symptom>{
+    return this.http.get<Symptom>(`${this.url}/${id}`);
+  }
 }

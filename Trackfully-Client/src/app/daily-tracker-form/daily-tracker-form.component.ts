@@ -5,6 +5,7 @@ import { DailyEntry } from '../model/daily-entry';
 import { DailyTrackerService } from '../service/daily-tracker/daily-tracker.service';
 import { AutheticationService } from '../service/authentication/authetication.service';
 import { Symptom } from '../model/symptom';
+import { SymptomService } from '../service/symptom/symptom.service';
 
 @Component({
   selector: 'app-daily-tracker-form',
@@ -18,6 +19,7 @@ export class DailyTrackerFormComponent implements OnInit {
   symptomInfo: Symptom;
   
   constructor(private dailyTrackerService: DailyTrackerService,
+              private symptomService: SymptomService,
               private router: Router) {
       this.dailyEntry = new DailyEntry;
       this.symptomInfo = new Symptom;
@@ -26,7 +28,7 @@ export class DailyTrackerFormComponent implements OnInit {
     //if(isUserLoggedIn())
     //if user is logged in, get user id, 
     //use user id to find associated symptom id
-    this.dailyTrackerService.getSymptomById(55).subscribe(response => {this.symptomInfo = response;})
+    this.symptomService.getSymptomById(55).subscribe(response => {this.symptomInfo = response;})
   }
 
   goToDashboard() {
@@ -39,4 +41,5 @@ export class DailyTrackerFormComponent implements OnInit {
     this.dailyEntry.symptom = symptomInfo;
     this.dailyTrackerService.save(this.dailyEntry).subscribe((result) => this.goToDashboard()); 
   }
+
 }
