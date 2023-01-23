@@ -19,7 +19,7 @@ public class UserController {
 
 
     @GetMapping("")
-    public Iterable<User> getAllUser(){
+    public Iterable<User> getAllUsers(){
 
       //  uncomment this section for the first bootrun for hardcoded data to be added in MySQL, re-comment for any additional bootruns- otherwise will get error since you are adding the exact same data twice
 //            userRepository.save(new User("Emma", "emma@gmail.com", "emma123"));
@@ -27,6 +27,9 @@ public class UserController {
 
         return userRepository.findAll();
     }
+
+    //getSpecificUser and getUserId are similar functions, should remove one to keep code dry
+    //neither are currently used in main branch
 
     @GetMapping("search/id")
     public Optional <User> getSpecificUser(@RequestParam User user) {

@@ -28,7 +28,7 @@ export class AutheticationService {
     sessionStorage.removeItem('email');
     sessionStorage.removeItem('name');
     // items to check that user has been logged out:
-    console.log(sessionStorage.getItem('id'));
+    console.log(sessionStorage.getItem('id')+": should be null");
     return console.log("user has been logged out");
   }
 
