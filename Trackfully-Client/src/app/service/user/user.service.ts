@@ -55,6 +55,10 @@ export class UserService {
    // it doesnt seem to show a post request if you inspect the page, but it still works somehow
  }
 
+  public checkEmail(email: String) {
+  return this.http.get<boolean>(`${this.baseUrl}/confirm/${email}`);
+ }
+
 // Removed as we do not use it currently
 //  public getUserId(email: String) {
 //   return this.http.get<number>(`${this.baseUrl}/${email}/id`);
