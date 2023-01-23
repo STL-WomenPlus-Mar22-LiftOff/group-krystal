@@ -29,6 +29,7 @@ export class SignUpPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+  
   }
 
   //this previously routed to dashboard. Changed to symptom manage form as users will need to enter this after signing up
@@ -36,18 +37,20 @@ export class SignUpPageComponent implements OnInit {
    this.router.navigate([`/symptom-manage-form`]); //when called will redirect to this URL path
  }
 
-  onSubmit(password: String, confirmPassword: String) {
+ setSessionInformation(result: any) {
+  //Added this new method, which sets the session with any needed user information from the back end. User information from the front end is stored in User object, and should only be used to send information to backend.
+  sessionStorage.setItem("name", result.name);
+  sessionStorage.setItem("email", result.email);
+  sessionStorage.setItem("id",result.id.toString());
+  this.goToSymptomManageForm();
+ }
 
-    // check if : password and confirmPassword are the same
+  // check if : password and confirmPassword are the same
+  //on submitting, front end user info from the form would be sent to the back end. Once that's completed, we will pull back end user information to the front and store in session.
+  onSubmit(password: String, confirmPassword: String) {
     if(password === confirmPassword) {
-      //sessionStorage.setItem('username', 'password'); // for later
-      this.userService.save(this.user).subscribe((result) => this.goToSymptomManageForm());//this calls the save function in the user.service.ts file
-      //to double check
-      console.log("user registered successfully")
-    } else { //if user registers incorrectly,
-      this.router.navigate([`/`]);
-      //to double check
-      console.log("user not registered")
+      this.userService.save(this.user).subscribe((result) => this.userService.getUserInfo(this.user.email).subscribe((result) => this.setSessionInformation(result))); //this calls the save function in the user.service.ts file
+      
     }
   }
 
