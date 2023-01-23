@@ -11,7 +11,7 @@ export class ChartService {
     private baseUrl:string; //backend endpoint
    
     constructor(private http: HttpClient) { 
-      this.baseUrl = "http://localhost:8080/symptomtracker";
+      this.baseUrl = "http://localhost:8080/symptom-tracker";
     }
   
     getData(): Observable<Array<String>>{

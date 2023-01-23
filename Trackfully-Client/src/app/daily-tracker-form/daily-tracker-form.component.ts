@@ -7,6 +7,7 @@ import { AutheticationService } from '../service/authentication/authetication.se
 import { Symptom } from '../model/symptom';
 import { SymptomService } from '../service/symptom/symptom.service';
 import { Observable } from 'rxjs';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Component({
   selector: 'app-daily-tracker-form',
@@ -18,31 +19,25 @@ export class DailyTrackerFormComponent implements OnInit {
   currentDate = formatDate(new Date(), 'EEEE, MMMM d, y', 'en');
   dailyEntry: DailyEntry;
   symptomInfo: Symptom;
-  loggedInId: Object;
+
   constructor(private dailyTrackerService: DailyTrackerService,
               private symptomService: SymptomService,
               private authenticationService: AutheticationService,
               private router: Router) {
       this.dailyEntry = new DailyEntry;
       this.symptomInfo = new Symptom;
-      this.loggedInId = new Object;
     }
   
   ngOnInit(): void {
     if (this.authenticationService.isUserLoggedIn()) {
-      let email = sessionStorage.getItem("email");
-      if (email != null) {
-  
-        this.authenticationService.getUserByEmail(email).subscribe((data) => {this.loggedInId = data, console.log(this.loggedInId);});
-        // save the result from this call somehow and pass it to the line below,
-      //this.symptomService.getSymptomById(loggedInUserId).subscribe(response => {this.symptomInfo = response;})
-      }
-    } else {this.router.navigate([`/`]);}
-    //if user is logged in, get user id, 
-    //use user id to find associated symptom id
-    //rn uses hardcoded symptomId
-    
+     //let userId = sessionStorage.getItem("id");
+    //if (userId != null) {
+    //  this.symptomService.getSymptomById(id).subscribe(response => {this.symptomInfo = response;})
+    // }
+    //} else {this.router.navigate([`/`]);}
+    } 
   }
+
 
   goToDashboard() {
     this.router.navigate([`/dashboard`]);
