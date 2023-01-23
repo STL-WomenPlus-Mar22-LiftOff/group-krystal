@@ -30,12 +30,13 @@ export class DailyTrackerFormComponent implements OnInit {
   
   ngOnInit(): void {
     if (this.authenticationService.isUserLoggedIn()) {
-     //let userId = sessionStorage.getItem("id");
-    //if (userId != null) {
-    //  this.symptomService.getSymptomById(id).subscribe(response => {this.symptomInfo = response;})
-    // }
-    //} else {this.router.navigate([`/`]);}
-    } 
+     let userIdString = sessionStorage.getItem("id");
+     let userIdNumber = parseInt(userIdString || "");
+    if (userIdNumber != null) {
+     this.symptomService.getSymptomByUserId(userIdNumber).subscribe(response => {this.symptomInfo = response;})
+    }
+    } else {this.router.navigate([`/`]);}
+    
   }
 
 

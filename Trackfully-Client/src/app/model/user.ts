@@ -1,7 +1,7 @@
 //import * as internal from "stream";
 
 export class User {
-    id: number = 0;
+    id: string = "";
     name: string = "";
     email: string = "";
     pwHash: string = "";

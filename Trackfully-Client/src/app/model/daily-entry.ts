@@ -9,5 +9,5 @@ export class DailyEntry {
     rating: number = 0;
     symptom: Symptom ={id: 0, 
                        symptomName:"", 
-                       user: {id: 0, name: "", email: "", password: "", confirmPassword: ""}};
+                       user: {id: "", name: "", email: "", pwHash: "", confirmPassword: ""}};
 }
