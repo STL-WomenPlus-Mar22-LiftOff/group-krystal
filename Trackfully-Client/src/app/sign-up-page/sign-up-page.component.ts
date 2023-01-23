@@ -32,7 +32,8 @@ export class SignUpPageComponent implements OnInit {
   
   }
 
- goToDashboard() {
+  //this previously routed to dashboard. Changed to symptom manage form as users will need to enter this after signing up
+ goToSymptomManageForm() {
    this.router.navigate([`/symptom-manage-form`]); //when called will redirect to this URL path
  }
 
@@ -41,14 +42,21 @@ export class SignUpPageComponent implements OnInit {
   sessionStorage.setItem("name", result.name);
   sessionStorage.setItem("email", result.email);
   sessionStorage.setItem("id",result.id.toString());
-  this.goToDashboard();
+  this.goToSymptomManageForm();
  }
 
- //on submitting, front end user info from the form would be sent to the back end. Once that's completed, we will pull back end user information to the front and store in session.
+  // check if : password and confirmPassword are the same
+  //on submitting, front end user info from the form would be sent to the back end. Once that's completed, we will pull back end user information to the front and store in session.
   onSubmit(password: String, confirmPassword: String) {
     if(password === confirmPassword) {
       this.userService.save(this.user).subscribe((result) => this.userService.getUserInfo(this.user.email).subscribe((result) => this.setSessionInformation(result))); //this calls the save function in the user.service.ts file
       
+    }
+  }
+
+  checkEmail (email: String) {
+    if (email != "") {
+      this.userService.checkEmail(email).subscribe(result => this.emailAvailable = result);
     }
   }
 
