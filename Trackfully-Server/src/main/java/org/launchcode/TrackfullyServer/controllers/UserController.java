@@ -32,7 +32,7 @@ public class UserController {
 
     @PostMapping("")
     void addUser(@RequestBody User user) {
-        User newUser = new User(user.getName(), user.getEmail(), user.getPwHash(), user.getConfirmPassword());
+        User newUser = new User(user.getName(), user.getEmail(), user.getPwHash());
         userRepository.save(newUser);
     }
 
@@ -45,7 +45,7 @@ public class UserController {
 
         if (userData.isPresent()) {
             User userInfo = userData.get();
-            if (user.getPwHash().equals(userInfo.getPwHash())) {
+            if (encoder.matches(user.getPwHash(), userInfo.getPwHash())) {
                 map.put("status","success");
             } else {
                 map.put("status","failure");

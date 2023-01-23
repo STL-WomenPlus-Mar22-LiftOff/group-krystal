@@ -17,23 +17,22 @@ public class User extends AbstractEntity{
     private String email;
 
     @NotNull
-    private String pwHash;
+    private String password;
 
     @NotNull
-    private String confirmPassword;
+    private String pwHash;
     
     public User(){};
 
-    public User(String email, String pwHash) {
+    public User(String email, String password) {
         this.email = email;
-        this.pwHash = pwHash;
+        this.pwHash = encoder.encode(password);
     }
 
-    public User(String name, String email, String pwHash, String confirmPassword) {
+    public User(String name, String email, String password) {
         this.name = name;
         this.email = email;
-        this.pwHash = pwHash;
-        this.confirmPassword = confirmPassword;
+        this.pwHash = encoder.encode(password);
     }
 
     public String getName() {
@@ -64,23 +63,11 @@ public class User extends AbstractEntity{
         this.pwHash = pwHash;
     }
 
-    public String getConfirmPassword() {
-        return confirmPassword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "pwHash='" + pwHash + '\'' +
-                '}';
-    }
-
-
-
-
-
 }
