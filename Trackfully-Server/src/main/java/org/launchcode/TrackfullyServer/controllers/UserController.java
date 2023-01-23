@@ -32,7 +32,7 @@ public class UserController {
 
     @PostMapping("")
     void addUser(@RequestBody User user) {
-        User newUser = new User(user.getName(), user.getEmail(), user.getPwHash(), user.getConfirmPassword());
+        User newUser = new User(user.getName(), user.getEmail(), user.getPwHash());
         userRepository.save(newUser);
     }
 

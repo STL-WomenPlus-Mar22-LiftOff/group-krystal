@@ -21,9 +21,6 @@ public class User extends AbstractEntity{
 
     @NotNull
     private String pwHash;
-
-    @NotNull
-    private String confirmPassword;
     
     public User(){};
 
@@ -32,11 +29,10 @@ public class User extends AbstractEntity{
         this.pwHash = encoder.encode(password);
     }
 
-    public User(String name, String email, String password, String confirmPassword) {
+    public User(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.pwHash = encoder.encode(password);
-        this.confirmPassword = confirmPassword;
     }
 
     public String getName() {
@@ -65,14 +61,6 @@ public class User extends AbstractEntity{
 
     public void setPwHash(String pwHash) {
         this.pwHash = pwHash;
-    }
-
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
     }
 
     public String getPassword() {
