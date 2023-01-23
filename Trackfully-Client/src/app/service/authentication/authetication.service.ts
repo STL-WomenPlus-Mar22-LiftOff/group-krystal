@@ -17,9 +17,11 @@ export class AutheticationService {
   }
 
   //checks if user is signed in, if not, will return null
+
+  
   isUserLoggedIn() {
     let user = sessionStorage.getItem('email');
-    return !(user === null);
+    return !(user === null) && true;
   }
 
   //removes user from session. adjusted to remove new session storage values.
