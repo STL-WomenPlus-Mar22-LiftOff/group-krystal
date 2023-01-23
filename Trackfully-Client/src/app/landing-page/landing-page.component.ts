@@ -32,7 +32,7 @@ export class LandingPageComponent implements OnInit {
     console.log("results: " + results.status);
     if (results.status === "success") {
       sessionStorage.setItem("email", this.user.email);
-      this.router.navigate([`/symptom-manage-form`]); //should route to desktop for exisiting user
+      this.router.navigate([`/dashboard`]); //should route to desktop for exisiting user
       this.isValidForm = true;
     } else {
       this.router.navigate([`/`]);
@@ -46,9 +46,9 @@ export class LandingPageComponent implements OnInit {
       this.loginFailSuccess(result);
     },
     // this is in AroundTown but does not get called, and possibly is a duplicate funcitonality, so I've left it out
-    // error => {
-    //   console.log("Authentication Error");
-    // }
+    error => {
+      console.log("Authentication Error");
+    }
       )
   } 
 
