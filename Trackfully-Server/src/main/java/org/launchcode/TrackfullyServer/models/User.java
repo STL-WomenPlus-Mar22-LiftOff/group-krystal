@@ -1,10 +1,14 @@
 package org.launchcode.TrackfullyServer.models;
 
 import com.sun.istack.NotNull;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import javax.persistence.*;
 
 @Entity
 public class User extends AbstractEntity{
+
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     @NotNull
     private String name;
@@ -13,18 +17,19 @@ public class User extends AbstractEntity{
     private String email;
 
     @NotNull
-    private String password;
-
-    @NotNull
-    private String confirmPassword;
+    private String pwHash;
     
     public User(){};
 
-    public User(String name, String email, String password, String confirmPassword) {
-        this.email = email;
-        this.password = password;
+//    public User(String email, String password) {
+//        this.email = email;
+//        this.pwHash = encoder.encode(password);
+//    }
+
+    public User(String name, String email, String password) {
         this.name = name;
-        this.confirmPassword = confirmPassword;
+        this.email = email;
+        this.pwHash = encoder.encode(password);
     }
 
     public String getName() {
@@ -43,20 +48,16 @@ public class User extends AbstractEntity{
         this.email = email;
     }
 
-    public String getPassword() {
-        return password;
+    public boolean isMatchingPassword(String password) {
+        return encoder.matches(password, pwHash);
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getPwHash() {
+        return pwHash;
     }
 
-    public String getConfirmPassword() {
-        return confirmPassword;
-    }
-
-    public void setConfirmPassword(String confirmPassword) {
-        this.confirmPassword = confirmPassword;
+    public void setPwHash(String pwHash) {
+        this.pwHash = pwHash;
     }
 
 }

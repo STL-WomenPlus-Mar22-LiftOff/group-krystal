@@ -3,6 +3,7 @@ package org.launchcode.TrackfullyServer.controllers;
 import org.launchcode.TrackfullyServer.data.UserRepository;
 import org.launchcode.TrackfullyServer.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -16,6 +17,8 @@ public class UserController {
 
     @Autowired
     private UserRepository userRepository;
+
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
 
     @GetMapping("")
@@ -62,7 +65,7 @@ public class UserController {
 
     @PostMapping("")
     void addUser(@RequestBody User user) {
-        User newUser = new User(user.getName(), user.getEmail(), user.getPassword(), user.getConfirmPassword());
+        User newUser = new User(user.getName(), user.getEmail(), user.getPwHash());
         userRepository.save(newUser);
     }
 
@@ -75,7 +78,7 @@ public class UserController {
 
         if (userData.isPresent()) {
             User userInfo = userData.get();
-            if (user.getPassword().equals(userInfo.getPassword())) {
+            if (encoder.matches(user.getPwHash(), userInfo.getPwHash())) {
                 map.put("status","success");
             } else {
                 map.put("status","failure");
