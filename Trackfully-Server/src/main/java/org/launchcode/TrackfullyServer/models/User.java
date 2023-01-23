@@ -17,17 +17,14 @@ public class User extends AbstractEntity{
     private String email;
 
     @NotNull
-    private String password;
-
-    @NotNull
     private String pwHash;
     
     public User(){};
 
-    public User(String email, String password) {
-        this.email = email;
-        this.pwHash = encoder.encode(password);
-    }
+//    public User(String email, String password) {
+//        this.email = email;
+//        this.pwHash = encoder.encode(password);
+//    }
 
     public User(String name, String email, String password) {
         this.name = name;
