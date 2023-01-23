@@ -5,29 +5,55 @@
         <div class="col-md-8 col-lg-7 col-xl-6">
           <img src="https://www.excel-easy.com/examples/images/line-chart/line-chart-with-one-data-series.png" alt="hello">
         </div>
+
         <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
+          
           <h1>Create an account:</h1>
           <form (ngSubmit)="onSubmit(user.pwHash, user.confirmPassword)" >
             <!--  name input -->
             <div class="form-outline mb-4">
                 <label>Name</label>
                 <input type="text" 
+                      placeholder="Enter name"
+                      #name = "ngModel"
                        [(ngModel)]="user.name" 
                        id="name" 
                        name="name"
-                       
+                       required [pattern] = "namePattern"
+                       required size = 1
                 class="form-control form-control-lg" />
+                <div *ngIf="name.errors">   
+                  <small class="text-danger" *ngIf="name.errors.pattern"> 
+                    Name can only include letters.
+                </small>		 
+                <small class="text-danger" *ngIf="name.errors.required && name.touched">
+                  Name must not be blank.
+                </small>
+               </div> 
             </div>
 
             <!-- Email input -->
             <div class="form-outline mb-4">
                 <label>Email address</label>
                 <input type="email" 
+                      placeholder="Enter email"
+                      #email="ngModel"
                        [(ngModel)]="user.email"
+                       ngModel email
+                       required [pattern]="emailPattern"
+                       (keyup)="checkEmail(user.email)"
                        id="email"
-                       name="email"
-                      
+                       name="email"                      
                 class="form-control form-control-lg" />
+                <div *ngIf="email.errors"> 
+                  <small class="text-danger" *ngIf="email.errors.required && email.touched"> 
+                      Email is required.
+                  </small>			  
+                  <small class="text-danger" *ngIf="email.errors.pattern && email.touched"> 
+                    Email not valid.
+                </small>		 	  
+               </div> 
+               <div [hidden]="emailAvailable" class="text-danger">Email is not available.</div>
             </div>
   
             <!-- Password input -->
@@ -38,23 +64,35 @@
                      id="pwHash"
                      name="pwHash"
               class="form-control form-control-lg" />
+              <div *ngIf="password.errors"> 
+                <small class="text-danger" *ngIf="password.touched"> 
+                    Password is required.
+                </small>			  
+              </div> 
             </div>
 
             <!-- Password confirmation -->
             <div class="form-outline mb-4">
                 <label>Confirm Password</label>
                 <input type="password" 
+                      #confirmPassword ="ngModel"
                        [(ngModel)]="user.confirmPassword"
                        id="confirmPassword"
                        name="confirmPassword"
+                       required
                 class="form-control form-control-lg" />
+                <div *ngIf="confirmPassword.errors"> 
+                  <small class="text-danger" *ngIf="confirmPassword.touched"> 
+                      Password confirmation is required.
+                  </small>			  
+                </div> 
               </div>
 
           <!-- next line has pw alert and will hide this alert when the passwords match -->
           <div [hidden]="user.pwHash === user.confirmPassword" class="alert alert-danger">Passwords must match!</div> 
 
               <div class="text-center text-lg-start mt-4 pt-2">
-                <button type="submit" class="btn btn-primary btn-lg"
+                <button type="submit" [disabled]="!registrationForm.valid || !emailAvailable || user.password !== user.confirmPassword" class="btn btn-primary btn-lg"
                   style="padding-left: 2.5rem; padding-right: 2.5rem;">Sign Up</button>
               </div> 
           </form>

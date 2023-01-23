@@ -22,12 +22,14 @@ export class AutheticationService {
     return !(user === null);
   }
 
-  //removes user from session
+  //removes user from session. adjusted to remove new session storage values.
   logOut() {
-    sessionStorage.removeItem('email')
+    sessionStorage.removeItem('id');
+    sessionStorage.removeItem('email');
+    sessionStorage.removeItem('name');
     // items to check that user has been logged out:
-    // console.log(sessionStorage.getItem('email'));
-    // return console.log("user has been logged out");
+    console.log(sessionStorage.getItem('id')+": should be null");
+    return console.log("user has been logged out");
   }
 
 }
