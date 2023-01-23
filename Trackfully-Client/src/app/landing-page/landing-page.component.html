@@ -1,7 +1,7 @@
 <section class="landing-page">
   <div class="container py-5 h-100">
     <div class="row d-flex align-items-center justify-content-center h-100">
-      <h1>App Name</h1>
+      <h1>Trackfully</h1>
       <div class="col-md-8 col-lg-7 col-xl-6">
         <img src="https://www.excel-easy.com/examples/images/line-chart/line-chart-with-one-data-series.png" alt="hello">
       </div>
@@ -38,16 +38,16 @@
           <div class="form-outline mb-4">
             <input type="password" 
               placeholder="Enter password"
-              id="password" 
-              #password="ngModel" 
-              [(ngModel)]="user.password" 
-              name="password" 
+              id="pwHash" 
+              #pwHash="ngModel" 
+              [(ngModel)]="user.pwHash" 
+              name="pwHash" 
               class="form-control form-control-lg"
-              [ngClass]="{ 'is-invalid': password.touched && password.invalid}" 
+              [ngClass]="{ 'is-invalid': pwHash.touched && pwHash.invalid}" 
               required/>
               <!-- [ngClass] above is making the text entry box red when the password is not meeting requirements. -->
-              <div *ngIf="password.errors && (password.invalid && password.touched)">
-                <small class="text-danger" *ngIf="password.errors.required">Password is required</small>
+              <div *ngIf="pwHash.errors && (pwHash.invalid && pwHash.touched)">
+                <small class="text-danger" *ngIf="pwHash.errors.required">Password is required</small>
               </div>
           </div>
         

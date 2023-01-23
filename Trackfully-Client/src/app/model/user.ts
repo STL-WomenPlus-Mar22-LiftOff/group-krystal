@@ -4,6 +4,6 @@ export class User {
     id: number = 0;
     name: string = "";
     email: string = "";
-    password: string = "";
+    pwHash: string = "";
     confirmPassword: string = "";
 }
