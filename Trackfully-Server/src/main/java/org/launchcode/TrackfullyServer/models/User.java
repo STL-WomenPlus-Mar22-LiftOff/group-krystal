@@ -79,40 +79,7 @@ public class User extends AbstractEntity{
                 '}';
     }
 
-    //    public User(String name, String email, String password, String confirmPassword) {
-//        this.email = email;
-//        this.name = name;
-//        this.pwHash = encoder.encode(password);
-//        this.confirmPassword = confirmPassword;
-//    }
-//
-//    public String getName() {
-//        return name;
-//    }
-//
-//    public String getEmail() {
-//        return email;
-//    }
-//
-//    public String getPassword() {
-//        return pwHash;
-//    }
-//
-////    public void setPassword(String password) {
-////        this.password = password;
-////    }
-//
-//    public String getConfirmPassword() {
-//        return confirmPassword;
-//    }
-//
-//    public void setConfirmPassword(String confirmPassword) {
-//        this.confirmPassword = confirmPassword;
-//    }
-//
-//    public boolean isMatchingPassword(String password) {
-//        return encoder.matches(password, pwHash);
-//    }
+
 
 
 
