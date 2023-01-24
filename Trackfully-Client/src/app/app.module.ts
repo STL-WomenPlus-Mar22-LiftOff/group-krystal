@@ -13,7 +13,8 @@ import { FormsModule } from '@angular/forms';
 import { ChartsComponent } from './charts/charts.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { LogoutComponent } from './logout/logout.component';
-import { DatePipe } from '@angular/common';
+import { AuthGuardService } from './service/auth-guard.service';
+import { AutheticationService } from './service/authentication/authetication.service';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,11 @@ import { DatePipe } from '@angular/common';
     HttpClientModule,
     FormsModule
   ],
+<<<<<<< HEAD
   providers: [DatePipe],
+=======
+  providers: [AuthGuardService, AutheticationService],
+>>>>>>> main
   bootstrap: [AppComponent]
 })
 export class AppModule { }

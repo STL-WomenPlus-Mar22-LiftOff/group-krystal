@@ -19,6 +19,8 @@ export class AutheticationService {
   }
 
   //checks if user is signed in, if not, will return null
+
+  
   isUserLoggedIn() {
     let user = sessionStorage.getItem('email');
     console.log("logged in with " + user);
