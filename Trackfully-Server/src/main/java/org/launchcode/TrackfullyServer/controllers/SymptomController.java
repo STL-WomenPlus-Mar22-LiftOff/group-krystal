@@ -57,26 +57,6 @@ public class SymptomController {
         return map;
     }
 
-
-
-//     public HashMap<String, String> authenticate (@RequestBody User user) {
-//
-//        Optional<User> userData = userRepository.findByEmail(user.getEmail());
-//
-//        HashMap<String, String> map = new HashMap<>();
-//
-//        if (userData.isPresent()) {
-//            User userInfo = userData.get();
-//            if (encoder.matches(user.getPwHash(), userInfo.getPwHash())) {
-//                map.put("status","success");
-//            } else {
-//                map.put("status","failure");
-//            }
-//        } else {
-//            map.put("status","failure");
-//        }
-//        return map;
-//    }
     @PostMapping("")
     void addSymptom(@RequestBody @Valid Symptom symptom, Errors errors) {
         if (!errors.hasErrors()) {
