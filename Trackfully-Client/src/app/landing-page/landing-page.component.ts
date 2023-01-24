@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../service/user/user.service'; //imports function from user service
 import { Router } from '@angular/router';
 import { User } from '../model/user';
+import { SymptomService } from '../service/symptom/symptom.service';
 import { AutheticationService } from '../service/authentication/authetication.service';
 
 // import {NgForm, FormGroup, FormControl, FormArray} from '@angular/forms';
@@ -20,7 +21,7 @@ export class LandingPageComponent implements OnInit {
   user: User;
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"; //regex for email validation
 
-  constructor(private router: Router, private loginservice : AutheticationService, private userService: UserService) {
+  constructor(private router: Router, private loginservice : AutheticationService, private userService: UserService, private symptomService: SymptomService) {
     this.user = new User();
    }
 
@@ -49,18 +50,12 @@ export class LandingPageComponent implements OnInit {
   saveUserInfo() {
     this.userService.getUserInfo(this.user.email).subscribe((result) => {
       //set everything in session storage
-      // sessionStorage.setItem("name", result.name);
-      // sessionStorage.setItem("email", result.email);
+      sessionStorage.setItem("name", result.name);
+      sessionStorage.setItem("email", result.email);
       sessionStorage.setItem("id",result.id.toString());
-
-      //set it in user models
-      this.user.id = result.id;
-      this.user.name = result.name;
-      console.log("this is the user model :"+this.user.id)
-      console.log("this is the user name :"+this.user.name)
-      console.log("this is the user email :"+this.user.email)
-      console.log("this is the session storage id"+sessionStorage.getItem("id"));
-
+      this.symptomService.getSymptomIdByUserId(result.id.toString()).subscribe((symptomResult) => {
+        sessionStorage.setItem("symptomId", symptomResult.toString());
+      });
       this.router.navigate([`/dashboard`]); //should route to desktop for exisiting user
     //   console.log("login id from session:"+sessionStorage.getItem("id"));
     //   console.log("login name from session:"+sessionStorage.getItem("name"));

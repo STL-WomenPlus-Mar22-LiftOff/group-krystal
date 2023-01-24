@@ -9,6 +9,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.HashMap;
 import java.util.Optional;
 
 @RestController
@@ -42,6 +43,40 @@ public class SymptomController {
         }
         return symptomId;
     }
+
+    @GetMapping("name/{symptomId}")
+    public HashMap getSymptomName(@PathVariable("symptomId") String symptomId) {
+
+        Optional<Symptom> symptom = symptomRepository.findById(Integer.parseInt(symptomId));
+
+        HashMap<String, String> map = new HashMap<>();
+
+        if (symptom.isPresent()) {
+            map.put("name",symptom.get().getSymptomName());
+        }
+        return map;
+    }
+
+
+
+//     public HashMap<String, String> authenticate (@RequestBody User user) {
+//
+//        Optional<User> userData = userRepository.findByEmail(user.getEmail());
+//
+//        HashMap<String, String> map = new HashMap<>();
+//
+//        if (userData.isPresent()) {
+//            User userInfo = userData.get();
+//            if (encoder.matches(user.getPwHash(), userInfo.getPwHash())) {
+//                map.put("status","success");
+//            } else {
+//                map.put("status","failure");
+//            }
+//        } else {
+//            map.put("status","failure");
+//        }
+//        return map;
+//    }
     @PostMapping("")
     void addSymptom(@RequestBody @Valid Symptom symptom, Errors errors) {
         if (!errors.hasErrors()) {
@@ -51,15 +86,16 @@ public class SymptomController {
     }
     //added in get User Id
 
-   @GetMapping("/{id}")
-   public Optional<Symptom> getSymptomByUserId(@PathVariable("id") int userId) {
-       //get user by id
-       System.out.println(userId);
-       //sql file to fetch symptomID using userId?
-       // this controller takes in a user id, we want to use that to find and return symptom id or Symptom.
-       // doesnt work -->
-       Optional<Symptom> foundSymptom = symptomRepository.findById(userId);
-       System.out.println("user id " + foundSymptom);
-       return foundSymptom;
-   }
+    //no longer needed?
+//   @GetMapping("/{id}")
+//   public Optional<Symptom> getSymptomByUserId(@PathVariable("id") int userId) {
+//       //get user by id
+//       System.out.println(userId);
+//       //sql file to fetch symptomID using userId?
+//       // this controller takes in a user id, we want to use that to find and return symptom id or Symptom.
+//       // doesnt work -->
+//       Optional<Symptom> foundSymptom = symptomRepository.findById(userId);
+//       System.out.println("user id " + foundSymptom);
+//       return foundSymptom;
+//   }
 }
