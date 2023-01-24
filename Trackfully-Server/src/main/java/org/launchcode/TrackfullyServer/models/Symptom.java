@@ -38,4 +38,8 @@ public class Symptom extends AbstractEntity {
     public String toString() {
         return symptomName;
     }
+
+    public User getUser() {
+        return user;
+    }
 }

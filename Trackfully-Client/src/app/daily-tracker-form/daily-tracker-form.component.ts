@@ -38,7 +38,6 @@ export class DailyTrackerFormComponent implements OnInit {
      console.log(userIdNumber);
     }
     } else {this.router.navigate([`/`]);}
-    
   }
 
 

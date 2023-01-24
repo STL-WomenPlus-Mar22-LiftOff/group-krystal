@@ -18,10 +18,23 @@ public class SymptomController {
     private SymptomRepository symptomRepository;
 
     @GetMapping("")
-    public Iterable<Symptom> getSymptom(){
+    public Iterable<Symptom> getAllSymptoms(){
         return symptomRepository.findAll();
     }
 
+    @GetMapping("user/{userId}")
+    public Integer getSymptomId(@PathVariable("userId") String userId) {
+
+        Iterable<Symptom> symptoms = symptomRepository.findAll();
+
+        for (Symptom symptom : symptoms) {
+            if (symptom.getUser().getId() == Integer.valueOf(userId)) {
+                System.out.println(symptom.getId());
+                return symptom.getId();
+            } ;
+        }
+        return -1;
+    }
     @PostMapping("")
     void addSymptom(@RequestBody @Valid Symptom symptom, Errors errors) {
         if (!errors.hasErrors()) {
