@@ -17,11 +17,12 @@ public class Symptom extends AbstractEntity {
     @NotNull
     @Valid
     private User user;
-//    private int userId;
+
+    //private int user_id;
 
     public Symptom(String symptomName){
         this.symptomName = symptomName;
-
+        //this.user_id = user.getId();
     }
 
     public Symptom() {}
@@ -42,4 +43,7 @@ public class Symptom extends AbstractEntity {
     public User getUser() {
         return user;
     }
+//    public int getUserId() {
+//        return userId;
+//    }
 }

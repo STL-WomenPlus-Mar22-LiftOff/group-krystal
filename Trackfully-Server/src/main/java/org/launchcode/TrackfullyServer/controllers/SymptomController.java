@@ -1,7 +1,9 @@
 package org.launchcode.TrackfullyServer.controllers;
 
 import org.launchcode.TrackfullyServer.data.SymptomRepository;
+import org.launchcode.TrackfullyServer.data.UserRepository;
 import org.launchcode.TrackfullyServer.models.Symptom;
+import org.launchcode.TrackfullyServer.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +19,9 @@ public class SymptomController {
     @Autowired
     private SymptomRepository symptomRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     @GetMapping("")
     public Iterable<Symptom> getAllSymptoms(){
         return symptomRepository.findAll();
@@ -25,15 +30,17 @@ public class SymptomController {
     @GetMapping("user/{userId}")
     public Integer getSymptomId(@PathVariable("userId") String userId) {
 
-        Iterable<Symptom> symptoms = symptomRepository.findAll();
+        Optional<User> user = userRepository.findById(Integer.parseInt(userId));
 
-        for (Symptom symptom : symptoms) {
-            if (symptom.getUser().getId() == Integer.valueOf(userId)) {
-                System.out.println(symptom.getId());
-                return symptom.getId();
-            } ;
+        int symptomId = -1;
+
+        if (user.isPresent()) {
+            Optional<Symptom> symptom = symptomRepository.findByUser(user.get());
+            if (symptom.isPresent()) {
+                symptomId = symptom.get().getId();
+            }
         }
-        return -1;
+        return symptomId;
     }
     @PostMapping("")
     void addSymptom(@RequestBody @Valid Symptom symptom, Errors errors) {
