@@ -35,11 +35,7 @@ import { AutheticationService } from './service/authentication/authetication.ser
     HttpClientModule,
     FormsModule
   ],
-<<<<<<< HEAD
-  providers: [DatePipe],
-=======
   providers: [AuthGuardService, AutheticationService],
->>>>>>> main
   bootstrap: [AppComponent]
 })
 export class AppModule { }
