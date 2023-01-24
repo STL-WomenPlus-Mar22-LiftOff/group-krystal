@@ -32,8 +32,10 @@ export class DailyTrackerFormComponent implements OnInit {
     if (this.authenticationService.isUserLoggedIn()) {
      let userIdString = sessionStorage.getItem("id");
      let userIdNumber = parseInt(userIdString || "");
+     //User model id is stored as a string
     if (userIdNumber != null) {
-     this.symptomService.getSymptomByUserId(userIdNumber).subscribe(response => {this.symptomInfo = response;})
+     this.symptomService.getSymptomByUserId(112).subscribe(response => {this.symptomInfo = response;})
+     console.log(userIdNumber);
     }
     } else {this.router.navigate([`/`]);}
     
