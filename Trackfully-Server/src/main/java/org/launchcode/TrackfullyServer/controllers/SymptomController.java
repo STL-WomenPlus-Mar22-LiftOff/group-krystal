@@ -25,15 +25,21 @@ public class SymptomController {
     @PostMapping("")
     void addSymptom(@RequestBody @Valid Symptom symptom, Errors errors) {
         if (!errors.hasErrors()) {
-            Symptom newSymptom = new Symptom(symptom.getSymptomName(), symptom.getUserId());
+            Symptom newSymptom = new Symptom(symptom.getSymptomName());
             symptomRepository.save(newSymptom);
         }
     }
     //added in get User Id
 
-    @GetMapping("/{id}")
-    public Optional<Symptom> getSymptomById(@PathVariable("id") int id) {
-        return symptomRepository.findById(id);
-    }
-
+   @GetMapping("/{id}")
+   public Optional<Symptom> getSymptomByUserId(@PathVariable("id") int userId) {
+       //get user by id
+       System.out.println(userId);
+       //sql file to fetch symptomID using userId?
+       // this controller takes in a user id, we want to use that to find and return symptom id or Symptom.
+       // doesnt work -->
+       Optional<Symptom> foundSymptom = symptomRepository.findById(userId);
+       System.out.println("user id " + foundSymptom);
+       return foundSymptom;
+   }
 }
