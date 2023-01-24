@@ -5,5 +5,4 @@ export class User {
     name: string = "";
     email: string = "";
     pwHash: string = "";
-    confirmPassword: string = "";
 }

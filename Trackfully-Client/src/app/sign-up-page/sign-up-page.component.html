@@ -9,7 +9,7 @@
         <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
           
           <h1>Create an account:</h1>
-          <form #registrationForm="ngForm" (ngSubmit)="onSubmit(user.pwHash, user.confirmPassword)" >
+          <form #registrationForm="ngForm" (ngSubmit)="onSubmit(user.pwHash, registrationForm.value.confirmPassword)" >
 
             <!--  name input -->
             <div class="form-outline mb-4">
@@ -78,23 +78,23 @@
             <div class="form-outline mb-4">
                 <label>Confirm Password</label>
                 <input type="password" 
-                      #confirmPassword ="ngModel"
-                       [(ngModel)]="user.confirmPassword"
+                       ngModel
+                       [value] = "confirmPassword"
                        id="confirmPassword"
                        name="confirmPassword"
                        required
                 class="form-control form-control-lg" />
-                <div *ngIf="confirmPassword.errors"> 
+                <!-- <div *ngIf="confirmPassword.errors"> 
                   <small class="text-danger" *ngIf="confirmPassword.touched"> 
                       Password confirmation is required.
                   </small>			  
-                </div> 
+                </div>  -->
               </div>
 
           <!-- next line has pw alert and will hide this alert when the passwords match -->
-          <div *ngIf="confirmPassword.touched" [hidden]="user.pwHash === user.confirmPassword" class="alert alert-danger">Passwords must match!</div> 
+          <!-- <div *ngIf="confirmPassword.touched" [hidden]="user.pwHash === registrationForm.confirmPassword.value" class="alert alert-danger">Passwords must match!</div>  -->
               <div class="text-center text-lg-start mt-4 pt-2">
-                <button type="submit" [disabled]="!registrationForm.valid || !emailAvailable || user.pwHash !== user.confirmPassword" class="btn btn-primary btn-lg"
+                <button type="submit" [disabled]="!registrationForm.valid || !emailAvailable || user.pwHash !== registrationForm.value.confirmPassword" class="btn btn-primary btn-lg"
                   style="padding-left: 2.5rem; padding-right: 2.5rem;">Sign Up</button>
               </div> 
           </form>

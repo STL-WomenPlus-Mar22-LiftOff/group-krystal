@@ -34,7 +34,7 @@ export class DailyTrackerFormComponent implements OnInit {
      let userIdNumber = parseInt(userIdString || "");
      //User model id is stored as a string
     if (userIdNumber != null) {
-     this.symptomService.getSymptomByUserId(112).subscribe(response => {this.symptomInfo = response;})
+     this.symptomService.getSymptomByUserId(131).subscribe(response => {this.symptomInfo = response;})
      console.log(userIdNumber);
     }
     } else {this.router.navigate([`/`]);}
