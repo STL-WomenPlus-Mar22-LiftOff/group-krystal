@@ -31,8 +31,8 @@ export class AutheticationService {
   logOut() {
     sessionStorage.removeItem('id');
     sessionStorage.removeItem('symptomId');
-    // sessionStorage.removeItem('email');
-    // sessionStorage.removeItem('name');
+    sessionStorage.removeItem('email');
+    sessionStorage.removeItem('name');
     // items to check that user has been logged out:
     console.log(sessionStorage.getItem('id')+": should be null");
     return console.log("user has been logged out");

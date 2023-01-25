@@ -13,7 +13,6 @@ export class SignUpPageComponent implements OnInit {
 
   user: User;
   emailAvailable = true;
-  confirmPassword = "";
 
   // users: User[] = [];
 
@@ -27,7 +26,6 @@ export class SignUpPageComponent implements OnInit {
     private router: Router, //connects component with URL
     private activatedRoute: ActivatedRoute ) { //provides access to info in this route/component pair such as path and URL params 
     this.user = new User; 
-    this.confirmPassword = this.confirmPassword;
   }
 
   ngOnInit(): void {
