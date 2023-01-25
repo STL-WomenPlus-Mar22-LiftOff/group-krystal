@@ -12,11 +12,13 @@ export class DashboardComponent implements OnInit {
   // user: User;
 
   constructor() { 
-    // this.user = new User();
+
   }
 
   ngOnInit(): void {
-    // console.log("dashboard id from session:"+sessionStorage.getItem("id"));
+
+    console.log("this is the session storage id"+sessionStorage.getItem("id"));
+    console.log("this is the session storage symptom"+sessionStorage.getItem("symptomId"));
     // console.log("dashboard name from session:"+sessionStorage.getItem("name"));
     // console.log("dashboard email from session: "+sessionStorage.getItem("email"));
   }

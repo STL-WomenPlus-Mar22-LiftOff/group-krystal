@@ -34,9 +34,16 @@ export class SymptomManagementFormComponent implements OnInit {
       return sessionStorage.getItem("id");
     }
     
+
+    //this should set symptom id in session storage when users make a new symptom. Cannot test currently as user id is not connected to symptom
       onSubmit(symptom: Symptom) {
-        this.symptomService.save(this.symptom).subscribe((result) => this.goToTrackerForm()); //this calls the save function in the symptom.service.ts file
-      };
+        this.symptomService.save(this.symptom).subscribe((result) => {
+          let userId = sessionStorage.getItem("id");
+          this.symptomService.getSymptomIdByUserId(userId).subscribe((result) => {
+          sessionStorage.setItem("symptomId", result.toString());
+        });
+        this.goToTrackerForm()}); //this calls the save function in the symptom.service.ts file
+    };
     }
       
     

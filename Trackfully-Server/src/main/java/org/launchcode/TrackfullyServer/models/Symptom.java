@@ -17,11 +17,9 @@ public class Symptom extends AbstractEntity {
     @NotNull
     @Valid
     private User user;
-//    private int userId;
 
     public Symptom(String symptomName){
         this.symptomName = symptomName;
-
     }
 
     public Symptom() {}
@@ -38,4 +36,9 @@ public class Symptom extends AbstractEntity {
     public String toString() {
         return symptomName;
     }
+
+    public User getUser() {
+        return user;
+    }
+
 }

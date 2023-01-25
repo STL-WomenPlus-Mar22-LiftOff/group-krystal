@@ -19,6 +19,7 @@ export class DailyTrackerFormComponent implements OnInit {
   currentDate = formatDate(new Date(), 'EEEE, MMMM d, y', 'en');
   dailyEntry: DailyEntry;
   symptomInfo: Symptom;
+  userId = "";
 
   constructor(private dailyTrackerService: DailyTrackerService,
               private symptomService: SymptomService,
@@ -27,18 +28,19 @@ export class DailyTrackerFormComponent implements OnInit {
       this.dailyEntry = new DailyEntry;
       this.symptomInfo = new Symptom;
     }
-  
-  ngOnInit(): void {
-    if (this.authenticationService.isUserLoggedIn()) {
-     let userIdString = sessionStorage.getItem("id");
-     let userIdNumber = parseInt(userIdString || "");
-     //User model id is stored as a string
-    if (userIdNumber != null) {
-     this.symptomService.getSymptomByUserId(131).subscribe(response => {this.symptomInfo = response;})
-     console.log(userIdNumber);
-    }
-    } else {this.router.navigate([`/`]);}
+ 
     
+  ngOnInit(): void {
+    let symptomId = sessionStorage.getItem("symptomId");
+    console.log("daily tracker symptom id is"+symptomId);
+    this.symptomService.getSymptomNamebySymptomId(symptomId).subscribe(response => { this.symptomInfo.symptomName = response.name});
+    // if (this.authenticationService.isUserLoggedIn()) {
+    //  let symptomId = sessionStorage.getItem("symptomId");
+    // if (symptomId !== null) {
+    //  this.symptomService.getSymptomNamebySymptomId(symptomId).subscribe(response => { console.log(response)});
+    //  console.log("symptom name is: "+this.symptomInfo.symptomName);
+    // }
+    // } else {this.router.navigate([`/`]);}
   }
 
 
@@ -48,7 +50,9 @@ export class DailyTrackerFormComponent implements OnInit {
 
   onSubmit() {
     this.dailyEntry.symptom = this.symptomInfo;
+    console.log("this is the symptom info"+this.symptomInfo);
     this.dailyTrackerService.save(this.dailyEntry).subscribe((result) => this.goToDashboard()); 
+
   }
 
 }

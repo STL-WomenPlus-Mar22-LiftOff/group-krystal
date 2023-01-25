@@ -5,6 +5,7 @@ import org.launchcode.TrackfullyServer.data.SymptomTrackerRepository;
 import org.launchcode.TrackfullyServer.models.Rating;
 import org.launchcode.TrackfullyServer.models.Symptom;
 import org.launchcode.TrackfullyServer.models.SymptomTracker;
+import org.launchcode.TrackfullyServer.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
@@ -76,8 +77,9 @@ public class SymptomTrackerController {
 
     @PostMapping("add-daily")
     public void addDailySymptomData (@RequestBody @Valid SymptomTracker dailyEntry) {
+        SymptomTracker newSymptomTracker = new SymptomTracker(dailyEntry.getRating(), dailyEntry.getDate());
         //String date = dailyEntry.getDate().toString().substring(0,10);
-        symptomTrackerRepository.save(dailyEntry);
+        symptomTrackerRepository.save(newSymptomTracker);
     }
 
     @GetMapping("{id}")
