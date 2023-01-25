@@ -35,9 +35,10 @@ public class SymptomTracker extends AbstractEntity {
 
     public SymptomTracker() {}
 
-    public SymptomTracker(Rating rating, Date date) {
-        this.rating = rating;
+    public SymptomTracker(Date date, Rating rating, Symptom symptom) {
         this.date = date;
+        this.rating = rating;
+        this.symptom = symptom;
     }
 
     public Rating getRating() {

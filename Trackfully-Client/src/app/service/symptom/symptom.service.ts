@@ -33,7 +33,11 @@ export class SymptomService {
     return this.http.get<any>(`${this.url}/user/${id}`);
   }
 
-  public getSymptomNamebySymptomId(id: any): Observable<any>{
-    return this.http.get<any>(`${this.url}/name/${id}`);
+  // public getSymptomNamebySymptomId(id: any): Observable<any>{
+  //   return this.http.get<any>(`${this.url}/name/${id}`);
+  // }
+
+  public getSymptomById(id: number): Observable<Symptom>{
+    return this.http.get<Symptom>(`${this.url}/${id}`);
   }
 }

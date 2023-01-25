@@ -77,9 +77,7 @@ public class SymptomTrackerController {
 
     @PostMapping("add-daily")
     public void addDailySymptomData (@RequestBody @Valid SymptomTracker dailyEntry) {
-        SymptomTracker newSymptomTracker = new SymptomTracker(dailyEntry.getRating(), dailyEntry.getDate());
-        //String date = dailyEntry.getDate().toString().substring(0,10);
-        symptomTrackerRepository.save(newSymptomTracker);
+        symptomTrackerRepository.save(dailyEntry);
     }
 
     @GetMapping("{id}")

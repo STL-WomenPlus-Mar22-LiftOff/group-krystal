@@ -44,18 +44,26 @@ public class SymptomController {
         return symptomId;
     }
 
-    @GetMapping("name/{symptomId}")
-    public HashMap getSymptomName(@PathVariable("symptomId") String symptomId) {
+//    @GetMapping("name/{symptomId}")
+//    public HashMap getSymptomName(@PathVariable("symptomId") String symptomId) {
+//
+//        Optional<Symptom> symptom = symptomRepository.findById(Integer.parseInt(symptomId));
+//
+//        HashMap<String, String> map = new HashMap<>();
+//
+//        if (symptom.isPresent()) {
+//            map.put("name",symptom.get().getSymptomName());
+//        }
+//        return map;
+//    }
 
-        Optional<Symptom> symptom = symptomRepository.findById(Integer.parseInt(symptomId));
-
-        HashMap<String, String> map = new HashMap<>();
-
-        if (symptom.isPresent()) {
-            map.put("name",symptom.get().getSymptomName());
-        }
-        return map;
+    @GetMapping("/{id}")
+    public Optional<Symptom> getSymptomById(@PathVariable("id") Integer id) {
+        return symptomRepository.findById(id);
     }
+
+
+
 
     @PostMapping("")
     void addSymptom(@RequestBody @Valid Symptom symptom, Errors errors) {
@@ -63,18 +71,5 @@ public class SymptomController {
             symptomRepository.save(symptom);
         }
     }
-    //added in get User Id
 
-    //no longer needed?
-//   @GetMapping("/{id}")
-//   public Optional<Symptom> getSymptomByUserId(@PathVariable("id") int userId) {
-//       //get user by id
-//       System.out.println(userId);
-//       //sql file to fetch symptomID using userId?
-//       // this controller takes in a user id, we want to use that to find and return symptom id or Symptom.
-//       // doesnt work -->
-//       Optional<Symptom> foundSymptom = symptomRepository.findById(userId);
-//       System.out.println("user id " + foundSymptom);
-//       return foundSymptom;
-//   }
 }
