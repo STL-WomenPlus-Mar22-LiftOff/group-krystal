@@ -41,7 +41,7 @@ export class SymptomManagementFormComponent implements OnInit {
     return sessionStorage.getItem("id");
   }
     setSymptomIDInSession(){
-      this.symptomService.getSymptomIdByUserId(this.user.id).subscribe((result) => {sessionStorage.setItem("symptomId", result.toString());});
+      this.symptomService.getSymptomIdByUserId(this.getUserSessionId()).subscribe((result) => {sessionStorage.setItem("symptomId", result.toString());});
     }
     
 
