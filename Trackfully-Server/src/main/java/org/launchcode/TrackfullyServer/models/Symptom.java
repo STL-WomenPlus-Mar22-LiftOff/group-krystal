@@ -12,16 +12,16 @@ public class Symptom extends AbstractEntity {
     @NotNull
     private String symptomName;
 
-//    @OneToOne
-//    @JoinColumn(name = "user_id")
-//    @NotNull
-//    @Valid
-//    private User user;
-    private int userId;
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    @NotNull
+    @Valid
+    private User user;
+//    private int userId;
 
-    public Symptom(String symptomName, int userId){
+    public Symptom(String symptomName){
         this.symptomName = symptomName;
-        this.userId = userId;
+
     }
 
     public Symptom() {}
@@ -32,10 +32,6 @@ public class Symptom extends AbstractEntity {
 
     public void setSymptomName(String symptomName) {
         this.symptomName = symptomName;
-    }
-
-    public int getUserId() {
-        return userId;
     }
 
     @Override

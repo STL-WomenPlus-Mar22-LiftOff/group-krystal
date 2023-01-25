@@ -21,7 +21,9 @@ export class SymptomManagementFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.getUserSessionId();
-    this.symptom.userId = this.getUserSessionId() || ""; //added "" because symptom userID cannot be null, even though it is stored to user session ID, getting null error without or clause for empty string
+    
+    this.symptom.user.id = this.getUserSessionId() || ""; //added "" because symptom userID cannot be null, even though it is stored to user session ID, getting null error without or clause for empty string
+    console.log(this.symptom.user.id);
   }
 
   goToTrackerForm() {

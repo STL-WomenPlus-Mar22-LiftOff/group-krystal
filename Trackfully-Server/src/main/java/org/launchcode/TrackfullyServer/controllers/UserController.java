@@ -1,6 +1,7 @@
 package org.launchcode.TrackfullyServer.controllers;
 
 import org.launchcode.TrackfullyServer.data.UserRepository;
+import org.launchcode.TrackfullyServer.models.Symptom;
 import org.launchcode.TrackfullyServer.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -23,6 +24,7 @@ public class UserController {
 
     @GetMapping("")
     public Iterable<User> getAllUsers(){
+
 
       //  uncomment this section for the first bootrun for hardcoded data to be added in MySQL, re-comment for any additional bootruns- otherwise will get error since you are adding the exact same data twice
 //            userRepository.save(new User("Emma", "emma@gmail.com", "emma123"));
@@ -68,6 +70,11 @@ public class UserController {
         User newUser = new User(user.getName(), user.getEmail(), user.getPwHash());
         userRepository.save(newUser);
     }
+
+//    @GetMapping("{id}")
+//    public Optional<User> getUserById(@PathVariable("id") int id) {
+//        return userRepository.findById(id);
+//    }
 
     @PostMapping("authenticate")
     public HashMap<String, String> authenticate (@RequestBody User user) {
