@@ -25,30 +25,32 @@ export class SymptomManagementFormComponent implements OnInit {
 }
 
   ngOnInit(): void {
-    // this.getUserSessionId();
-   
-    // this.symptom.user.id = this.getUserSessionId() || ""; //added "" because symptom userID cannot be null, even though it is stored to user session ID, getting null error without or clause for empty string
+    this.getUserSessionId();
+    let userIdNumber = parseInt(this.getUserSessionId() || "");
+    this.userService.getUserByUserID(userIdNumber).subscribe(result => this.user = result);
+    //this.symptom.user.id = this.getUserSessionId() || ""; //added "" because symptom userID cannot be null, even though it is stored to user session ID, getting null error without or clause for empty string
     // console.log(this.symptom.user.id);
-   
+  
   }
 
   goToDashboard() {
     this.router.navigate([`/dashboard`]); //when called will redirect to this URL path
   }
 
-
+  getUserSessionId() {
+    return sessionStorage.getItem("id");
+  }
     setSymptomIDInSession(){
       this.symptomService.getSymptomIdByUserId(this.user.id).subscribe((result) => {sessionStorage.setItem("symptomId", result.toString());});
     }
     
 
-    onSubmit(name: String) {
-      this.symptom.symptomName = name;
-      this.symptom.user = this.user; //assign logged in user to the symptom being saved
-      // console.log(this.user)
+    onSubmit(symptom: Symptom) {
+      symptom.user = this.user; //assign logged in user to the symptom being saved
+      console.log(this.symptom);
       this.symptomService.save(this.symptom).subscribe();
       // console.log(this.symptom);
-      // this.setSymptomIDInSession();
+      this.setSymptomIDInSession();
       this.goToDashboard();
     };
     }

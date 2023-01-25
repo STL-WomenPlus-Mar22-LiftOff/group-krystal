@@ -36,20 +36,12 @@ export class DailyTrackerFormComponent implements OnInit {
     
   ngOnInit(): void {
 
-    let userIdNumber = parseInt(this.getUserSessionId() || "");
-    this.userService.getUserByUserID(userIdNumber).subscribe(result => this.user = result);
-    this.setSymptomIDInSession();
-
-     let symptomId = sessionStorage.getItem("symptomId");
+    let symptomId = sessionStorage.getItem("symptomId");
     if (symptomId !== null) {
-      console.log((symptomId));
      this.symptomService.getSymptomById(parseInt(symptomId)).subscribe(response => this.symptomInfo = response);
-  
     }
   }
-  setSymptomIDInSession(){
-    this.symptomService.getSymptomIdByUserId(this.user.id).subscribe((result) => {sessionStorage.setItem("symptomId", result.toString());});
-  }
+ 
   getUserSessionId() {
     return sessionStorage.getItem("id");
   }

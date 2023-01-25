@@ -30,6 +30,7 @@ export class AutheticationService {
   //removes user from session. adjusted to remove new session storage values.
   logOut() {
     sessionStorage.removeItem('id');
+    sessionStorage.removeItem('symptomId');
     // sessionStorage.removeItem('email');
     // sessionStorage.removeItem('name');
     // items to check that user has been logged out:
