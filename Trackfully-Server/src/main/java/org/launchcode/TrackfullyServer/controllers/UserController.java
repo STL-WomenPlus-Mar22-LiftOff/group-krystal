@@ -42,6 +42,13 @@ public class UserController {
         return userId;
     }
 
+    @GetMapping("search/{id}")
+    public Optional <User> getUserByUserId(@PathVariable("id") Integer userId) {
+        Optional <User> user = userRepository.findById(userId);
+
+        return user;
+    }
+
     @GetMapping("{email}/id")
     public Integer getUserId(@PathVariable("email") String email) {
         Optional<User> userData = userRepository.findByEmail(email);

@@ -32,7 +32,7 @@ export class DailyTrackerFormComponent implements OnInit {
     
   ngOnInit(): void {
     let symptomId = sessionStorage.getItem("symptomId");
-    console.log("daily tracker symptom id is"+symptomId);
+    console.log("daily tracker symptom id is "+symptomId);
     this.symptomService.getSymptomNamebySymptomId(symptomId).subscribe(response => { this.symptomInfo.symptomName = response.name});
     // if (this.authenticationService.isUserLoggedIn()) {
     //  let symptomId = sessionStorage.getItem("symptomId");

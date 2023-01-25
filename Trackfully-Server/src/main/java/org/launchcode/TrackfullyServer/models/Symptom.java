@@ -18,8 +18,9 @@ public class Symptom extends AbstractEntity {
     @Valid
     private User user;
 
-    public Symptom(String symptomName){
+    public Symptom(String symptomName, User user) {
         this.symptomName = symptomName;
+        this.user = user;
     }
 
     public Symptom() {}

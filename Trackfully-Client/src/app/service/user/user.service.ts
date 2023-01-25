@@ -68,6 +68,10 @@ export class UserService {
   return this.http.get<any>(`${this.baseUrl}/${email}`);
  }
 
+ public getUserByUserID (id: number): Observable<User> {
+    return this.http.get<User>(`${this.baseUrl}/search/${id}`)
+ }
+
 }
 
 

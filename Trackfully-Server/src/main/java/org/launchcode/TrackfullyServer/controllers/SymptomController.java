@@ -29,7 +29,7 @@ public class SymptomController {
     }
 
     @GetMapping("user/{userId}")
-    public Integer getSymptomId(@PathVariable("userId") String userId) {
+    public Integer getSymptomIdByUserId(@PathVariable("userId") String userId) {
 
         Optional<User> user = userRepository.findById(Integer.parseInt(userId));
 
@@ -60,8 +60,7 @@ public class SymptomController {
     @PostMapping("")
     void addSymptom(@RequestBody @Valid Symptom symptom, Errors errors) {
         if (!errors.hasErrors()) {
-            Symptom newSymptom = new Symptom(symptom.getSymptomName());
-            symptomRepository.save(newSymptom);
+            symptomRepository.save(symptom);
         }
     }
     //added in get User Id
