@@ -29,28 +29,27 @@ export class SymptomManagementFormComponent implements OnInit {
    
     // this.symptom.user.id = this.getUserSessionId() || ""; //added "" because symptom userID cannot be null, even though it is stored to user session ID, getting null error without or clause for empty string
     // console.log(this.symptom.user.id);
-    let userIdNumber = parseInt(this.getUserSessionId() || "");
-    this.userService.getUserByUserID(userIdNumber).subscribe(result => this.user = result);
-    
+   
   }
 
-  goToTrackerForm() {
-    this.router.navigate([`/daily-tracker-form`]); //when called will redirect to this URL path
+  goToDashboard() {
+    this.router.navigate([`/dashboard`]); //when called will redirect to this URL path
   }
 
-    getUserSessionId() {
-      return sessionStorage.getItem("id");
-    }
 
     setSymptomIDInSession(){
       this.symptomService.getSymptomIdByUserId(this.user.id).subscribe((result) => {sessionStorage.setItem("symptomId", result.toString());});
     }
     
 
-    onSubmit(symptom: Symptom) {
+    onSubmit(name: String) {
+      this.symptom.symptomName = name;
       this.symptom.user = this.user; //assign logged in user to the symptom being saved
-      this.symptomService.save(symptom).subscribe((result) => this.goToTrackerForm());
-      this.setSymptomIDInSession();
+      // console.log(this.user)
+      this.symptomService.save(this.symptom).subscribe();
+      // console.log(this.symptom);
+      // this.setSymptomIDInSession();
+      this.goToDashboard();
     };
     }
       

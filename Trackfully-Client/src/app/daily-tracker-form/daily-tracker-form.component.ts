@@ -8,6 +8,8 @@ import { Symptom } from '../model/symptom';
 import { SymptomService } from '../service/symptom/symptom.service';
 import { Observable } from 'rxjs';
 import { identifierModuleUrl } from '@angular/compiler';
+import { User } from '../model/user';
+import { UserService } from '../service/user/user.service';
 
 @Component({
   selector: 'app-daily-tracker-form',
@@ -19,26 +21,38 @@ export class DailyTrackerFormComponent implements OnInit {
   currentDate = formatDate(new Date(), 'EEEE, MMMM d, y', 'en');
   dailyEntry: DailyEntry;
   symptomInfo: Symptom;
+  user: User;
 
   constructor(private dailyTrackerService: DailyTrackerService,
               private symptomService: SymptomService,
               private authenticationService: AutheticationService,
+              private userService: UserService,
               private router: Router) {
       this.dailyEntry = new DailyEntry;
       this.symptomInfo = new Symptom;
+      this.user = new User;
     }
  
     
   ngOnInit(): void {
+
+    let userIdNumber = parseInt(this.getUserSessionId() || "");
+    this.userService.getUserByUserID(userIdNumber).subscribe(result => this.user = result);
+    this.setSymptomIDInSession();
+
      let symptomId = sessionStorage.getItem("symptomId");
     if (symptomId !== null) {
-      console.log(parseInt(symptomId))
+      console.log((symptomId));
      this.symptomService.getSymptomById(parseInt(symptomId)).subscribe(response => this.symptomInfo = response);
   
     }
   }
-
-
+  setSymptomIDInSession(){
+    this.symptomService.getSymptomIdByUserId(this.user.id).subscribe((result) => {sessionStorage.setItem("symptomId", result.toString());});
+  }
+  getUserSessionId() {
+    return sessionStorage.getItem("id");
+  }
   goToDashboard() {
     this.router.navigate([`/dashboard`]);
   }
