@@ -15,11 +15,14 @@ export class ChartsComponent implements OnInit {
   }  
 
   ngOnInit(): void {
-    this.chartService.getData().subscribe((data: any) => {
+    let symptomId = sessionStorage.getItem("symptomId");
+    if (symptomId) {
+      this.chartService.getData(symptomId).subscribe((data: any) => {
       console.log(data);
       this.createChart(data[0],data[1]);
     })
   }
+}
 
   public chart: any;
 

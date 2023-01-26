@@ -44,26 +44,10 @@ public class SymptomController {
         return symptomId;
     }
 
-//    @GetMapping("name/{symptomId}")
-//    public HashMap getSymptomName(@PathVariable("symptomId") String symptomId) {
-//
-//        Optional<Symptom> symptom = symptomRepository.findById(Integer.parseInt(symptomId));
-//
-//        HashMap<String, String> map = new HashMap<>();
-//
-//        if (symptom.isPresent()) {
-//            map.put("name",symptom.get().getSymptomName());
-//        }
-//        return map;
-//    }
-
     @GetMapping("/{id}")
     public Optional<Symptom> getSymptomById(@PathVariable("id") Integer id) {
         return symptomRepository.findById(id);
     }
-
-
-
 
     @PostMapping("")
     void addSymptom(@RequestBody @Valid Symptom symptom, Errors errors) {

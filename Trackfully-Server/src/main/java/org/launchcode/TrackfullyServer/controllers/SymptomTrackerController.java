@@ -22,8 +22,11 @@ public class SymptomTrackerController {
     @Autowired
     private SymptomTrackerRepository symptomTrackerRepository;
 
-    @GetMapping("")
-    public ArrayList<ArrayList<String>> getSymptomTrackerData() {
+    @Autowired
+    private SymptomRepository symptomRepository;
+
+    @GetMapping("data/{symptomId}")
+    public ArrayList<ArrayList<String>> getSymptomTrackerData(@PathVariable("symptomId") String symptomId) {
 
         //Adding example data, comment this out after first bootrun
 //        symptomTrackerRepository.save(new SymptomTracker(Rating.ONE,new GregorianCalendar(2022,00,01).getTime()));
@@ -39,8 +42,11 @@ public class SymptomTrackerController {
         HashMap<Date, Rating> dataset = new HashMap<>();
 
         //populate hashmap with data
+        //filter data by symptomid
         for (SymptomTracker i : symptomTrackerRepository.findAll()) {
-            dataset.put(i.getDate(),i.getRating());
+            if (i.getSymptom().getId() == Integer.parseInt(symptomId)) {
+                dataset.put(i.getDate(), i.getRating());
+            }
         }
 
         //XAXIS: get keys from hashmap and put into an arraylist, and sort dates
