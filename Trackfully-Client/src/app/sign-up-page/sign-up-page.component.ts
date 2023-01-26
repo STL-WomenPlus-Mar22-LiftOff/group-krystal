@@ -21,6 +21,8 @@ export class SignUpPageComponent implements OnInit {
   
   namePattern = "^[a-zA-Z]*" //regex for name verification
 
+  pwHashPattern = "^(?=.*[0-9])(?=.*[a-z]).{8,32}$"; //regex for password validation
+
    
   constructor(private userService: UserService, 
     private router: Router, //connects component with URL
