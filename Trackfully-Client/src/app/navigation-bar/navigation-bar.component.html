@@ -1,19 +1,39 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="">Trackfully</a>
+    <a *ngIf= "navBarType==='loggedIn'" class="navbar-brand" href="/dashboard">Trackfully</a>
+    <a *ngIf= "navBarType==='loggedOut'" class="navbar-brand" href="">Trackfully</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+  <!-- nav bar options for logged in user -->
+    <div *ngIf="navBarType==='loggedIn'" class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
 
-        <li *ngFor="let items of menuItems" class="nav-item">
+        <li *ngFor="let items of loggedInMenuItems" class="nav-item">
+            <a class="nav-link" href="{{items.linkUrl}}">{{items.linkName}} <span class="sr-only"></span></a>
+        </li>
+        <!-- <li> 
+          <ul class="name">Welcome {{userName}}</ul>
+        </li> -->
+       
+        <div class="d-flex flex-row-reverse bd-highlight">
+           <div class="p-2 bd-highlight">
+        <span class="navbar-text">Welcome {{userName}}</span>
+      </div> 
+    </div>
+      </ul>
+    </div>
+
+    <!-- nav bar options for logged out user -->
+    <div *ngIf="navBarType==='loggedOut'" class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+
+        <li *ngFor="let items of loggedOutMenuItems" class="nav-item">
             <a class="nav-link" href="{{items.linkUrl}}">{{items.linkName}} <span class="sr-only"></span></a>
         </li>
       </ul>
     </div>
   </nav>
-
 
 
 
