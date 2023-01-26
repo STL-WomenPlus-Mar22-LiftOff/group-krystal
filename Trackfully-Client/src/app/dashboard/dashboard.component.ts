@@ -18,8 +18,8 @@ export class DashboardComponent implements OnInit {
 
   ngOnInit(): void {
     this.setSymptomIDInSession();
-    console.log("this is the session storage id "+sessionStorage.getItem("id"));
-    console.log("this is the session storage symptom "+sessionStorage.getItem("symptomId"));
+    // console.log("this is the session storage id "+sessionStorage.getItem("id"));
+    // console.log("this is the session storage symptom "+sessionStorage.getItem("symptomId"));
     // console.log("dashboard name from session:"+sessionStorage.getItem("name"));
     // console.log("dashboard email from session: "+sessionStorage.getItem("email"));
   }

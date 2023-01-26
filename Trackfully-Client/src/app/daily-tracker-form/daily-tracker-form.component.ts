@@ -50,8 +50,6 @@ export class DailyTrackerFormComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(this.dailyEntry.date);
-    //not sure what this line is for? this.dailyEntry.symptom = this.symptomInfo;
     this.dailyEntry.symptom = this.symptomInfo;
     this.dailyTrackerService.save(this.dailyEntry).subscribe((result) => this.goToDashboard()); 
   }

@@ -47,7 +47,7 @@ export class SymptomManagementFormComponent implements OnInit {
 
     onSubmit(symptom: Symptom) {
       symptom.user = this.user; //assign logged in user to the symptom being saved
-      console.log(this.symptom);
+      // console.log(this.symptom);
       this.symptomService.save(this.symptom).subscribe((result) => {
         this.setSymptomIDInSession();
         this.goToDashboard();
