@@ -11,7 +11,7 @@
           <form #registrationForm="ngForm" (ngSubmit)="onSubmit(user.pwHash, user.confirmPassword)" >
 
             <!--  name input -->
-            <div class="form-outline mb-4">
+            <div class="form-outline mb-4" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
                 <label>Name</label>
                 <input type="text" 
                       placeholder="Enter name"
@@ -33,7 +33,7 @@
             </div>
 
             <!-- Email input -->
-            <div class="form-outline mb-4">
+            <div class="form-outline mb-4" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
                 <label>Email address</label>
                 <input type="email" 
                       placeholder="Enter email"
@@ -57,7 +57,7 @@
             </div>
   
             <!-- Password input -->
-            <div class="form-outline mb-4">
+            <div class="form-outline mb-4" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
               <label>Password</label>
               <input type="password"
                      #pwHash="ngModel" 
@@ -82,7 +82,7 @@
             </div>
 
             <!-- Password confirmation -->
-            <div class="form-outline mb-4">
+            <div class="form-outline mb-4" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
                 <label>Confirm Password</label>
                 <input type="password" 
                       #confirmPassword ="ngModel"
@@ -106,7 +106,7 @@
               </div> 
           </form>
 
-         <p class="small fw-bold mt-2 pt-1 mb-0">Already have an account? <a href="/">Sign In</a></p>
+         <p class="small fw-bold mt-2 pt-1 mb-0" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Already have an account? <a href="/">Sign In</a></p>
                  
         </div>
       </div>
