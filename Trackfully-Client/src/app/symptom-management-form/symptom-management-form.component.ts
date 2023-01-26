@@ -28,7 +28,6 @@ export class SymptomManagementFormComponent implements OnInit {
     this.getUserSessionId();
     let userIdNumber = parseInt(this.getUserSessionId() || "");
     this.userService.getUserByUserID(userIdNumber).subscribe(result => this.user = result);
-    //this.symptom.user.id = this.getUserSessionId() || ""; //added "" because symptom userID cannot be null, even though it is stored to user session ID, getting null error without or clause for empty string
     // console.log(this.symptom.user.id);
   
   }

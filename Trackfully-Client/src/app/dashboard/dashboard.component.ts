@@ -9,9 +9,6 @@ import { SymptomService } from '../service/symptom/symptom.service';
 })
 export class DashboardComponent implements OnInit {
 
-  // I don't think we need this currently?
-  // user: User;
-
   constructor(private symptomService: SymptomService) { 
 
   }

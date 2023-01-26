@@ -21,7 +21,6 @@ export class DailyTrackerFormComponent implements OnInit {
   currentDate = formatDate(new Date(), 'EEEE, MMMM d, y', 'en');
   dailyEntry: DailyEntry;
   symptomInfo: Symptom;
-  user: User;
 
   constructor(private dailyTrackerService: DailyTrackerService,
               private symptomService: SymptomService,
@@ -30,7 +29,6 @@ export class DailyTrackerFormComponent implements OnInit {
               private router: Router) {
       this.dailyEntry = new DailyEntry;
       this.symptomInfo = new Symptom;
-      this.user = new User;
     }
  
     
@@ -41,10 +39,7 @@ export class DailyTrackerFormComponent implements OnInit {
      this.symptomService.getSymptomById(parseInt(symptomId)).subscribe(response => this.symptomInfo = response);
     }
   }
- 
-  getUserSessionId() {
-    return sessionStorage.getItem("id");
-  }
+
   goToDashboard() {
     this.router.navigate([`/dashboard`]);
   }

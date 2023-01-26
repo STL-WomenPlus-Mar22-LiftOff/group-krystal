@@ -13,13 +13,6 @@ export class DailyTrackerService {
   constructor(private http: HttpClient) { 
     this.url = "http://localhost:8080/symptom-tracker";
   }
-  // httpOptions = {
-  //   headers: new HttpHeaders({ 
-  //     'Access-Control-Allow-Origin':'*',
-  //     'Authorization':'authkey',
-  //     'userid':'1'
-  //   })
-  // }
 
   public save(dailyEntry: DailyEntry) {
     return this.http.post<DailyEntry>(`${this.url}/add-daily`, dailyEntry);
