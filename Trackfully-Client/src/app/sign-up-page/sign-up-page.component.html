@@ -62,6 +62,7 @@
               <input type="password"
                      #pwHash="ngModel" 
                      [(ngModel)]="user.pwHash"
+                     required [pattern]="pwHashPattern"
                      id="pwHash"
                      name="pwHash"
                      required
@@ -69,7 +70,14 @@
               <div *ngIf="pwHash.errors"> 
                 <small class="text-danger" *ngIf="pwHash.touched"> 
                     Password is required.
-                </small>			  
+                </small>
+                <small class="text-danger" *ngIf="pwHash.errors.pattern"> 
+                  <ul>
+                    <li>Must include both uppercase and lowercase characters</li>
+                    <li>Must include at least one number</li>
+                    <li>Must be at leat 8 characters long</li>
+                  </ul>
+              </small>				  
               </div> 
             </div>
 
