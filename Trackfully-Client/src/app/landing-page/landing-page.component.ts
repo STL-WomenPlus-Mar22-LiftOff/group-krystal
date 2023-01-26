@@ -20,6 +20,7 @@ export class LandingPageComponent implements OnInit {
   
   user: User;
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"; //regex for email validation
+  
 
   constructor(private router: Router, private loginservice : AutheticationService, private userService: UserService, private symptomService: SymptomService) {
     this.user = new User();
