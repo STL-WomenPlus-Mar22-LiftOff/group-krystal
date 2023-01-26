@@ -83,8 +83,10 @@ public class SymptomTrackerController {
 
 
     @PostMapping("add-daily")
-    public void addDailySymptomData (@RequestBody @Valid SymptomTracker dailyEntry) {
-        symptomTrackerRepository.save(dailyEntry);
+    public void addDailySymptomData (@RequestBody @Valid SymptomTracker dailyEntry, Errors errors) {
+        if (!errors.hasErrors()) {
+            symptomTrackerRepository.save(dailyEntry);
+        }
     }
 
     @GetMapping("{id}")

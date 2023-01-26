@@ -56,7 +56,7 @@ export class UserService {
  }
 
   public checkEmail(email: String) {
-  return this.http.get<boolean>(`${this.baseUrl}/confirm/${email}`);
+  return this.http.post<boolean>(`${this.baseUrl}/confirm/email`, email);
  }
 
 // Removed as we do not use it currently
