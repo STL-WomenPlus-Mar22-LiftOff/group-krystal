@@ -5,7 +5,9 @@ https://www.dafont.com/amsterdam-4.font
 
 download to your desktop or wherever you have your folder for trackfully 
 
-extract the file
+extract the file (truetype font file)
+
+open file, and click install (might be different for macs)
 
 then go to VSC > file >  preferences > setting > Font Family 
 
