@@ -6,14 +6,13 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.Valid;
 import java.time.LocalDate;
-import java.util.Date;
 
 @Entity
 public class SymptomTracker extends AbstractEntity {
 
 
     @NotNull
-    private Date date;
+    private LocalDate date;
     //private SimpleDateFormat date = new SimpleDateFormat("MM-dd-yyyy");
     //if this causes issues with chart JS, we can ty changing to a Date data type; however, the SimpleDateFormat data type allows you to modify how date is formatted, which seems like it would be better with the JavaScript Date object in the client, which also allows formatting.
 
@@ -35,7 +34,7 @@ public class SymptomTracker extends AbstractEntity {
 
     public SymptomTracker() {}
 
-    public SymptomTracker(Date date, Rating rating, Symptom symptom) {
+    public SymptomTracker(LocalDate date, Rating rating, Symptom symptom) {
         this.date = date;
         this.rating = rating;
         this.symptom = symptom;
@@ -49,11 +48,11 @@ public class SymptomTracker extends AbstractEntity {
         this.rating = rating;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
     public Symptom getSymptom() {

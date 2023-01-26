@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.*;
 
 @RestController
@@ -39,7 +40,7 @@ public class SymptomTrackerController {
         ArrayList<ArrayList<String>> data = new ArrayList<>();
 
         //create a new Hashmap with all data
-        HashMap<Date, Rating> dataset = new HashMap<>();
+        HashMap<LocalDate, Rating> dataset = new HashMap<>();
 
         //populate hashmap with data
         //filter data by symptomid
@@ -50,22 +51,22 @@ public class SymptomTrackerController {
         }
 
         //XAXIS: get keys from hashmap and put into an arraylist, and sort dates
-        ArrayList<Date> dates = new ArrayList<>(dataset.keySet());
+        ArrayList<LocalDate> dates = new ArrayList<>(dataset.keySet());
         Collections.sort(dates);
 
         //YAXIS: get values from hashmap, per sorted order
         ArrayList<Rating> ratings = new ArrayList<>();
-        for (Date i : dates) {
+        for (LocalDate i : dates) {
             ratings.add(dataset.get(i));
         }
 
         // Convert xaxis and y axis arrays to strings
         ArrayList<String> datestoString = new ArrayList<>();
-        for (Date i : dates) {
+        for (LocalDate i : dates) {
 //            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM-dd-YY");
 //            datestoString.add(formatter.format(i));
 //            System.out.println(formatter.format(i));
-            datestoString.add(new SimpleDateFormat("MM-dd-yy").format(i));
+            datestoString.add(i.toString());
         }
 
         ArrayList<String> ratingsToString = new ArrayList<>();
