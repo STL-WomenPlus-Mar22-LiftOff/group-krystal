@@ -87,7 +87,7 @@
                 <label>Confirm Password</label>
                 <input type="password" 
                       #confirmPassword ="ngModel"
-                       [(ngModel)]="user.confirmPassword"
+                      [(ngModel)]="user.confirmPassword"
                        id="confirmPassword"
                        name="confirmPassword"
                        required
@@ -100,9 +100,9 @@
               </div>
 
           <!-- next line has pw alert and will hide this alert when the passwords match -->
-          <div *ngIf="confirmPassword.touched" [hidden]="user.pwHash === user.confirmPassword" class="alert alert-danger">Passwords must match!</div> 
+              <div *ngIf="confirmPassword.touched" [hidden]="user.pwHash === user.confirmPassword" class="alert alert-danger">Passwords must match!</div> 
               <div class="text-center text-lg-start mt-4 pt-2">
-                <button type="submit" [disabled]="!registrationForm.valid || !emailAvailable || user.pwHash !== user.confirmPassword" class="btn btn-primary btn-lg"
+                  <button type="submit" [disabled]="!registrationForm.valid || !emailAvailable || user.pwHash !== user.confirmPassword" class="btn btn-primary btn-lg"
                   style="padding-left: 2.5rem; padding-right: 2.5rem;">Sign Up</button>
               </div> 
           </form>

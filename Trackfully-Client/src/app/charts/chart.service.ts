@@ -14,8 +14,8 @@ export class ChartService {
       this.baseUrl = "http://localhost:8080/symptom-tracker";
     }
   
-    getData(): Observable<Array<String>>{
-      return this.http.get<Array<String>>(`${this.baseUrl}`);
+    getData(symptomId: String): Observable<Array<String>>{
+      return this.http.get<Array<String>>(`${this.baseUrl}/data/${symptomId}`);
     }
   
     public findAll(): Observable<Array<String>> {

@@ -8,6 +8,8 @@ import { Symptom } from '../model/symptom';
 import { SymptomService } from '../service/symptom/symptom.service';
 import { Observable } from 'rxjs';
 import { identifierModuleUrl } from '@angular/compiler';
+import { User } from '../model/user';
+import { UserService } from '../service/user/user.service';
 
 @Component({
   selector: 'app-daily-tracker-form',
@@ -23,24 +25,20 @@ export class DailyTrackerFormComponent implements OnInit {
   constructor(private dailyTrackerService: DailyTrackerService,
               private symptomService: SymptomService,
               private authenticationService: AutheticationService,
+              private userService: UserService,
               private router: Router) {
       this.dailyEntry = new DailyEntry;
       this.symptomInfo = new Symptom;
     }
-  
-  ngOnInit(): void {
-    if (this.authenticationService.isUserLoggedIn()) {
-     let userIdString = sessionStorage.getItem("id");
-     let userIdNumber = parseInt(userIdString || "");
-     //User model id is stored as a string
-    if (userIdNumber != null) {
-     this.symptomService.getSymptomByUserId(112).subscribe(response => {this.symptomInfo = response;})
-     console.log(userIdNumber);
-    }
-    } else {this.router.navigate([`/`]);}
+ 
     
-  }
+  ngOnInit(): void {
 
+    let symptomId = sessionStorage.getItem("symptomId");
+    if (symptomId !== null) {
+     this.symptomService.getSymptomById(parseInt(symptomId)).subscribe(response => this.symptomInfo = response);
+    }
+  }
 
   goToDashboard() {
     this.router.navigate([`/dashboard`]);

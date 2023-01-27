@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SymptomService } from '../service/symptom/symptom.service';
 // import { User } from '../model/user';
 
 @Component({
@@ -8,17 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  // I don't think we need this currently?
-  // user: User;
+  constructor(private symptomService: SymptomService) { 
 
-  constructor() { 
-    // this.user = new User();
   }
 
   ngOnInit(): void {
-    // console.log("dashboard id from session:"+sessionStorage.getItem("id"));
+    this.setSymptomIDInSession();
+    // console.log("this is the session storage id "+sessionStorage.getItem("id"));
+    // console.log("this is the session storage symptom "+sessionStorage.getItem("symptomId"));
     // console.log("dashboard name from session:"+sessionStorage.getItem("name"));
     // console.log("dashboard email from session: "+sessionStorage.getItem("email"));
+  }
+  setSymptomIDInSession(){
+    let id = sessionStorage.getItem("id");
+    this.symptomService.getSymptomIdByUserId(id).subscribe((result) => {sessionStorage.setItem("symptomId", result.toString());});
   }
 
 }
