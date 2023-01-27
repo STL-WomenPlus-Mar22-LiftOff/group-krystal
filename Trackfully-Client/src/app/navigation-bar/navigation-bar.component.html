@@ -6,7 +6,9 @@
     </button>
 
   <!-- nav bar options for logged in user -->
-    <div *ngIf="navBarType==='loggedIn'" class="collapse navbar-collapse" id="navbarSupportedContent">
+  <div [ngSwitch]="navBarType">
+    <!-- <div *ngIf="navBarType==='loggedIn'" class="collapse navbar-collapse" id="navbarSupportedContent"> -->
+      <div *ngSwitchCase= "'loggedIn'" class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
 
         <li *ngFor="let items of loggedInMenuItems" class="nav-item">
@@ -25,7 +27,8 @@
     </div>
 
     <!-- nav bar options for logged out user -->
-    <div *ngIf="navBarType==='loggedOut'" class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div *ngSwitchCase="'loggedOut'" class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- <div *ngIf="navBarType==='loggedOut'" class="collapse navbar-collapse" id="navbarSupportedContent"> -->
       <ul class="navbar-nav mr-auto">
 
         <li *ngFor="let items of loggedOutMenuItems" class="nav-item">
@@ -33,6 +36,7 @@
         </li>
       </ul>
     </div>
+  </div>
   </nav>
 
 

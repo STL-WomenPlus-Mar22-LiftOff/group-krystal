@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Event, RouterEvent, Router } from '@angular/router';
 import { AutheticationService } from '../service/authentication/authetication.service';
 
 @Component({
@@ -9,8 +9,6 @@ import { AutheticationService } from '../service/authentication/authetication.se
 })
 export class NavigationBarComponent implements OnInit {
 
-  //need to create logged in menuItems: already exists but need to add Welcome <user> in html and access user name from session storage here
-  //and logged out menuItems: need log in and register buttons
   loggedInMenuItems = [
     {linkId: 1, linkName: 'Dashboard', linkUrl: 'dashboard'},
     {linkId: 2, linkName: 'Daily Tracker', linkUrl: 'daily-tracker-form'}, 
@@ -25,23 +23,41 @@ export class NavigationBarComponent implements OnInit {
     userName : String = ""; 
     navBarType : String = "loggedIn";
 
-  constructor(private authenticationService: AutheticationService) { 
-    
-  }
+  constructor(private authenticationService: AutheticationService, private router: Router) { }
 
-//only occurring when refreshing the page? not with re-routing
+//occuring way too many times
+//need to fix toggle bar
   ngOnInit(): void {
-      if (this.authenticationService.isUserLoggedIn()) {
-       this.userName = sessionStorage.getItem("name") || "";
-       console.log("user name" + this.userName);
-       this.navBarType = "loggedIn";
-      } else {
-        this.navBarType = "loggedOut";
-      }
+    this.router.events.subscribe((event:Event)=> {this.checkNavBar()})
+      
+  //   this.router.events.pipe(
+  //     filter((e: Event): e is RouterEvent => e instanceof RouterEvent)
+  //  ).subscribe((e: RouterEvent) => {
+  //    {this.checkNavBar()});
+      // if (this.authenticationService.isUserLoggedIn()) {
+      //   this.userName = sessionStorage.getItem("name") || "";
+      //   console.log("user name" + this.userName);
+      //   this.navBarType = "loggedIn";
+      //  } else {
+      //    this.navBarType = "loggedOut";
+      //  }
+    // }
     }
+
+checkNavBar() {
+  if (this.authenticationService.isUserLoggedIn()) {
+    this.userName = sessionStorage.getItem("name") || "";
+    this.navBarType = "loggedIn";
+   } else {
+     this.navBarType = "loggedOut";
+   }
+}
+
 }
 
 
-//see name in nav bar when logged in
-//see log out vs log in when logged in/vs out
-//route user to dashboard if try to go to localhost//4200
+// isUserLoggedIn() {
+//   let user = sessionStorage.getItem('email');
+//   console.log("logged in with " + user);
+//   return !(user === null);
+// }
