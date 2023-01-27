@@ -22,19 +22,20 @@ export class AutheticationService {
 
   
   isUserLoggedIn() {
-    let user = sessionStorage.getItem('email');
-    console.log("logged in with " + user);
+    let user = sessionStorage.getItem('id');
+    // console.log("logged in with " + user);
     return !(user === null);
   }
 
   //removes user from session. adjusted to remove new session storage values.
   logOut() {
     sessionStorage.removeItem('id');
+    sessionStorage.removeItem('symptomId');
     sessionStorage.removeItem('email');
     sessionStorage.removeItem('name');
     // items to check that user has been logged out:
-    console.log(sessionStorage.getItem('id')+": should be null");
-    return console.log("user has been logged out");
+    // console.log(sessionStorage.getItem('id')+": should be null");
+    // return console.log("user has been logged out");
   }
 
   getUserByEmail(email: string): Observable<JSON>{

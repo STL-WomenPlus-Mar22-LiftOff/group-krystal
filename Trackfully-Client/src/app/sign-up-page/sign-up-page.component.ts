@@ -47,7 +47,7 @@ export class SignUpPageComponent implements OnInit {
   this.goToSymptomManageForm();
  }
 
-  // check if : password and confirmPassword are the same
+  // check if : password and confirmPassword are the same 
   //on submitting, front end user info from the form would be sent to the back end. Once that's completed, we will pull back end user information to the front and store in session.
   onSubmit(password: String, confirmPassword: String) {
     if(password === confirmPassword) {
