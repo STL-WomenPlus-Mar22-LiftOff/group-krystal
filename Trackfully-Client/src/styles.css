@@ -1,20 +1,74 @@
 /* You can add global styles to this file, and also import other style files */
-/* body {
+body {
 	background:url(images/background-splash.png) no-repeat;
-	overflow:hidden;
+	/* overflow:hidden; */
 	background-size:cover;
 	width:100%;
 	height:100vh;
 }
-
-p {
-    color: blueviolet;
+.btn {
+    width: 220px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: #519188;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+	font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-h1{
+.btn:before {
+    content: '';
+    background: linear-gradient(45deg, #519188, #aa706a, #00ffd5, #8891be, #f9f6e4, #efe4e6, #d5b9b1, rgb(221, 125, 141));
+    position: absolute;
+    top: -2px;
+    left:-2px;
+    background-size: 400%;
+    z-index: -1;
+    filter: blur(5px);
+    width: calc(100% + 4px);
+    height: calc(100% + 4px);
+    animation: glowing 20s linear infinite;
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+    border-radius: 10px;
+}
+
+.btn:active {
     color: #519188;
-    text-align: center;
-    font-family: Amsterdam;
-    font-size: 75px;
-    letter-spacing: .9rem;
-} */
+}
+
+.btn:active:after {
+    background: transparent;
+}
+
+.btn:hover:before {
+    opacity: 1;
+}
+
+.btn:after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #519188;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+@keyframes glowing {
+    0% { background-position: 0 0; }
+    50% { background-position: 400% 0; }
+    100% { background-position: 0 0; }
+}
+
+h2{
+	color: #fff;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-size: 45px;
+}
