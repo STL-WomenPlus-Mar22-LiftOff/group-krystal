@@ -1,0 +1,22 @@
+How to add font to VSC:
+
+follow this link:
+https://www.dafont.com/amsterdam-4.font
+
+download to your desktop or wherever you have your folder for trackfully 
+
+extract the file (truetype font file)
+
+open file, and click install (might be different for macs)
+
+then go to VSC > file >  preferences > setting > Font Family 
+
+add amsterdam to the list 
+
+you may need to restart VSC and/or computer to completely get it to work
+
+also, here is the link to follow the directions if I am not clear. 
+
+https://dev.to/solexy79/installing-a-new-font-for-vs-code-in-three-3-simple-steps-13a5
+
+lemme know if you have questions! 
