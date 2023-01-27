@@ -21,6 +21,8 @@ export class SignUpPageComponent implements OnInit {
   
   namePattern = "^[a-zA-Z]*" //regex for name verification
 
+  pwHashPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}$"; //regex for password validation
+
    
   constructor(private userService: UserService, 
     private router: Router, //connects component with URL
@@ -45,7 +47,7 @@ export class SignUpPageComponent implements OnInit {
   this.goToSymptomManageForm();
  }
 
-  // check if : password and confirmPassword are the same
+  // check if : password and confirmPassword are the same 
   //on submitting, front end user info from the form would be sent to the back end. Once that's completed, we will pull back end user information to the front and store in session.
   onSubmit(password: String, confirmPassword: String) {
     if(password === confirmPassword) {

@@ -10,8 +10,6 @@ import java.util.Optional;
 @Repository
 public interface SymptomRepository extends CrudRepository<Symptom,Integer> {
 
-    //this doesnt work
-    // Optional<Symptom> findByUserId (Integer id);
-
+     Optional<Symptom> findByUser (User user);
 
 }

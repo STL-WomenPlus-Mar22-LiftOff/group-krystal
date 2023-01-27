@@ -56,7 +56,7 @@ export class UserService {
  }
 
   public checkEmail(email: String) {
-  return this.http.get<boolean>(`${this.baseUrl}/confirm/${email}`);
+  return this.http.post<boolean>(`${this.baseUrl}/confirm/email`, email);
  }
 
 // Removed as we do not use it currently
@@ -66,6 +66,10 @@ export class UserService {
 
  public getUserInfo(email: String) {
   return this.http.get<any>(`${this.baseUrl}/${email}`);
+ }
+
+ public getUserByUserID (id: number): Observable<User> {
+    return this.http.get<User>(`${this.baseUrl}/search/${id}`)
  }
 
 }

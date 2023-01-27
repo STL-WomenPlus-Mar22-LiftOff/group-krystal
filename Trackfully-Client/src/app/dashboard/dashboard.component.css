@@ -26,3 +26,24 @@ h1{
 .form-group{
 	text-align: center;
 } 
+
+
+.mainTitle{
+    color: #aa706a;
+    font-family: Amsterdam;
+    letter-spacing: 1.2rem;
+	font-size: 80px;
+    text-align: center;
+    padding-top: 30px;
+	margin-left: 40px;
+}
+
+.chart{
+	padding: 60px;
+	margin-left: -60px;
+}
+
+.btn{
+	position: relative;
+}
+
