@@ -52,7 +52,7 @@ public class SymptomTrackerController {
         for (SymptomTracker i : symptomTrackerRepository.findAll()) {
             if (i.getSymptom().getId() == Integer.parseInt(symptomId)) {
                 //filter for date range
-                if (i.getDate().isAfter(range) && i.getDate().isBefore(today)) {
+                if (i.getDate().isAfter(range) && i.getDate().isBefore(today.plus(Period.ofDays(1)))) {
                     dataset.put(i.getDate(), i.getRating());
                 }
             }
