@@ -1,5 +1,7 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light p-2">
   <a *ngIf="navBarType==='loggedIn'" class="navbar-brand" href="/dashboard">Trackfully</a>
+  <!-- displays user name if user loggedIn -->
+  <ul *ngIf="navBarType==='loggedIn'" class="navbar-nav ms-auto p-2"> Welcome {{userName}}!</ul>
   <a *ngIf="navBarType==='loggedOut'" class="navbar-brand" href="">Trackfully</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -8,18 +10,16 @@
 
   <!-- nav bar options for logged in user -->
   <div *ngIf="navBarType==='loggedIn'" class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto p-2">
       <li *ngFor="let items of loggedInMenuItems" class="nav-item">
         <a class="nav-link" href="{{items.linkUrl}}">{{items.linkName}} <span class="sr-only"></span></a>
-      </li>
-      <li class="ml-auto p-2 bd-highlight navbar-text">Welcome {{userName}}
       </li>
     </ul>
   </div>
 
   <!-- nav bar options for logged out user -->
   <div *ngIf="navBarType==='loggedOut'" class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navbar-nav mr-auto p-2">
       <li *ngFor="let items of loggedOutMenuItems" class="nav-item">
         <a class="nav-link" href="{{items.linkUrl}}">{{items.linkName}} <span class="sr-only"></span></a>
       </li>

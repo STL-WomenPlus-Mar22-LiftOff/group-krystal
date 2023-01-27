@@ -26,7 +26,7 @@ export class NavigationBarComponent implements OnInit {
   constructor(private authenticationService: AutheticationService, private router: Router) { }
 
   ngOnInit(): void {
-  //listens to change in routing (event) changes and calls checkNavBar appropriately when logging in/out
+  //listens to change in routing (event) and calls checkNavBar appropriately when switching pages for logged in/out status
     this.router.events.subscribe((event:Event)=> {this.checkNavBar()});
   }
 
