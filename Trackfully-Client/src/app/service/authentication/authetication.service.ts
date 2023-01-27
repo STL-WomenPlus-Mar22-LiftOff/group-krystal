@@ -23,7 +23,7 @@ export class AutheticationService {
   
   isUserLoggedIn() {
     let user = sessionStorage.getItem('email');
-    console.log("logged in with " + user);
+    // console.log("logged in with " + user);
     return !(user === null);
   }
 

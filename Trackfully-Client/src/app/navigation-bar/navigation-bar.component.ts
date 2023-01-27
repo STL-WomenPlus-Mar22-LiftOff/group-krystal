@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Event, RouterEvent, Router } from '@angular/router';
+import { Event, Router } from '@angular/router';
 import { AutheticationService } from '../service/authentication/authetication.service';
 
 @Component({
@@ -25,39 +25,19 @@ export class NavigationBarComponent implements OnInit {
 
   constructor(private authenticationService: AutheticationService, private router: Router) { }
 
-//occuring way too many times
-//need to fix toggle bar
   ngOnInit(): void {
-    this.router.events.subscribe((event:Event)=> {this.checkNavBar()})
-      
-  //   this.router.events.pipe(
-  //     filter((e: Event): e is RouterEvent => e instanceof RouterEvent)
-  //  ).subscribe((e: RouterEvent) => {
-  //    {this.checkNavBar()});
-      // if (this.authenticationService.isUserLoggedIn()) {
-      //   this.userName = sessionStorage.getItem("name") || "";
-      //   console.log("user name" + this.userName);
-      //   this.navBarType = "loggedIn";
-      //  } else {
-      //    this.navBarType = "loggedOut";
-      //  }
-    // }
+  //listens to change in routing (event) changes and calls checkNavBar appropriately when logging in/out
+    this.router.events.subscribe((event:Event)=> {this.checkNavBar()});
+  }
+
+//checks to see if a user is logged in, if so use logged in nav bar
+  checkNavBar() {
+    if (this.authenticationService.isUserLoggedIn()) {
+      this.userName = sessionStorage.getItem("name") || "";
+      this.navBarType = "loggedIn";
+    } else {
+      this.navBarType = "loggedOut";
     }
-
-checkNavBar() {
-  if (this.authenticationService.isUserLoggedIn()) {
-    this.userName = sessionStorage.getItem("name") || "";
-    this.navBarType = "loggedIn";
-   } else {
-     this.navBarType = "loggedOut";
-   }
-}
+  }
 
 }
-
-
-// isUserLoggedIn() {
-//   let user = sessionStorage.getItem('email');
-//   console.log("logged in with " + user);
-//   return !(user === null);
-// }
