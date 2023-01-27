@@ -12,7 +12,6 @@
 
             <!--  name input -->
             <div class="form-outline mb-4" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
-                <label>Name</label>
                 <input type="text" 
                       placeholder="Enter name"
                       #name = "ngModel"
@@ -34,7 +33,6 @@
 
             <!-- Email input -->
             <div class="form-outline mb-4" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
-                <label>Email address</label>
                 <input type="email" 
                       placeholder="Enter email"
                       #email="ngModel"
@@ -58,8 +56,8 @@
   
             <!-- Password input -->
             <div class="form-outline mb-4" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
-              <label>Password</label>
               <input type="password"
+                     placeholder="Enter password"
                      #pwHash="ngModel" 
                      [(ngModel)]="user.pwHash"
                      required [pattern]="pwHashPattern"
@@ -83,8 +81,8 @@
 
             <!-- Password confirmation -->
             <div class="form-outline mb-4" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
-                <label>Confirm Password</label>
-                <input type="password" 
+                <input type="password"
+                      placeholder="Confirm Password" 
                       #confirmPassword ="ngModel"
                       [(ngModel)]="user.confirmPassword"
                        id="confirmPassword"

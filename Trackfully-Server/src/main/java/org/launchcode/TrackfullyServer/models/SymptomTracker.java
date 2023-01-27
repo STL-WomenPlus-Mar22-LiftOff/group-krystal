@@ -16,6 +16,7 @@ public class SymptomTracker extends AbstractEntity {
     //private SimpleDateFormat date = new SimpleDateFormat("MM-dd-yyyy");
     //if this causes issues with chart JS, we can ty changing to a Date data type; however, the SimpleDateFormat data type allows you to modify how date is formatted, which seems like it would be better with the JavaScript Date object in the client, which also allows formatting.
 
+    @NotNull
     private Rating rating;
 
     //I dont think connecting a user is necessary because it's linked to a symptom which is linked to a user
