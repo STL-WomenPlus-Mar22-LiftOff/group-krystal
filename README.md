@@ -27,6 +27,10 @@ Trackfully is a web application that empowers users to manage their own health. 
 - Angular CLI Version 12.2.18
 - Node Version 14.15.1
   - if your node version is different, we recommend switching to 14.15.1 using node version manager
+- ChartJS Version 4.1.1
+  - date-fns Version 2.29.3
+  - chartjs-adapter-date-fns Version 3.0.0
+  - ng2-charts Version 1.6.0
 - HTML
 - CSS
 

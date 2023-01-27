@@ -16,6 +16,8 @@ export class ChartsComponent implements OnInit {
   symptomInfo: Symptom;
   symptomLabel: String = "data";
   userName: any;
+  lastDate: any;
+  firstDate: any;
 
 constructor(private  chartService: ChartService, private symptomService: SymptomService) {
   Chart.register(...registerables);
@@ -35,6 +37,8 @@ ngOnInit(): void {
   })
 };
   this.userName = sessionStorage.getItem("name");
+  this.lastDate = new Date(new Date().setDate(new Date().getDate()-30));
+  this.firstDate = new Date(new Date().setDate(new Date().getDate()));
 }
 
   public chart: any;
@@ -57,9 +61,24 @@ ngOnInit(): void {
       options: {
         responsive: true,
         plugins: {
+          tooltip: {
+            callbacks: {
+              title: context => {
+                console.log(context);
+                const d = new Date(context[0].parsed.x);
+                const formattedDate = d.toLocaleString([], {
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric',
+                  hour12: true
+                });
+                return formattedDate;
+              }
+            }
+          },
           title: {
             display: true,
-            text: `${this.userName}'s Symptoms for Last 30 Days`
+            text: `${this.userName}'s Symptoms for 30 Days`
           }
         },
         scales: {
@@ -77,7 +96,12 @@ ngOnInit(): void {
             type: 'time',
             time: {
               unit: 'day',
-            }
+              displayFormats: {
+                day: 'MMM dd'
+              }
+            },
+            min: this.lastDate,
+            max: this.firstDate
           }
         }
     }
