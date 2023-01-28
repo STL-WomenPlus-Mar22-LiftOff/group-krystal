@@ -11,20 +11,28 @@ main{
 }
 .container{
 	text-align: center;
-	top: 40px;
+	background-color: #efe4e6;
+	opacity: .8;
+	position: relative;
+	z-index: 9;
 }
 
 h1{
     text-align: center;
 	top: 40px;
+	z-index: 9;
 }
 
 .chart{
 	text-align: center;
+	z-index: 9;
+	position: relative;
 }
 
 .form-group{
 	text-align: center;
+	z-index: 9;
+	position: relative;
 } 
 
 
@@ -34,16 +42,21 @@ h1{
     letter-spacing: 1.2rem;
 	font-size: 80px;
     text-align: center;
-    padding-top: 30px;
+    padding-top: 10px;
 	margin-left: 40px;
+	z-index: 9;
+	position: relative;
 }
 
 .chart{
 	padding: 60px;
 	margin-left: -60px;
+	z-index: 9;
+	position: relative;
 }
 
 .btn{
 	position: relative;
+	z-index: 9;
 }
 
