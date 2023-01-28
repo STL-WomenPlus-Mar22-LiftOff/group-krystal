@@ -9,13 +9,13 @@ main{
 	text-align: center;
 	top: 40px;
 }
-.container{
+/* .container{
 	text-align: center;
 	background-color: #efe4e6;
 	opacity: .8;
 	position: relative;
 	z-index: 9;
-}
+} */
 
 h1{
     text-align: center;
