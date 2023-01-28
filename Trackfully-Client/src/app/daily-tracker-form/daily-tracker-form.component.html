@@ -2,7 +2,7 @@
     <div class="mainTitle">Daily Tracker</div>
 
 <div>
-    <form #trackerForm="ngForm" action="/dashboard" method="post" (ngSubmit)="onSubmit(trackerForm.value)">
+    <form action="/dashboard" method="post" (ngSubmit)="onSubmit(symptomInfo.id)">
         <div class="row form-group">
             <label for="date" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Date:</label>
             <!-- <input type="text" id="date" class="form-control" name="selected_date" value={{currentDate}} [(ngModel)]="dailyEntry.dateToday"/> -->
@@ -10,11 +10,11 @@
                 <input type="date" id="date" name="selected_date" [(ngModel)]="dailyEntry.date" />
         </div>
         <div class="row form-group">
-            <label for="symptom" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Choose Symptom:</label>
-                <select name="symptomName">
-                <option *ngFor="let symptom of availableSymptoms" 
-                        value={{symptom.id}}
-                        >{{symptom.symptomName}}</option>
+            <label for="symptomid" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Choose Symptom:</label>
+                <select name="symptomName" value = "1">
+                <option *ngFor="let symptom of symptomValues(availableSymptoms)" 
+                        class="form-control"
+                        >{{symptom}}</option>
             </select>
         </div>
         <div class="row">
