@@ -19,19 +19,9 @@ public class SymptomTracker extends AbstractEntity {
     @NotNull
     private Rating rating;
 
-    //I dont think connecting a user is necessary because it's linked to a symptom which is linked to a user
-    // so linking user is redundant.
-//    @ManyToOne
-//    @NotNull
-//    @Valid
-//    private User user;
-//    //private int userId;
-
     @ManyToOne
     @NotNull
     private Symptom symptom;
-    //private int symptomId;
-
 
     public SymptomTracker() {}
 
