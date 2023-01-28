@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.*;
 
 @RestController
@@ -42,11 +43,18 @@ public class SymptomTrackerController {
         //create a new Hashmap with all data
         HashMap<LocalDate, Rating> dataset = new HashMap<>();
 
+        //determine date range
+        LocalDate today = LocalDate.now();
+        LocalDate range = today.minus(Period.ofDays(30));
+
         //populate hashmap with data
         //filter data by symptomid
         for (SymptomTracker i : symptomTrackerRepository.findAll()) {
             if (i.getSymptom().getId() == Integer.parseInt(symptomId)) {
-                dataset.put(i.getDate(), i.getRating());
+                //filter for date range
+                if (i.getDate().isAfter(range) && i.getDate().isBefore(today.plus(Period.ofDays(1)))) {
+                    dataset.put(i.getDate(), i.getRating());
+                }
             }
         }
 

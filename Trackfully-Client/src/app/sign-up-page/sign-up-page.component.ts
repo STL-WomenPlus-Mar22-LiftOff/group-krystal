@@ -24,14 +24,17 @@ export class SignUpPageComponent implements OnInit {
   pwHashPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}$"; //regex for password validation
 
    
-  constructor(private userService: UserService, 
+  constructor(private userService: UserService, private loginservice: AutheticationService,
     private router: Router, //connects component with URL
     private activatedRoute: ActivatedRoute ) { //provides access to info in this route/component pair such as path and URL params 
     this.user = new User; 
   }
 
-  ngOnInit(): void {
-  
+  //if user is already logged in reroutes to dashboard, so sign-up page is not visible 
+  ngOnInit() {
+    if(this.loginservice.isUserLoggedIn()){
+      this.router.navigate(['/dashboard']);
+   }
   }
 
   //this previously routed to dashboard. Changed to symptom manage form as users will need to enter this after signing up
