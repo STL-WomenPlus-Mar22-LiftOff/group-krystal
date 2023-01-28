@@ -26,8 +26,12 @@ export class LandingPageComponent implements OnInit {
     this.user = new User();
    }
 
-
-  ngOnInit() {}
+//if user is already logged in reroutes to dashboard, so login/landing page is not visible 
+  ngOnInit() {
+    if(this.loginservice.isUserLoggedIn()){
+      this.router.navigate(['/dashboard']);
+   }
+  }
  //we need to do a get request to get user by ID from the database for the whole user object, once authentication is a success AND then set our sessionStorage based on database values NOT front end values- that's why we currently have a 0 for both user id and "" for a name...otherwise we will never be able to get our user id, symptom id's to align with our database
  //something like this but by ID from user service:
 //  this.userService.getUser().subscribe((data: User[]) => {
