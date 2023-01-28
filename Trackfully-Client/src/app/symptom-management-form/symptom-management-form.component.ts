@@ -13,8 +13,12 @@ import { UserService } from '../service/user/user.service';
 })
 export class SymptomManagementFormComponent implements OnInit {
 
+  newSymptom: boolean = false;
+
   symptom: Symptom;
   user: User;
+  // symptoms: Symptom[];
+
   constructor(
     private symptomService: SymptomService,
     private userService: UserService,
@@ -28,7 +32,16 @@ export class SymptomManagementFormComponent implements OnInit {
     this.getUserSessionId();
     let userIdNumber = parseInt(this.getUserSessionId() || "");
     this.userService.getUserByUserID(userIdNumber).subscribe(result => this.user = result);
+    this.symptomService.checkNumberOfSymptoms(userIdNumber).subscribe((result) => {
+      if (result === true) {
+        this.newSymptom = true;
+      } else {this.newSymptom = false;};
+      // console.log("this is the result"+result);
+    })
     // console.log(this.symptom.user.id);
+    console.log(sessionStorage.getItem("symptomId1"));
+    console.log(sessionStorage.getItem("symptomId2"));
+    console.log(sessionStorage.getItem("symptomId3"));
   
   }
 
@@ -40,7 +53,17 @@ export class SymptomManagementFormComponent implements OnInit {
     return sessionStorage.getItem("id");
   }
     setSymptomIDInSession(){
-      this.symptomService.getSymptomIdByUserId(this.getUserSessionId()).subscribe((result) => {sessionStorage.setItem("symptomId", result.toString());});
+      this.symptomService.getSymptomIdByUserId(this.getUserSessionId()).subscribe((result) => {
+        if (sessionStorage.getItem("symptomId1") == "undefined") {
+          sessionStorage.setItem("symptomId", result[0]);
+        } else if (sessionStorage.getItem("symptomId2") === "undefined") {
+          sessionStorage.setItem("symptomId2", result[1]);
+        } else if (sessionStorage.getItem("symptomId3") === "undefined") {
+          sessionStorage.setItem("symptomId3", result[2]);
+        }});
+        console.log(sessionStorage.getItem("symptomId1"));
+        console.log(sessionStorage.getItem("symptomId2"));
+        console.log(sessionStorage.getItem("symptomId3"));
     }
     
 

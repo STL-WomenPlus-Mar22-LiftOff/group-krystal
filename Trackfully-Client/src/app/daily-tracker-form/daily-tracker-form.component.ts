@@ -21,6 +21,10 @@ export class DailyTrackerFormComponent implements OnInit {
   currentDate = formatDate(new Date(), 'EEEE, MMMM d, y', 'en');
   dailyEntry: DailyEntry;
   symptomInfo: Symptom;
+  availableSymptoms: Symptom [];
+  symptomId1: any;
+  symptomId2: any;
+  symptomId3: any;
 
   constructor(private dailyTrackerService: DailyTrackerService,
               private symptomService: SymptomService,
@@ -29,24 +33,43 @@ export class DailyTrackerFormComponent implements OnInit {
               private router: Router) {
       this.dailyEntry = new DailyEntry;
       this.symptomInfo = new Symptom;
+      this.availableSymptoms = [];
+      this.symptomId1 = sessionStorage.getItem("symptomId1");
+      this.symptomId2 = sessionStorage.getItem("symptomId2");
+      this.symptomId3 = sessionStorage.getItem("symptomId3");
     }
  
     
   ngOnInit(): void {
 
-    let symptomId = sessionStorage.getItem("symptomId");
-    if (symptomId !== null) {
-     this.symptomService.getSymptomById(parseInt(symptomId)).subscribe(response => this.symptomInfo = response);
+    if (this.symptomId1 !== null) {
+     this.symptomService.getSymptomById(parseInt(this.symptomId1)).subscribe(response => {this.availableSymptoms.push(response);});
     }
+
+    if (this.symptomId2 !== null) {
+      this.symptomService.getSymptomById(parseInt(this.symptomId2)).subscribe(response => {this.availableSymptoms.push(response);});
+     }
+
+     if (this.symptomId3 !== null) {
+      this.symptomService.getSymptomById(parseInt(this.symptomId3)).subscribe(response => {this.availableSymptoms.push(response);});
+     }
+    console.log(sessionStorage.getItem("symptomId1"));
+    console.log(sessionStorage.getItem("symptomId2"));
+    console.log(sessionStorage.getItem("symptomId3"));
   }
 
   goToDashboard() {
     this.router.navigate([`/dashboard`]);
   }
 
-  onSubmit() {
-    this.dailyEntry.symptom = this.symptomInfo;
-    this.dailyTrackerService.save(this.dailyEntry).subscribe((result) => this.goToDashboard()); 
+  onSubmit(symptomId: string) {
+    console.log(symptomId);
+    this.symptomService.getSymptomById(parseInt(symptomId)).subscribe((result) => {
+        this.symptomInfo;
+        this.dailyEntry.symptom = this.symptomInfo;
+        console.log(this.dailyEntry.symptom);
+        this.dailyTrackerService.save(this.dailyEntry).subscribe((result) => this.goToDashboard()); 
+      })   
   }
 
 }

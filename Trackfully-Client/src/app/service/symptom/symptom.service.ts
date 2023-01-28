@@ -37,4 +37,8 @@ export class SymptomService {
   public getSymptomById(id: number): Observable<Symptom>{
     return this.http.get<Symptom>(`${this.url}/${id}`);
   }
+
+  public checkNumberOfSymptoms(userId: number): Observable<boolean> {
+    return this.http.get<boolean>(`${this.url}/check/${userId}`);
+  }
 }
