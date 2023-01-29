@@ -1,9 +1,12 @@
 <div class="container col-md-7" >
-    <div class="mainTitle">What would you like to track?</div>
-
+<div class="mainTitle">Symptom Management</div>
+   
     <form (ngSubmit)="onSubmit(symptom)">
+        
         <div class="form-group">
-            <label for="" class="form-label">
+            <div><h2> What would you like to track?</h2></div>
+            <div><p>Enter a habit, symptom, or anything you would like to track in the form below!</p></div>
+            <label for="" class="form-label" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
                 <input type="text" 
                 placeholder="Symptom/Habit Name"
                 #symptomName = "ngModel"
