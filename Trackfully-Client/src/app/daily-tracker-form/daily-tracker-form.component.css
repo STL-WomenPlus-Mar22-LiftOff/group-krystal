@@ -23,7 +23,6 @@ datalist{
 
 .container col-md-7{
   position: relative;
-  /* top: 40px; */
 }
 
 .mainTitle{
@@ -32,8 +31,6 @@ datalist{
   letter-spacing: 1.2rem;
   font-size: 60px;
   text-align: center;
-  /* padding-bottom: 30px;
-  padding-top: 30px; */
   position: relative;
   line-height: 180px;
 }
