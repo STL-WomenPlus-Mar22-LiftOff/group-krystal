@@ -1,6 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-	background:url(images/background-splash.png) no-repeat;
+	background:url(images/background-splash.png) no-repeat center center fixed;
 	/* overflow:hidden; */
 	background-size:cover;
 	width:100%;
