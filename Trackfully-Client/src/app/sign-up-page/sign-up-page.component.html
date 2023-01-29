@@ -12,7 +12,6 @@
 
             <!--  name input -->
             <div class="form-outline mb-4" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
-                <label>Name</label>
                 <input type="text" 
                       placeholder="Enter name"
                       #name = "ngModel"
@@ -20,21 +19,19 @@
                        id="name" 
                        name="name"
                        required [pattern] = "namePattern"
-                       required size = 1
                 class="form-control form-control-lg" />
                 <div *ngIf="name.errors">   
                   <small class="text-danger" *ngIf="name.errors.pattern"> 
                     Name can only include letters.
                 </small>		 
                 <small class="text-danger" *ngIf="name.errors.required && name.touched">
-                  Name must not be blank.
+                  Name is required.
                 </small>
                </div> 
             </div>
 
             <!-- Email input -->
             <div class="form-outline mb-4" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
-                <label>Email address</label>
                 <input type="email" 
                       placeholder="Enter email"
                       #email="ngModel"
@@ -58,8 +55,8 @@
   
             <!-- Password input -->
             <div class="form-outline mb-4" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
-              <label>Password</label>
               <input type="password"
+                     placeholder="Enter password"
                      #pwHash="ngModel" 
                      [(ngModel)]="user.pwHash"
                      required [pattern]="pwHashPattern"
@@ -75,7 +72,7 @@
                   <ul>
                     <li>Must include both uppercase and lowercase characters</li>
                     <li>Must include at least one number</li>
-                    <li>Must be at leat 8 characters long</li>
+                    <li>Must be at least 8 characters long</li>
                   </ul>
               </small>				  
               </div> 
@@ -83,8 +80,8 @@
 
             <!-- Password confirmation -->
             <div class="form-outline mb-4" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
-                <label>Confirm Password</label>
-                <input type="password" 
+                <input type="password"
+                      placeholder="Confirm Password" 
                       #confirmPassword ="ngModel"
                       [(ngModel)]="user.confirmPassword"
                        id="confirmPassword"

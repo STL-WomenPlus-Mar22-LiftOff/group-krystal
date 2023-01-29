@@ -6,16 +6,25 @@
         <div class="form-group">
             <div><h2> What would you like to track?</h2></div>
             <div><p>Enter a habit, symptom, or anything you would like to track in the form below!</p></div>
-            <label for="" class="form-label" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Symptom Name:
+            <label for="" class="form-label" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
                 <input type="text" 
+                placeholder="Symptom/Habit Name"
+                #symptomName = "ngModel"
                 [(ngModel)]="symptom.symptomName" 
                 id="symptomName" 
                 name="symptomName"
-                class="form-control">
+                class="form-control"
+                required [pattern]="symptomNamePattern">
             </label>
+            <div *ngIf="symptomName.errors">
+                <small class="text-danger" *ngIf="symptomName.errors.required && symptomName.touched"> 
+                    This field is required.
+                </small>	
+            </div>
+            <br>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg">Start Tracking!</button>
+            <button type="submit" [disabled]="symptomName.errors" class = "btn btn-primary btn-lg">Start Tracking!</button>
         </div>
     </form>
 </div>

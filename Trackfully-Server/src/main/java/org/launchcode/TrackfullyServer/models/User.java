@@ -4,6 +4,8 @@ import com.sun.istack.NotNull;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 
 @Entity
 public class User extends AbstractEntity{
@@ -14,9 +16,11 @@ public class User extends AbstractEntity{
     private String name;
 
     @NotNull
+    @Email
     private String email;
 
     @NotNull
+    @Size(min = 8)
     private String pwHash;
     
     public User(){};
