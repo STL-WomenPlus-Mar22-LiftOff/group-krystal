@@ -1,34 +1,36 @@
 <div class="container col-md-7" >
-<div class="mainTitle">Symptom Management</div>
-   
-    <form (ngSubmit)="onSubmit(symptom)">
-        <div>
+    <div class="mainTitle">Symptom Management</div>
+       
+        <form #symptomForm="ngForm" (ngSubmit)="onSubmit(symptom)">
+        <div class="form-group">
             <h2>Current Symptoms</h2>
             <ul *ngFor ="let symptom of symptoms">
                 <li>{{symptom}}</li>
             </ul>
-
         </div>
-        <div class="form-group" *ngIf="newSymptom===true">
-            <label for="" class="form-label">Symptom Name:
-                <input type="text" 
-                placeholder="Symptom/Habit Name"
-                #symptomName = "ngModel"
-                [(ngModel)]="symptom.symptomName" 
-                id="symptomName" 
-                name="symptomName"
-                class="form-control"
-                required [pattern]="symptomNamePattern">
-            </label>
-            <div *ngIf="symptomName.errors">
-                <small class="text-danger" *ngIf="symptomName.errors.required && symptomName.touched"> 
-                    This field is required.
-                </small>	
+            <div class="form-group" *ngIf="newSymptom===true">
+                <div><h2> What would you like to track?</h2></div>
+                <div><p>Enter a habit, symptom, or anything you would like to track in the form below!</p></div>
+                <label for="" class="form-label" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
+                    <input type="text" 
+                    placeholder="Symptom/Habit Name"
+                    #symptomName = "ngModel"
+                    [(ngModel)]="symptom.symptomName" 
+                    id="symptomName" 
+                    name="symptomName"
+                    class="form-control"
+                    required [pattern]="symptomNamePattern">
+                </label>
+                <div *ngIf="symptomName.errors">
+                    <small class="text-danger" *ngIf="symptomName.errors.required && symptomName.touched"> 
+                        This field is required.
+                    </small>	
+                </div>
+                <br>
             </div>
-            <br>
-        </div>
-        <div class="form-group">
-            <button type="submit" [disabled]="symptomName.errors" class = "btn btn-primary btn-lg">Start Tracking!</button>
-        </div>
-    </form>
-</div>
+            <div class="form-group">
+                <button type="submit" [disabled]="!symptomForm.valid" class = "btn btn-primary btn-lg">Start Tracking!</button>
+            </div>
+        </form>
+    </div>
+    
