@@ -44,16 +44,16 @@ export class DailyTrackerFormComponent implements OnInit {
     
   ngOnInit(): void {
 
-    if (this.symptomId1 !== null) {
+    if (this.symptomId1 !== "undefined") {
      this.symptomService.getSymptomById(parseInt(this.symptomId1)).subscribe(response => {this.availableSymptoms[`${this.symptomId1}`] = response.symptomName;});
     }
 
-    if (this.symptomId2 !== null) {
+    if (this.symptomId2 !== "undefined") {
       this.symptomService.getSymptomById(parseInt(this.symptomId2)).subscribe(response => {this.availableSymptoms[`${this.symptomId2}`] = response.symptomName;});
       // this.symptomService.getSymptomById(parseInt(this.symptomId2)).subscribe(response => {this.availableSymptoms.push(response);});
      }
 
-     if (this.symptomId3 !== null) {
+     if (this.symptomId3 !== "undefined") {
       this.symptomService.getSymptomById(parseInt(this.symptomId3)).subscribe(response => {this.availableSymptoms[`${this.symptomId3}`] = response.symptomName;});
      }
     console.log(sessionStorage.getItem("symptomId1"));
@@ -66,8 +66,8 @@ export class DailyTrackerFormComponent implements OnInit {
     this.router.navigate([`/dashboard`]);
   }
 
-  onSubmit(symptomId: number) {
-    console.log(symptomId);
+  onSubmit(symptomName: any) {
+    console.log("this worked?"+symptomName);
     // this.symptomService.getSymptomById(parseInt(symptomId)).subscribe((result) => {
     //     this.symptomInfo;
     //     this.dailyEntry.symptom = this.symptomInfo;

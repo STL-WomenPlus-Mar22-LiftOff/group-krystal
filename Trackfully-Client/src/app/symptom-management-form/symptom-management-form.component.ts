@@ -72,6 +72,7 @@ export class SymptomManagementFormComponent implements OnInit {
       // console.log(this.symptom);
       this.symptomService.save(this.symptom).subscribe((result) => {
         this.setSymptomIDInSession();
+        // when creating the user's first symptom, chart does not load properly with this method call. Tried putting this method call in setSymptomIDInSession() - still has the issue
         this.goToDashboard();
       });
       // console.log(this.symptom);
