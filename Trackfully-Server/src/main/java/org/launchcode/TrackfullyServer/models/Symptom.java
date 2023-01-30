@@ -14,7 +14,7 @@ public class Symptom extends AbstractEntity {
     @Size(min = 1)
     private String symptomName;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "user_id")
     @NotNull
     @Valid

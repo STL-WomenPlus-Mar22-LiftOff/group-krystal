@@ -59,7 +59,12 @@ export class LandingPageComponent implements OnInit {
       sessionStorage.setItem("email", result.email);
       sessionStorage.setItem("id",result.id.toString());
       this.symptomService.getSymptomIdByUserId(result.id.toString()).subscribe((symptomResult) => {
-        sessionStorage.setItem("symptomId", symptomResult.toString());
+        sessionStorage.setItem("symptomId1", symptomResult[0]);
+        sessionStorage.setItem("symptomId2", symptomResult[1]);
+        sessionStorage.setItem("symptomId3", symptomResult[2]);
+        // console.log(sessionStorage.getItem("symptomId1"));
+        // console.log(sessionStorage.getItem("symptomId2"));
+        // console.log(sessionStorage.getItem("symptomId3"));
         this.router.navigate([`/dashboard`]);
       });
        //should route to desktop for exisiting user

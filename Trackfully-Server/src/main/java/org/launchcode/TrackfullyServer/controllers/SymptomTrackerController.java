@@ -28,14 +28,7 @@ public class SymptomTrackerController {
     private SymptomRepository symptomRepository;
 
     @GetMapping("data/{symptomId}")
-    public ArrayList<ArrayList<String>> getSymptomTrackerData(@PathVariable("symptomId") String symptomId) {
-
-        //Adding example data, comment this out after first bootrun
-//        symptomTrackerRepository.save(new SymptomTracker(Rating.ONE,new GregorianCalendar(2022,00,01).getTime()));
-//        symptomTrackerRepository.save(new SymptomTracker(Rating.TWO,new GregorianCalendar(2022,00,04).getTime()));
-//        symptomTrackerRepository.save(new SymptomTracker(Rating.FIVE,new GregorianCalendar(2022,00,10).getTime()));
-//        symptomTrackerRepository.save(new SymptomTracker(Rating.TEN,new GregorianCalendar(2022,00,02).getTime()));
-
+    public ArrayList<ArrayList<String>> getSymptomTrackerDates(@PathVariable("symptomId") String symptomId) {
 
         //this is the ArrayList that will house both the x axis and y axis arraylists
         ArrayList<ArrayList<String>> data = new ArrayList<>();
@@ -55,6 +48,12 @@ public class SymptomTrackerController {
                 if (i.getDate().isAfter(range) && i.getDate().isBefore(today.plus(Period.ofDays(1)))) {
                     dataset.put(i.getDate(), i.getRating());
                 }
+//                for (LocalDate j = range ; j.isBefore(today) ; j.plus(Period.ofDays(1))){
+//                    if (i.getRating() == null){
+//                        dataset.put(j,null);
+//                    }
+//                    dataset.put(j,i.getRating());
+//                }
             }
         }
 
@@ -88,6 +87,7 @@ public class SymptomTrackerController {
         System.out.println("data");
         return data;
     }
+
 
 
     @PostMapping("add-daily")
