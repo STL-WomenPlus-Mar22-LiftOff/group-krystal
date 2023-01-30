@@ -59,7 +59,7 @@ public class SymptomController {
                 numberOfSymptoms++;
             }
         }
-        if (numberOfSymptoms > 3) {
+        if (numberOfSymptoms > 2) {
             return false;
         } else {
             return true;

@@ -39,7 +39,7 @@ export class SymptomManagementFormComponent implements OnInit {
       // console.log("this is the result"+result);
     })
     // console.log(this.symptom.user.id);
-    console.log(sessionStorage.getItem("symptomId1"));
+    console.log(typeof(sessionStorage.getItem("symptomId1")));
     console.log(sessionStorage.getItem("symptomId2"));
     console.log(sessionStorage.getItem("symptomId3"));
   
@@ -54,18 +54,14 @@ export class SymptomManagementFormComponent implements OnInit {
   }
     setSymptomIDInSession(){
       this.symptomService.getSymptomIdByUserId(this.getUserSessionId()).subscribe((result) => {
-        if (sessionStorage.getItem("symptomId1") == "undefined") {
-          sessionStorage.setItem("symptomId", result[0]);
-        } else if (sessionStorage.getItem("symptomId2") === "undefined") {
-          sessionStorage.setItem("symptomId2", result[1]);
-        } else if (sessionStorage.getItem("symptomId3") === "undefined") {
-          sessionStorage.setItem("symptomId3", result[2]);
-        }});
-        console.log(sessionStorage.getItem("symptomId1"));
-        console.log(sessionStorage.getItem("symptomId2"));
-        console.log(sessionStorage.getItem("symptomId3"));
-    }
-    
+        sessionStorage.setItem("symptomId1", result[0]);
+        sessionStorage.setItem("symptomId2", result[1]);
+        sessionStorage.setItem("symptomId3", result[2]);
+        // console.log(sessionStorage.getItem("symptomId1"));
+        // console.log(sessionStorage.getItem("symptomId2"));
+        // console.log(sessionStorage.getItem("symptomId3"));
+    });
+  }
 
     onSubmit(symptom: Symptom) {
       symptom.user = this.user; //assign logged in user to the symptom being saved
