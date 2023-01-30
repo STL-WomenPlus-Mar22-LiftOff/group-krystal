@@ -19,7 +19,7 @@ import { Options } from '@angular-slider/ngx-slider';
 })
 export class DailyTrackerFormComponent implements OnInit {
 
-  value: number = 5;
+  value: number = 0;
   options: Options = {
     floor: 0,
     ceil: 10,
