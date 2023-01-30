@@ -21,6 +21,12 @@ export class DailyTrackerFormComponent implements OnInit {
   currentDate = formatDate(new Date(), 'EEEE, MMMM d, y', 'en');
   dailyEntry: DailyEntry;
   symptomInfo: Symptom;
+  symptomValues = Object.values;
+  availableSymptoms: any;
+  symptomId1: any;
+  symptomId2: any;
+  symptomId3: any;
+  selectedSymptomId: any;
 
   constructor(private dailyTrackerService: DailyTrackerService,
               private symptomService: SymptomService,
@@ -29,24 +35,52 @@ export class DailyTrackerFormComponent implements OnInit {
               private router: Router) {
       this.dailyEntry = new DailyEntry;
       this.symptomInfo = new Symptom;
+      this.availableSymptoms = {};
+      this.symptomValues = Object.values;
+      this.symptomId1 = sessionStorage.getItem("symptomId1");
+      this.symptomId2 = sessionStorage.getItem("symptomId2");
+      this.symptomId3 = sessionStorage.getItem("symptomId3");
+      this.selectedSymptomId;
     }
  
     
   ngOnInit(): void {
 
-    let symptomId = sessionStorage.getItem("symptomId");
-    if (symptomId !== null) {
-     this.symptomService.getSymptomById(parseInt(symptomId)).subscribe(response => this.symptomInfo = response);
+    if (this.symptomId1 !== "undefined") {
+     this.symptomService.getSymptomById(parseInt(this.symptomId1)).subscribe(response => {this.availableSymptoms[`${this.symptomId1}`] = response.symptomName;});
     }
+
+    if (this.symptomId2 !== "undefined") {
+      this.symptomService.getSymptomById(parseInt(this.symptomId2)).subscribe(response => {this.availableSymptoms[`${this.symptomId2}`] = response.symptomName;});
+      // this.symptomService.getSymptomById(parseInt(this.symptomId2)).subscribe(response => {this.availableSymptoms.push(response);});
+     }
+
+     if (this.symptomId3 !== "undefined") {
+      this.symptomService.getSymptomById(parseInt(this.symptomId3)).subscribe(response => {this.availableSymptoms[`${this.symptomId3}`] = response.symptomName;});
+     }
+    // console.log(sessionStorage.getItem("symptomId1"));
+    // console.log(sessionStorage.getItem("symptomId2"));
+    // console.log(sessionStorage.getItem("symptomId3"));
+    // console.log(this.availableSymptoms);
   }
 
   goToDashboard() {
     this.router.navigate([`/dashboard`]);
   }
 
-  onSubmit() {
-    this.dailyEntry.symptom = this.symptomInfo;
-    this.dailyTrackerService.save(this.dailyEntry).subscribe((result) => this.goToDashboard()); 
+  getSymptomByName (name: any) {
+    return Object.keys(this.availableSymptoms).find(key => this.availableSymptoms[key] === name);
+  }
+
+  onSubmit(symptomName: any) {
+    this.selectedSymptomId = this.getSymptomByName(symptomName);
+    console.log("this is what is passed through:"+symptomName);
+    console.log("this is the key"+this.selectedSymptomId);
+    this.symptomService.getSymptomById(parseInt(this.selectedSymptomId)).subscribe((result) => {
+        this.symptomInfo = result;
+        this.dailyEntry.symptom = this.symptomInfo;
+        this.dailyTrackerService.save(this.dailyEntry).subscribe((result) => this.goToDashboard()); 
+      })   
   }
 
 }

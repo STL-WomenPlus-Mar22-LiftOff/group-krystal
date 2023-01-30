@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Chart, registerables} from 'chart.js';
-import {ChartService} from './chart.service'
+import {ChartService} from '../service/chart.service'
 import { SymptomService } from '../service/symptom/symptom.service';
 import { Symptom } from '../model/symptom';
 import 'chartjs-adapter-date-fns';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-charts',
@@ -14,50 +15,71 @@ import 'chartjs-adapter-date-fns';
 export class ChartsComponent implements OnInit {
 
   symptomInfo: Symptom;
-  symptomLabel: String = "data";
+  symptomLabel: String;
   userName: any;
   lastDate: any;
   firstDate: any;
+  chartData: any;
+  borderColorCount = 0;
+  borderColors = ['#519188','#5C7399','#91515a'];
 
 constructor(private  chartService: ChartService, private symptomService: SymptomService) {
   Chart.register(...registerables);
   this.symptomInfo = new Symptom;
-  }  
-
-ngOnInit(): void {
-  let symptomId = sessionStorage.getItem("symptomId");
-  if (symptomId) {
-    this.symptomService.getSymptomById(parseInt(symptomId)).subscribe((result) => {
-      this.symptomInfo = result;
-      this.symptomLabel = this.symptomInfo.symptomName;
-  });
-  this.chartService.getData(symptomId).subscribe((data: any) => {
-    // console.log(data);
-    this.createChart(data[0],data[1]);
-  })
-};
+  this.symptomLabel = "data";
   this.userName = sessionStorage.getItem("name");
   this.lastDate = new Date(new Date().setDate(new Date().getDate()-30));
   this.firstDate = new Date(new Date().setDate(new Date().getDate()));
+  }  
+
+ngOnInit(): void {
+  this.createChart();
+  this.getTrackerData("symptomId1");
+  this.getTrackerData("symptomId2");
+  this.getTrackerData("symptomId3");
+}
+
+getTrackerData(storageKey: string) {
+    let symptomId = sessionStorage.getItem(storageKey);
+  if (symptomId) {
+    this.symptomService.getSymptomById(parseInt(symptomId)).subscribe((result) => {
+    if (symptomId) {
+      this.chartService.getData(symptomId).subscribe((data: any) => {
+      this.addData(this.chart,data,result.symptomName);
+      // console.log(data)
+    })}
+  });
+};
 }
 
   public chart: any;
 
-  createChart(dates: Array<String>, ratings: Array<String>){
-  
+  public addData(chart: Chart, data: any, label: any) {
+    let chartData = [];
+
+    for (let i = 0 ; i < data[0].length ; i++){
+        chartData.push({
+          x: data[0][i], y: data[1][i]
+        });
+    }
+    chart.data.datasets.push({
+        label: label,
+        data: chartData,
+        borderColor: this.borderColors[this.borderColorCount],
+        backgroundColor: this.borderColors[this.borderColorCount],
+        fill: false,
+        pointBackgroundColor: this.borderColors[this.borderColorCount],
+    });
+    chart.update();
+    this.borderColorCount++;
+}
+
+  createChart(){
     this.chart = new Chart("MyChart", {
       type: 'line',
-
       data: {
-        labels: dates,
-        datasets: [{
-          label: this.symptomLabel.toString(),
-          data: ratings,
-          borderColor: "#519188",
-          fill: false,
-          pointBackgroundColor: "#344B47",
-        }]
-      },
+        datasets: []
+    },
       options: {
         responsive: true,
         plugins: {

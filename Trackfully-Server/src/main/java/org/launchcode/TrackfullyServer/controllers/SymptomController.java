@@ -9,8 +9,11 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Optional;
+
+import static java.lang.Integer.parseInt;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
@@ -29,24 +32,38 @@ public class SymptomController {
     }
 
     @GetMapping("user/{userId}")
-    public Integer getSymptomIdByUserId(@PathVariable("userId") String userId) {
+    public ArrayList<Integer> getSymptomIdsByUserId(@PathVariable("userId") String userId) {
 
-        Optional<User> user = userRepository.findById(Integer.parseInt(userId));
-
-        int symptomId = -1;
-
-        if (user.isPresent()) {
-            Optional<Symptom> symptom = symptomRepository.findByUser(user.get());
-            if (symptom.isPresent()) {
-                symptomId = symptom.get().getId();
+        ArrayList<Integer> symptomIds = new ArrayList<Integer>();
+        Iterable<Symptom> symptoms = symptomRepository.findAll();
+        for (Symptom symptom : symptoms) {
+            if (symptom.getUser().getId() == Integer.parseInt(userId)) {
+                symptomIds.add(symptom.getId());
             }
         }
-        return symptomId;
+        return symptomIds;
     }
 
     @GetMapping("/{id}")
     public Optional<Symptom> getSymptomById(@PathVariable("id") Integer id) {
         return symptomRepository.findById(id);
+    }
+
+    // this checks if the user has more than 3 symptoms already.
+    @GetMapping("check/{userId}")
+    public boolean checkNumberOfSymptoms(@PathVariable("userId") Integer userId) {
+        Integer numberOfSymptoms = 0;
+        Iterable<Symptom> symptoms = symptomRepository.findAll();
+        for (Symptom symptom : symptoms) {
+            if (symptom.getUser().getId() == userId) {
+                numberOfSymptoms++;
+            }
+        }
+        if (numberOfSymptoms > 2) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
     @PostMapping("")
