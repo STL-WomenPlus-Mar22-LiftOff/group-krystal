@@ -20,6 +20,8 @@ export class ChartsComponent implements OnInit {
   lastDate: any;
   firstDate: any;
   chartData: any;
+  borderColorCount = 0;
+  borderColors = ['#519188','#5C7399','#91515a'];
 
 constructor(private  chartService: ChartService, private symptomService: SymptomService) {
   Chart.register(...registerables);
@@ -44,7 +46,7 @@ getTrackerData(storageKey: string) {
     if (symptomId) {
       this.chartService.getData(symptomId).subscribe((data: any) => {
       this.addData(this.chart,data,result.symptomName);
-      console.log(data)
+      // console.log(data)
     })}
   });
 };
@@ -53,7 +55,6 @@ getTrackerData(storageKey: string) {
   public chart: any;
 
   public addData(chart: Chart, data: any, label: any) {
-    console.log(data)
     let chartData = [];
 
     for (let i = 0 ; i < data[0].length ; i++){
@@ -61,16 +62,16 @@ getTrackerData(storageKey: string) {
           x: data[0][i], y: data[1][i]
         });
     }
-    console.log(chartData)
-
     chart.data.datasets.push({
         label: label,
         data: chartData,
-        borderColor: "#519188",
+        borderColor: this.borderColors[this.borderColorCount],
+        backgroundColor: this.borderColors[this.borderColorCount],
         fill: false,
-        pointBackgroundColor: "#344B47",
+        pointBackgroundColor: this.borderColors[this.borderColorCount],
     });
     chart.update();
+    this.borderColorCount++;
 }
 
   createChart(){

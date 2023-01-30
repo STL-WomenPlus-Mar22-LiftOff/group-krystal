@@ -17,7 +17,10 @@ export class SymptomManagementFormComponent implements OnInit {
 
   symptom: Symptom;
   user: User;
-  // symptoms: Symptom[];
+  symptoms: String[];
+  symptomId1: any;
+  symptomId2: any;
+  symptomId3: any;
 
   constructor(
     private symptomService: SymptomService,
@@ -26,9 +29,26 @@ export class SymptomManagementFormComponent implements OnInit {
     private activatedRoute: ActivatedRoute) { 
     this.symptom = new Symptom;
     this.user = new User;
+    this.symptoms = [];
+    this.symptomId1 = sessionStorage.getItem("symptomId1");
+    this.symptomId2 = sessionStorage.getItem("symptomId2");
+    this.symptomId3 = sessionStorage.getItem("symptomId3");
 }
 
   ngOnInit(): void {
+    if (this.symptomId1 !== "undefined") {
+      this.symptomService.getSymptomById(parseInt(this.symptomId1)).subscribe(response => {this.symptoms.push(response.symptomName)});
+     }
+ 
+     if (this.symptomId2 !== "undefined") {
+       this.symptomService.getSymptomById(parseInt(this.symptomId2)).subscribe(response => {this.symptoms.push(response.symptomName)});
+       // this.symptomService.getSymptomById(parseInt(this.symptomId2)).subscribe(response => {this.availableSymptoms.push(response);});
+      }
+ 
+      if (this.symptomId3 !== "undefined") {
+       this.symptomService.getSymptomById(parseInt(this.symptomId3)).subscribe(response => {this.symptoms.push(response.symptomName)});
+      }
+
     this.getUserSessionId();
     let userIdNumber = parseInt(this.getUserSessionId() || "");
     this.userService.getUserByUserID(userIdNumber).subscribe(result => this.user = result);
@@ -39,9 +59,9 @@ export class SymptomManagementFormComponent implements OnInit {
       // console.log("this is the result"+result);
     })
     // console.log(this.symptom.user.id);
-    console.log(typeof(sessionStorage.getItem("symptomId1")));
-    console.log(sessionStorage.getItem("symptomId2"));
-    console.log(sessionStorage.getItem("symptomId3"));
+    // console.log(typeof(sessionStorage.getItem("symptomId1")));
+    // console.log(sessionStorage.getItem("symptomId2"));
+    // console.log(sessionStorage.getItem("symptomId3"));
   
   }
 
@@ -57,6 +77,7 @@ export class SymptomManagementFormComponent implements OnInit {
         sessionStorage.setItem("symptomId1", result[0]);
         sessionStorage.setItem("symptomId2", result[1]);
         sessionStorage.setItem("symptomId3", result[2]);
+        this.goToDashboard();
         // console.log(sessionStorage.getItem("symptomId1"));
         // console.log(sessionStorage.getItem("symptomId2"));
         // console.log(sessionStorage.getItem("symptomId3"));
@@ -67,9 +88,7 @@ export class SymptomManagementFormComponent implements OnInit {
       symptom.user = this.user; //assign logged in user to the symptom being saved
       // console.log(this.symptom);
       this.symptomService.save(this.symptom).subscribe((result) => {
-        this.setSymptomIDInSession();
-        // when creating the user's first symptom, chart does not load properly with this method call. Tried putting this method call in setSymptomIDInSession() - still has the issue
-        this.goToDashboard();
+        this.setSymptomIDInSession();        
       });
       // console.log(this.symptom);
     };

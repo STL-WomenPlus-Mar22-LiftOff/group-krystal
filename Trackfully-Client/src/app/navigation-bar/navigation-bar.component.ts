@@ -12,7 +12,8 @@ export class NavigationBarComponent implements OnInit {
   loggedInMenuItems = [
     {linkId: 1, linkName: 'Dashboard', linkUrl: 'dashboard'},
     {linkId: 2, linkName: 'Daily Tracker', linkUrl: 'daily-tracker-form'}, 
-    {linkId: 3, linkName: 'Sign Out', linkUrl: 'logout'}
+    {linkId: 3, linkName: 'Manage Symptoms', linkUrl: 'symptom-manage-form'},
+    {linkId: 4, linkName: 'Sign Out', linkUrl: 'logout'}
   ];
 
   loggedOutMenuItems = [

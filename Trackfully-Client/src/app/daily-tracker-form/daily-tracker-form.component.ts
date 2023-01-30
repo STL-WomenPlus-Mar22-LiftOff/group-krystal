@@ -58,10 +58,10 @@ export class DailyTrackerFormComponent implements OnInit {
      if (this.symptomId3 !== "undefined") {
       this.symptomService.getSymptomById(parseInt(this.symptomId3)).subscribe(response => {this.availableSymptoms[`${this.symptomId3}`] = response.symptomName;});
      }
-    console.log(sessionStorage.getItem("symptomId1"));
-    console.log(sessionStorage.getItem("symptomId2"));
-    console.log(sessionStorage.getItem("symptomId3"));
-    console.log(this.availableSymptoms);
+    // console.log(sessionStorage.getItem("symptomId1"));
+    // console.log(sessionStorage.getItem("symptomId2"));
+    // console.log(sessionStorage.getItem("symptomId3"));
+    // console.log(this.availableSymptoms);
   }
 
   goToDashboard() {

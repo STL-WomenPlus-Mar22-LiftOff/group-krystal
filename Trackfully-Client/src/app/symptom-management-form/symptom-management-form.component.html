@@ -2,13 +2,13 @@
     <div class="mainTitle">What would you like to track?</div>
 
     <form (ngSubmit)="onSubmit(symptom)">
-        <!-- <div>
+        <div>
             <h2>Current Symptoms</h2>
             <ul *ngFor ="let symptom of symptoms">
-                <li>{{symptom.name}}</li>
+                <li>{{symptom}}</li>
             </ul>
 
-        </div> -->
+        </div>
         <div class="form-group" *ngIf="newSymptom===true">
             <label for="" class="form-label">Symptom Name:
                 <input type="text" 
