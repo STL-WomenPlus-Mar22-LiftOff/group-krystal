@@ -1,38 +1,12 @@
-body {
-	background:url(images/background-splash.png) no-repeat;
-	overflow:hidden;
-	background-size:cover;
-	width:100%;
-	height:100vh;
-}
-main{
-	text-align: center;
-	top: 40px;
-}
-/* .container{
-	text-align: center;
-	background-color: #efe4e6;
-	opacity: .8;
-	position: relative;
-	z-index: 9;
-} */
-
-h1{
-    text-align: center;
-	top: 40px;
-	z-index: 9;
-}
-
-.chart{
-	text-align: center;
-	z-index: 9;
-	position: relative;
+section {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
 }
 
 .form-group{
 	text-align: center;
-	z-index: 9;
-	position: relative;
 } 
 
 
@@ -40,23 +14,14 @@ h1{
     color: #aa706a;
     font-family: Amsterdam;
     letter-spacing: 1.2rem;
-	font-size: 80px;
+	font-size: 60px;
     text-align: center;
-    padding-top: 10px;
-	margin-left: 40px;
-	z-index: 9;
-	position: relative;
+    padding-top: 30px;
 }
 
 .chart{
-	padding: 60px;
-	margin-left: -60px;
-	z-index: 9;
-	position: relative;
+	padding-top: 40px;
+	padding-bottom: 30px;
+	align-self: center;
+	text-align: center;
 }
-
-.btn{
-	position: relative;
-	z-index: 9;
-}
-
