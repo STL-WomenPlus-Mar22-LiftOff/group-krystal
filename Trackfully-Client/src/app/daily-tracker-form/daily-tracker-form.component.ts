@@ -26,6 +26,7 @@ export class DailyTrackerFormComponent implements OnInit {
   symptomId1: any;
   symptomId2: any;
   symptomId3: any;
+  selectedSymptomId: any;
 
   constructor(private dailyTrackerService: DailyTrackerService,
               private symptomService: SymptomService,
@@ -39,6 +40,7 @@ export class DailyTrackerFormComponent implements OnInit {
       this.symptomId1 = sessionStorage.getItem("symptomId1");
       this.symptomId2 = sessionStorage.getItem("symptomId2");
       this.symptomId3 = sessionStorage.getItem("symptomId3");
+      this.selectedSymptomId;
     }
  
     
@@ -66,14 +68,19 @@ export class DailyTrackerFormComponent implements OnInit {
     this.router.navigate([`/dashboard`]);
   }
 
+  getSymptomByName (name: any) {
+    return Object.keys(this.availableSymptoms).find(key => this.availableSymptoms[key] === name);
+  }
+
   onSubmit(symptomName: any) {
-    console.log("this worked?"+symptomName);
-    // this.symptomService.getSymptomById(parseInt(symptomId)).subscribe((result) => {
-    //     this.symptomInfo;
-    //     this.dailyEntry.symptom = this.symptomInfo;
-    //     console.log(this.dailyEntry.symptom);
-    //     this.dailyTrackerService.save(this.dailyEntry).subscribe((result) => this.goToDashboard()); 
-    //   })   
+    this.selectedSymptomId = this.getSymptomByName(symptomName);
+    console.log("this is what is passed through:"+symptomName);
+    console.log("this is the key"+this.selectedSymptomId);
+    this.symptomService.getSymptomById(parseInt(this.selectedSymptomId)).subscribe((result) => {
+        this.symptomInfo = result;
+        this.dailyEntry.symptom = this.symptomInfo;
+        this.dailyTrackerService.save(this.dailyEntry).subscribe((result) => this.goToDashboard()); 
+      })   
   }
 
 }
