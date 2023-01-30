@@ -19,14 +19,14 @@ import { Options } from '@angular-slider/ngx-slider';
 })
 export class DailyTrackerFormComponent implements OnInit {
 
-  value: number = 0;
-  options: Options = {
+  options:Options = {
     floor: 0,
     ceil: 10,
     step: 1,
     showTicks: true,
     showTicksValues: true
   };
+  
 
   currentDate = formatDate(new Date(), 'EEEE, MMMM d, y', 'en');
   dailyEntry: DailyEntry;

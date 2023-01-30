@@ -78,3 +78,39 @@ p{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 24px;
 }
+
+.custom-slider .ngx-slider .ngx-slider-bar {
+    background: white;
+    height: 10px;
+  }
+  
+
+  .custom-slider .ngx-slider .ngx-slider-pointer {
+    width: 17px;
+    height: 17px;
+    top: auto; /* to remove the default positioning */
+    bottom: auto;
+    background-color: #aa706a;
+  }
+
+  .custom-slider .ngx-slider .ngx-slider-pointer:after {
+    display: none;
+  }
+
+  .custom-slider .ngx-slider .ngx-slider-tick {
+    width: 3px;
+    height: 18px;
+    margin-left: 4px;
+    border-radius: 0;
+    background: #519188;
+    color: #aa706a;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+
+    
+  }
+
+  .custom-slider .ngx-slider .ngx-slider-tick.ngx-slider-selected {
+    background: o#aa706a;
+  }
+

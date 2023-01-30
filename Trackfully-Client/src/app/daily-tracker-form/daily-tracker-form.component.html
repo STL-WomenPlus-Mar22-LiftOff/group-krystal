@@ -29,9 +29,8 @@
         </div>
         <div class="row">
             <label for="rating" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Rate how you are feeling today:</label>
-            <div>
+            <div class="custom-slider">
                 <ngx-slider 
-                class="custom-slider"
                 id="rating"
                 name="rating"
                 [(ngModel)]="dailyEntry.rating"
