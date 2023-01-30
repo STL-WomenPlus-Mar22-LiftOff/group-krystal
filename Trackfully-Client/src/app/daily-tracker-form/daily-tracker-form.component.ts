@@ -21,19 +21,11 @@ export class DailyTrackerFormComponent implements OnInit {
 
   value: number = 5;
   options: Options = {
-    showTicksValues: true,
-    stepsArray: [
-      {value: 0},
-      {value: 2},
-      {value: 3},
-      {value: 4},
-      {value: 5},
-      {value: 6},
-      {value: 7},
-      {value: 8},
-      {value: 9},
-      {value: 10}
-    ]
+    floor: 0,
+    ceil: 10,
+    step: 1,
+    showTicks: true,
+    showTicksValues: true
   };
 
   currentDate = formatDate(new Date(), 'EEEE, MMMM d, y', 'en');
