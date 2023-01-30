@@ -81,13 +81,13 @@ p{
 
 .custom-slider .ngx-slider .ngx-slider-bar {
     background: white;
-    height: 10px;
+    height: 6px;
   }
   
 
   .custom-slider .ngx-slider .ngx-slider-pointer {
-    width: 17px;
-    height: 17px;
+    width: 25px;
+    height: 25px;
     top: auto; /* to remove the default positioning */
     bottom: auto;
     background-color: #aa706a;
