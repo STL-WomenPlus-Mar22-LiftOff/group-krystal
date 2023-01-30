@@ -5,11 +5,13 @@ import com.sun.istack.NotNull;
 import javax.persistence.*;
 import javax.persistence.Entity;
 import javax.validation.Valid;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Symptom extends AbstractEntity {
 
     @NotNull
+    @Size(min = 1)
     private String symptomName;
 
     @ManyToOne

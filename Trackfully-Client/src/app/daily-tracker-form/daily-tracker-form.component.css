@@ -18,25 +18,24 @@ datalist{
     width:100%;
 }
 .slider-bar{
-    width: 95%;
+    width: 100%;
 }
 
 .container col-md-7{
   position: relative;
-  top: 40px;
 }
 
 .mainTitle{
   color: #aa706a;
   font-family: Amsterdam;
   letter-spacing: 1.2rem;
-  font-size: 80px;
+  font-size: 60px;
   text-align: center;
-  padding-bottom: 40px;
-  padding-top: 40px;
   position: relative;
+  line-height: 180px;
 }
 .btn{
   font-size: 18px;
+  justify-content: center;
 }
 

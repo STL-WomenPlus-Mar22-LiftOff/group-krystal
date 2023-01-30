@@ -18,6 +18,7 @@ export class SymptomManagementFormComponent implements OnInit {
   symptom: Symptom;
   user: User;
   symptoms: String[];
+  symptomNamePattern = "^[a-zA-Z].*[\s\.]*$";
   symptomId1: any;
   symptomId2: any;
   symptomId3: any;

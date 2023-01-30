@@ -19,7 +19,7 @@ export class SignUpPageComponent implements OnInit {
   //same as landing page
   emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"; //regex for email validation
   
-  namePattern = "^[a-zA-Z]*" //regex for name verification
+  namePattern = "^[a-zA-Z].*[\s\.]*$" //regex for name verification
 
   pwHashPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}$"; //regex for password validation
 

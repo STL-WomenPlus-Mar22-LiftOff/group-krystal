@@ -1,6 +1,6 @@
 <div class="container col-md-7" >
-    <div class="mainTitle">What would you like to track?</div>
-
+<div class="mainTitle">Symptom Management</div>
+   
     <form (ngSubmit)="onSubmit(symptom)">
         <div>
             <h2>Current Symptoms</h2>
@@ -12,14 +12,23 @@
         <div class="form-group" *ngIf="newSymptom===true">
             <label for="" class="form-label">Symptom Name:
                 <input type="text" 
+                placeholder="Symptom/Habit Name"
+                #symptomName = "ngModel"
                 [(ngModel)]="symptom.symptomName" 
                 id="symptomName" 
                 name="symptomName"
-                class="form-control">
+                class="form-control"
+                required [pattern]="symptomNamePattern">
             </label>
+            <div *ngIf="symptomName.errors">
+                <small class="text-danger" *ngIf="symptomName.errors.required && symptomName.touched"> 
+                    This field is required.
+                </small>	
+            </div>
+            <br>
         </div>
         <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg">Start Tracking!</button>
+            <button type="submit" [disabled]="symptomName.errors" class = "btn btn-primary btn-lg">Start Tracking!</button>
         </div>
     </form>
 </div>

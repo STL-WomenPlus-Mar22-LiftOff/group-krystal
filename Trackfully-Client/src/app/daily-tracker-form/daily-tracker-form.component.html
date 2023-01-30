@@ -1,6 +1,5 @@
-<div class="container col-md-7">
-    <div class="mainTitle">Daily Tracker</div>
-
+<div class="mainTitle">Daily Tracker</div>
+    <div class="container col-md-7">
 <div>
     <form #trackerForm="ngForm" action="/dashboard" method="post" (ngSubmit)="onSubmit(symptomInfo.symptomName)">
        
@@ -10,16 +9,16 @@
             <!-- <input type="text" id="date" class="form-control" name="selected_date" value={{currentDate}} [(ngModel)]="dailyEntry.dateToday"/> -->
             <!-- once we allow users to select their own date instead of default value, use simple date picker instead:-->
                 <input type="date" 
-                    #date = "ngModel"
-                    id="date" 
-                    name="selected_date" 
-                    [(ngModel)]="dailyEntry.date" 
-                    required />
+                       id="date" 
+                       name="selected_date" 
+                       class="form-control" 
+                       [(ngModel)]="dailyEntry.date" 
+                       required #date="ngModel"/>
                 <div *ngIf="date.errors">   
-                    <small class="text-danger" *ngIf="date.errors.required && date.touched">
-                    You must enter a date.
-                  </small>
-                 </div> 
+                    <small class="text-danger" *ngIf="date.errors.required && date.touched"> 
+                      Date is required.
+                  </small>	
+                </div>
         </div>
 
 
@@ -44,12 +43,15 @@
         <div class="row">
             <label for="rating" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Rate how you are feeling today:</label>
             <div >
-                <input type="range" class="slider-bar form-control" min="0" max="10" step="1" list="steplist" 
+                <input type="range" 
+                    class="slider-bar form-control" 
+                    min="0" max="10" 
+                    step="1"
+                    list="steplist" 
                     id="rating" 
                     name="rating" 
-                    [(ngModel)]="dailyEntry.rating"
-                    #rating = "ngModel"
-                    required > 
+                    [(ngModel)]="dailyEntry.rating" 
+                    #rating="ngModel"> 
                     <datalist id="steplist" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
                         <option class="slider" value="0" label="0"></option>
                         <option class="slider" value="1" label="1"></option>
@@ -84,4 +86,4 @@
         </div>
     </form>
 </div>
-
+</div>
