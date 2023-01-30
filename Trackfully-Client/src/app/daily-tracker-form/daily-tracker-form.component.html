@@ -29,15 +29,14 @@
         </div>
         <div class="row">
             <label for="rating" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Rate how you are feeling today:</label>
-            <div >
-                <input type="range" 
-                    class="custom-slider" 
-                    list="steplist" 
-                    id="rating" 
-                    name="rating" 
-                    [(ngModel)]="dailyEntry.rating" 
-                    #rating="ngModel"> 
-                <ngx-slider [(value)]="dailyEntry.rating" [options]="options"></ngx-slider>
+            <div>
+                <ngx-slider 
+                class="custom-slider"
+                id="rating"
+                name="rating"
+                [(ngModel)]="dailyEntry.rating"
+                #rating="ngModel"
+                [options]="options"></ngx-slider>
             </div>
         </div>
         <div class="row">
