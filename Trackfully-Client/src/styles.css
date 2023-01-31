@@ -79,6 +79,10 @@ p{
     font-size: 24px;
 }
 
+ul {
+    list-style-position: inside;
+}
+
 .custom-slider .ngx-slider .ngx-slider-bar {
     background: white;
     height: 8px;
