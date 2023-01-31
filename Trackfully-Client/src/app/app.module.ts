@@ -15,6 +15,7 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { LogoutComponent } from './logout/logout.component';
 import { AuthGuardService } from './service/auth-guard.service';
 import { AutheticationService } from './service/authentication/authetication.service';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AutheticationService } from './service/authentication/authetication.ser
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    NgxSliderModule
   ],
   providers: [AuthGuardService, AutheticationService],
   bootstrap: [AppComponent]

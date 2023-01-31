@@ -82,3 +82,38 @@ p{
 ul {
     list-style-position: inside;
 }
+
+.custom-slider .ngx-slider .ngx-slider-bar {
+    background: white;
+    height: 8px;
+  }
+  
+
+  .custom-slider .ngx-slider .ngx-slider-pointer {
+    width: 25px;
+    height: 25px;
+    top: auto; /* to remove the default positioning */
+    bottom: auto;
+    background-color: #aa706a;
+  }
+
+  .custom-slider .ngx-slider .ngx-slider-pointer:after {
+    display: none;
+  }
+
+  .custom-slider .ngx-slider .ngx-slider-tick {
+    width: 3px;
+    height: 18px;
+    border-radius: 0;
+    background: #519188;
+    color: #aa706a;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 20px;
+
+    
+  }
+
+  .custom-slider .ngx-slider .ngx-slider-tick.ngx-slider-selected {
+    background: o#aa706a;
+  }
+

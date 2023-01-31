@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 import { identifierModuleUrl } from '@angular/compiler';
 import { User } from '../model/user';
 import { UserService } from '../service/user/user.service';
+import { Options } from '@angular-slider/ngx-slider';
 
 @Component({
   selector: 'app-daily-tracker-form',
@@ -17,6 +18,15 @@ import { UserService } from '../service/user/user.service';
   styleUrls: ['./daily-tracker-form.component.css'],
 })
 export class DailyTrackerFormComponent implements OnInit {
+
+  options:Options = {
+    floor: 0,
+    ceil: 10,
+    step: 1,
+    showTicks: true,
+    showTicksValues: true
+  };
+  
 
   currentDate = formatDate(new Date(), 'EEEE, MMMM d, y', 'en');
   dailyEntry: DailyEntry;
