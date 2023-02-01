@@ -7,7 +7,8 @@ import { Component } from '@angular/core';
   <app-navigation-bar></app-navigation-bar>
   
   <router-outlet></router-outlet>
-  <!-- can eventually add a header <app-footer></app-footer> here -->
+  
+  <app-footer></app-footer>
   `,
   styles: [],
   //templateUrl: './app.component.html',
