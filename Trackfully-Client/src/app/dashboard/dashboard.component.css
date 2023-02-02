@@ -29,6 +29,11 @@ section {
 	text-align: center;
 }
 
+.quote{
+	align-items: center;
+	font-style: italic;
+}
+
 .container {
 	background-color:rgba(213, 185, 177, .53);
 	height: 575px;
