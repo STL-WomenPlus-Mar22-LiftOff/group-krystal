@@ -1,21 +1,17 @@
 
-      <div class="mainTitle">Trackfully</div>
-      <div class="container">
-        <section class="landing-page">
-          <div class="scope">
-            <span style="--i:1;"><img src="images\dashboard1.png" alt="not found"></span>
-            <span style="--i:2;"><img src="background-splash.png" alt="not found"></span>
-            <span style="--i:3;"><img src="https://i.postimg.cc/CMfHRKfP/woman-2003647-960-720.jpg" alt="not found"></span>
-            <span style="--i:4;"><img src="https://i.postimg.cc/T1rDCpVT/beautiful-1274056-960-720.jpg" alt="not found"></span>
-            <span style="--i:5;"><img src="https://i.postimg.cc/SNf99YQr/woman-1807533-960-720.jpg" alt="not found"></span>
-            <span style="--i:6;"><img src="https://i.postimg.cc/2SHBcpZL/pexels-photo-4664520.jpg" alt="not found"></span>
-            <span style="--i:7;"><img src="https://i.postimg.cc/CxBzNcjw/Opera-Snapshot-2020-07-03-162022-www-freepik-com.png" alt="not found"></span>
-            <span style="--i:8;"><img src="https://i.postimg.cc/0QckxSpt/Opera-Snapshot-2020-07-03-161422-www-freepik-com.png" alt="not found"></span>
-          </div>
+<div class="mainTitle">Trackfully</div>
+<div class="column-grid">
+  <div class="col">
+<app-slider></app-slider>
+</div>
+<div class="col">
+<section>  
+      <div class="login-container">
+       
         <div class="login-form">
-        <h2>Login</h2>
-        <small class="text-danger" *ngIf="!isValidForm">Username or password was incorrect. Please try again.</small>
-        <form #signInForm="ngForm">
+          <h2>Login</h2>
+          <small class="text-danger" *ngIf="!isValidForm">Username or password was incorrect. Please try again.</small>
+          <form #signInForm="ngForm">
           <!-- Email input -->
           <div class="form-outline mb-4 form-group">
             <input type="email"
@@ -57,8 +53,8 @@
           </div>
         
         
-      <!--logingUser() Connects login button to get request-->
-        <div class="text-center text-lg-start mt-4 pt-2">
+          <!--logingUser() Connects login button to get request-->
+         <div class="text-center text-lg-start mt-4 pt-2">
           <div class="form-group">
             <button type="submit" class="btn btn-primary btn-lg"
               style="padding-left: 2.5rem; padding-right: 2.5rem;" 
@@ -66,7 +62,15 @@
             </button>
           </div>
           <p class="small fw-bold mt-2 pt-1 mb-0" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: #aa706a;">Don't have an account? <a href="/sign-up" style="color: #519188;">Register</a></p>     
-      </div>
+          </div>
+          </form>
+        </div>
+        </div>
+        </section>
+        </div>
+        </div>
+
+  
       
 
 
