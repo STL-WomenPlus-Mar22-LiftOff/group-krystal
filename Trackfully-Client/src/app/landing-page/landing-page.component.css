@@ -16,6 +16,7 @@ section {
 	padding-bottom: 60px;
 }
 
+
 .container {
 	background-color:rgba(213, 185, 177, .53);
 	height: 700px;
@@ -33,7 +34,6 @@ section {
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-
   }
 
   .container:after {
@@ -48,3 +48,5 @@ section {
 	z-index: -1;
 	position: absolute;
   }
+
+ 
