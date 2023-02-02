@@ -1,7 +1,13 @@
-section{
+section {
+	display: flex;
+	align-items: center;
+	justify-content: stretch;
+	flex-direction:row-reverse;
+	flex-wrap: nowrap;
+	flex-flow: column;
 	z-index: 2;
-	position: relative;
 }
+
 .mainTitle{
     color: #aa706a;
     font-family: Amsterdam;
@@ -9,13 +15,18 @@ section{
 	padding-top: 40px;
 	font-size: 80px;
 	text-align: center;
-	padding-bottom: 40px;
+	padding-bottom: 50px;
 }
+
+.image{
+	padding-bottom: 10px;
+}
+
 
 .container {
 	background-color:rgba(213, 185, 177, .53);
-	height: 700px;
-	width: 100%;
+	height: 625px;
+	width: 600px;
 	box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
 	0 6.7px 5.3px rgba(0, 0, 0, 0.048),
 	0 12.5px 10px rgba(0, 0, 0, 0.06),
