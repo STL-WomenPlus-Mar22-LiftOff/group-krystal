@@ -1,10 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+html, app-root {
+    height: 100%;
+}
+
 body {
 	background:url(images/background-splash.png) no-repeat center center fixed;
-	/* overflow:hidden; */
 	background-size:cover;
 	width:100%;
 	height:100%;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 .btn {

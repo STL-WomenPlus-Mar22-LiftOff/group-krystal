@@ -3,22 +3,16 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  // template: `
-  // <app-navigation-bar></app-navigation-bar>
-  
-  // <router-outlet></router-outlet>
-  
-  // <app-footer></app-footer>
-  // `,
   template: `
-  
   <app-navigation-bar></app-navigation-bar>
   
-  <div id="page-container">
-    <div id="content-wrap">
+  <div class="content-outer-container">
+    <div class="content-inner-container">
       <router-outlet></router-outlet>
     </div>
-    <app-footer></app-footer>
+    <div class="footer-container">  
+      <app-footer></app-footer>
+    </div>
   </div>
   `,
   styles: [],
