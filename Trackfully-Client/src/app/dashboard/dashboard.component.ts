@@ -17,7 +17,7 @@ export class DashboardComponent implements OnInit {
 
   getQuotes() {
     this.quotesService.getQuotes().subscribe((result) => {
-      this.quotes = result.q
+      this.quotes = `"${result.q}" - ${result.a}`
     })
   }
   ngOnInit(): void {

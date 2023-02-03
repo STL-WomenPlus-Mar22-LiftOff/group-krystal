@@ -6,6 +6,14 @@ section {
 	z-index: 2;
 }
 
+.attribution {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: auto;
+	font-style: italic;
+	padding-top: 60px;
+}
 
 .form-group{
 	text-align: center;
