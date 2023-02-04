@@ -16,6 +16,8 @@ import { LogoutComponent } from './logout/logout.component';
 import { AuthGuardService } from './service/auth-guard.service';
 import { AutheticationService } from './service/authentication/authetication.service';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { AboutPageComponent } from './about-page/about-page.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
     ChartsComponent,
     NavigationBarComponent,
     LogoutComponent,
+    AboutPageComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,

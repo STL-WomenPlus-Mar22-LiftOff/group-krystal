@@ -13,6 +13,7 @@ import { ChartsComponent } from './charts/charts.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AuthGuardService } from './service/auth-guard.service';
 import { AutheticationService } from './service/authentication/authetication.service';
+import { AboutPageComponent } from './about-page/about-page.component';
 
 
 const appRoutes: Routes = [
@@ -58,6 +59,11 @@ const appRoutes: Routes = [
   {
     path: 'logout',
     component: LogoutComponent
+  },
+
+  {
+    path: 'about',
+    component: AboutPageComponent
   }
 
   // {
