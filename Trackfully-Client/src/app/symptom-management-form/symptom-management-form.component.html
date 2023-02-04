@@ -1,17 +1,12 @@
 <div class="mainTitle">Symptom Management</div>
 <section>
-<div class="container col-md-7" >
+<div class="container col-md-4" >
        
-        <form #symptomForm="ngForm" (ngSubmit)="onSubmit(symptom)">
-        <div class="form-group">
-            <h2>Current Symptoms</h2>
-            <ul *ngFor ="let symptom of symptoms">
-                <li>{{symptom}}</li>
-            </ul>
-        </div>
-            <div class="form-group" *ngIf="newSymptom===true">
+        <form #symptomForm="ngForm" (ngSubmit)="onSubmit(symptom); symptomForm.resetForm()">
+        
+            <div class="form-group1" *ngIf="newSymptom===true">
                 <div><h2> What would you like to track?</h2></div>
-                <div><p>Enter a habit, symptom, or anything you would like to track in the form below!</p></div>
+                <div><p>Enter up to three symptoms to track in the form below!</p></div>
                 <label for="" class="form-label" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
                     <input type="text" 
                     placeholder="Symptom/Habit Name"
@@ -28,11 +23,25 @@
                     </small>	
                 </div>
                 <br>
+           
+            <div class="form-group1">
+                <button type="submit" [disabled]="!symptomForm.valid" class = "btn btn-primary btn-lg">Add Symptom</button>
             </div>
-            <div class="form-group">
-                <button type="submit" [disabled]="!symptomForm.valid" class = "btn btn-primary btn-lg">Start Tracking!</button>
             </div>
         </form>
+        
+     <div class="form-group2">
+        <div>
+            <h3>Current Symptoms</h3>
+            <ul style="text-align:center" *ngFor ="let symptom of symptoms">
+                <li>{{symptom}}</li>
+            </ul>
+        </div>
+        <form (ngSubmit)="goToDashboard()">
+            <button type="submit" class="btn btn-primary btn-lg">Dashboard</button>
+        </form>
     </div>
+</div>
+   
     </section>
     

@@ -37,6 +37,12 @@ export class SymptomManagementFormComponent implements OnInit {
 }
 
   ngOnInit(): void {
+
+    // this.activatedRoute.params.subscribe(
+    //   params => {
+    //     // this is called everytime the url changes
+    //   }
+    // )
     if (this.symptomId1 !== "undefined") {
       this.symptomService.getSymptomById(parseInt(this.symptomId1)).subscribe(response => {this.symptoms.push(response.symptomName)});
      }
@@ -69,19 +75,27 @@ export class SymptomManagementFormComponent implements OnInit {
   goToDashboard() {
     this.router.navigate([`/dashboard`]); //when called will redirect to this URL path
   }
+  goToSymptomManagementForm() {
+    this.router.navigate([`/symptom-manage-form`]); //when called will redirect to this URL path
+  }
+
+  reloadCurrentPage(){
+    window.location.reload();
+  }
 
   getUserSessionId() {
     return sessionStorage.getItem("id");
   }
-    setSymptomIDInSession(){
-      this.symptomService.getSymptomIdByUserId(this.getUserSessionId()).subscribe((result) => {
-        sessionStorage.setItem("symptomId1", result[0]);
-        sessionStorage.setItem("symptomId2", result[1]);
-        sessionStorage.setItem("symptomId3", result[2]);
-        this.goToDashboard();
-        // console.log(sessionStorage.getItem("symptomId1"));
-        // console.log(sessionStorage.getItem("symptomId2"));
-        // console.log(sessionStorage.getItem("symptomId3"));
+
+  setSymptomIDInSession(){
+    this.symptomService.getSymptomIdByUserId(this.getUserSessionId()).subscribe((result) => {
+      sessionStorage.setItem("symptomId1", result[0]);
+      sessionStorage.setItem("symptomId2", result[1]);
+      sessionStorage.setItem("symptomId3", result[2]);
+      
+      // console.log(sessionStorage.getItem("symptomId1"));
+      // console.log(sessionStorage.getItem("symptomId2"));
+      // console.log(sessionStorage.getItem("symptomId3"));
     });
   }
 
@@ -91,6 +105,7 @@ export class SymptomManagementFormComponent implements OnInit {
       this.symptomService.save(this.symptom).subscribe((result) => {
         this.setSymptomIDInSession();        
       });
+      
       // console.log(this.symptom);
     };
     }
