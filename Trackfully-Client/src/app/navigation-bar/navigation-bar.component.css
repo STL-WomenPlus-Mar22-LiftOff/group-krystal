@@ -11,7 +11,7 @@
     color: white;
 }
 
-.navbar-nav .nav-item-right .nav-link {
+.navbar-nav .nav-item-right .nav-item {
     color: black;
-    text-align: right;
+    padding-left: 50px;
 }

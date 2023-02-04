@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark gradient-custom">
   <a *ngIf="navBarType==='loggedIn'" class="navbar-brand" href="/dashboard">Trackfully</a>
   <!-- displays user name if user loggedIn -->
-  <ul *ngIf="navBarType==='loggedIn'" class="navbar-nav ms-auto p-2"> Welcome, {{userName}}!</ul>
+  
   <a *ngIf="navBarType==='loggedOut'" class="navbar-brand" href="">Trackfully</a>
   <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar">
     <span class="navbar-toggler-icon"></span>
@@ -15,13 +15,15 @@
       </li>
     </ul>
 
-    <!-- div for only right aligned items on navbar  -->
+    <!-- div for right aligned items on navbar (for signed in users only) -->
   </div>
   <div *ngIf="navBarType==='loggedIn'" class="collapse navbar-collapse align-items-center">
-    <ul class="navbar-nav ml-auto align-items-center">
+    <ul class="navbar-nav mr-auto align-items-center">
+      <li class="nav-item-right"> Welcome, {{userName}}!</li>
       <li *ngFor="let items of rightAlignedItems" class="nav-item-right">
-        <a class="nav-link" href="{{items.linkUrl}}">{{items.linkName}}</a>
+        <a class="nav-item" href="{{items.linkUrl}}">{{items.linkName}}</a>
       </li>
+      
     </ul>
   </div>
 
