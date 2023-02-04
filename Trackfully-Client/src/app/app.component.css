@@ -8,9 +8,11 @@
   }
   
   .footer-container {
-    height: 24px;
-    margin: 0 auto;
-    position: absolute;
+    height: 115px;
+    margin-top: -36 px;
+    position: fixed;
+    clear: both;
     bottom: 0;
     width: 100%; 
+    overflow:hidden;
   }

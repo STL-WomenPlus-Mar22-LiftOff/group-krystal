@@ -2,3 +2,10 @@
     display: flex;
     justify-content: flex-end;
 }
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+

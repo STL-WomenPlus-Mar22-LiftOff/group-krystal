@@ -1,6 +1,8 @@
 section{
 	/* z-index: 2; */
 	position: relative;
+	overflow-x: hidden;
+	overflow-y: hidden;
 }
 .mainTitle{
     color: #aa706a;
