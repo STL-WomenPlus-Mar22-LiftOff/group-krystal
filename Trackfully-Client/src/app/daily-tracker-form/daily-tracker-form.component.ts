@@ -29,6 +29,7 @@ export class DailyTrackerFormComponent implements OnInit {
   
 
   currentDate = formatDate(new Date(), 'EEEE, MMMM d, y', 'en');
+  today = formatDate(new Date(), 'MM/dd/yyy', 'en');
   dailyEntry: DailyEntry;
   symptomInfo: Symptom;
   symptomValues = Object.values;
@@ -55,6 +56,10 @@ export class DailyTrackerFormComponent implements OnInit {
  
     
   ngOnInit(): void {
+
+    console.log(this.currentDate);
+    console.log(this.today);
+
 
     if (this.symptomId1 !== "undefined") {
      this.symptomService.getSymptomById(parseInt(this.symptomId1)).subscribe(response => {this.availableSymptoms[`${this.symptomId1}`] = response.symptomName;});
