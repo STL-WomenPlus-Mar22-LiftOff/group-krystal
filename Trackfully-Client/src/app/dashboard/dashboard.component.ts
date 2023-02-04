@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SymptomService } from '../service/symptom/symptom.service';
+import { QuotesService } from '../service/quotes/quotes.service';
 // import { User } from '../model/user';
 
 @Component({
@@ -9,12 +10,19 @@ import { SymptomService } from '../service/symptom/symptom.service';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(private symptomService: SymptomService) { 
-
+  quotes: any;
+  constructor(private symptomService: SymptomService, private quotesService: QuotesService) { 
+    this.quotes;
   }
 
+  getQuotes() {
+    this.quotesService.getQuotes().subscribe((result) => {
+      this.quotes = `"${result.q}" - ${result.a}`
+    })
+  }
   ngOnInit(): void {
     this.setSymptomIDInSession();
+    this.getQuotes();
     // console.log("this is the session storage id "+sessionStorage.getItem("id"));
     // console.log("this is the session storage symptom "+sessionStorage.getItem("symptomId"));
     // console.log("dashboard name from session:"+sessionStorage.getItem("name"));
