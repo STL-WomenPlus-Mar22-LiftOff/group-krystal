@@ -1,10 +1,20 @@
-
-section {
+.page-container {
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	flex-direction: column;
-	z-index: 2;
+	flex-direction: row;
+	align-content: center;
+	flex-wrap: wrap;
+	width: 100vw
+}
+.container {
+	width: 50%;
+	order: 1;
+}
+
+.app-slider {
+	width: 50%;
+	order: 0;
 }
 
 .mainTitle{
@@ -29,7 +39,7 @@ section {
 	0 41.8px 33.4px rgba(0, 0, 0, 0.086),
 	0 100px 80px rgba(0, 0, 0, 0.12);
 	background-size: 100% auto;
-	z-index: 0;
+	/* z-index: 0; */
 	position: relative;
 	display: flex;
 	flex-direction: row;
@@ -50,4 +60,9 @@ section {
 	position: absolute;
   }
 
- 
+  @media screen and (max-width: 1200px) {
+	body {
+	  display: flex;
+	  flex-direction: column;
+	}
+  }
