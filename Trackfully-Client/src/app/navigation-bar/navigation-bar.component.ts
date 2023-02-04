@@ -20,7 +20,7 @@ export class NavigationBarComponent implements OnInit {
     {linkId: 2, linkName: 'Register', linkUrl: 'sign-up'}, 
   ];
 
-  signOutItem = [
+  rightAlignedItems = [
     {linkId: 1, linkName: 'Sign Out', linkUrl: 'logout'}
   ]
 

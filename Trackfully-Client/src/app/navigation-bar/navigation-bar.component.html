@@ -14,7 +14,17 @@
         <a class="nav-link" href="{{items.linkUrl}}">{{items.linkName}} <span class="sr-only"></span></a>
       </li>
     </ul>
+
+    <!-- div for only right aligned items on navbar  -->
   </div>
+  <div *ngIf="navBarType==='loggedIn'" class="collapse navbar-collapse align-items-center">
+    <ul class="navbar-nav ml-auto align-items-center">
+      <li *ngFor="let items of rightAlignedItems" class="nav-item-right">
+        <a class="nav-link" href="{{items.linkUrl}}">{{items.linkName}}</a>
+      </li>
+    </ul>
+  </div>
+
 
   <!-- nav bar options for logged out user -->
   <div *ngIf="navBarType==='loggedOut'" class="navbar-collapse collapse" id="navbar">

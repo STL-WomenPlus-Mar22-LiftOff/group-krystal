@@ -11,6 +11,7 @@
     color: white;
 }
 
-.navbar-nav .nav-item .nav-link {
-    color: #aa706a;
+.navbar-nav .nav-item-right .nav-link {
+    color: black;
+    text-align: right;
 }
