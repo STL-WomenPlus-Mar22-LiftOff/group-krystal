@@ -1,0 +1,16 @@
+.content-outer-container {
+    position: relative;
+    min-height: 100%;
+  }
+  
+ .content-inner-container {
+    padding-bottom: 36px;    
+  }
+  
+  .footer-container {
+    height: 24px;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 0;
+    width: 100%; 
+  }

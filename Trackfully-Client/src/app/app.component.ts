@@ -6,8 +6,14 @@ import { Component } from '@angular/core';
   template: `
   <app-navigation-bar></app-navigation-bar>
   
-  <router-outlet></router-outlet>
-  <!-- can eventually add a header <app-footer></app-footer> here -->
+  <div class="content-outer-container">
+    <div class="content-inner-container">
+      <router-outlet></router-outlet>
+    </div>
+    <div class="footer-container">  
+      <app-footer></app-footer>
+    </div>
+  </div>
   `,
   styles: [],
   //templateUrl: './app.component.html',

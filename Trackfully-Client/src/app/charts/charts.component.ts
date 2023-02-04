@@ -86,7 +86,6 @@ getTrackerData(storageKey: string) {
           tooltip: {
             callbacks: {
               title: context => {
-                console.log(context);
                 const d = new Date(context[0].parsed.x);
                 const formattedDate = d.toLocaleString([], {
                   year: 'numeric',
