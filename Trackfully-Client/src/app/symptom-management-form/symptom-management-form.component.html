@@ -5,8 +5,8 @@
         <form #symptomForm="ngForm" (ngSubmit)="onSubmit(symptom); symptomForm.resetForm()">
         
             <div class="form-group1" *ngIf="newSymptom===true">
-                <div><h2> What would you like to track?</h2></div>
-                <div><p>Enter up to three symptoms to track in the form below!</p></div>
+                <div><h2>Enter your symptoms:</h2></div>
+                <br>
                 <label for="" class="form-label" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">
                     <input type="text" 
                     placeholder="Symptom/Habit Name"
@@ -17,12 +17,14 @@
                     class="form-control"
                     required [pattern]="symptomNamePattern">
                 </label>
+                <div><small>You may enter up to three.</small></div>
                 <div *ngIf="symptomName.errors">
                     <small class="text-danger" *ngIf="symptomName.errors.required && symptomName.touched"> 
                         This field is required.
                     </small>	
                 </div>
                 <br>
+                
            
             <div class="form-group1">
                 <button type="submit" [disabled]="!symptomForm.valid" class = "btn btn-primary btn-lg">Add Symptom</button>
@@ -32,13 +34,13 @@
         
      <div class="form-group2">
         <div>
-            <h3>Current Symptoms</h3>
+            <h3>Current Symptoms:</h3>
             <ul style="text-align:center" *ngFor ="let symptom of symptoms">
                 <li>{{symptom}}</li>
             </ul>
         </div>
-        <form (ngSubmit)="goToDashboard()">
-            <button type="submit" class="btn btn-primary btn-lg">Dashboard</button>
+        <form (ngSubmit)="goToDashboard()" #dashboardform="ngForm">
+            <button type="submit" class="btn btn-primary btn-lg">To Dashboard--></button>
         </form>
     </div>
 </div>

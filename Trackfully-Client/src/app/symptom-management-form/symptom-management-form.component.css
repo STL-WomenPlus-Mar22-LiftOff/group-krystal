@@ -15,7 +15,9 @@ section{
 }
 
 .form-group1{
-    text-align:left;}
+    text-align:left;
+    padding-right: 10%;
+}
 
     .container {
         background-color:rgba(213, 185, 177, .53);
@@ -52,4 +54,6 @@ section{
       }
     
       .form-group2{
-        text-align:right;}
+        text-align:right;
+        padding-left: 10%;
+    }

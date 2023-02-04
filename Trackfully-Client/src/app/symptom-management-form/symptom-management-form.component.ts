@@ -76,7 +76,11 @@ export class SymptomManagementFormComponent implements OnInit {
     this.router.navigate([`/dashboard`]); //when called will redirect to this URL path
   }
   goToSymptomManagementForm() {
-    this.router.navigate([`/symptom-manage-form`]); //when called will redirect to this URL path
+    this.router.navigated = false;
+
+    this.router.navigate(['/dashboard']).then(() => { this.router.navigate([`symptom-manage-form`]); })
+
+//when called will redirect to this URL path
   }
 
   reloadCurrentPage(){
@@ -92,7 +96,7 @@ export class SymptomManagementFormComponent implements OnInit {
       sessionStorage.setItem("symptomId1", result[0]);
       sessionStorage.setItem("symptomId2", result[1]);
       sessionStorage.setItem("symptomId3", result[2]);
-      
+    
       // console.log(sessionStorage.getItem("symptomId1"));
       // console.log(sessionStorage.getItem("symptomId2"));
       // console.log(sessionStorage.getItem("symptomId3"));
@@ -103,12 +107,10 @@ export class SymptomManagementFormComponent implements OnInit {
       symptom.user = this.user; //assign logged in user to the symptom being saved
       // console.log(this.symptom);
       this.symptomService.save(this.symptom).subscribe((result) => {
-        this.setSymptomIDInSession();        
-      });
-      
+        this.setSymptomIDInSession(), console.log("hello"), this.goToSymptomManagementForm()});
       // console.log(this.symptom);
-    };
     }
-      
+  }
+
     
 
