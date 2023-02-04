@@ -17,6 +17,8 @@ import { AuthGuardService } from './service/auth-guard.service';
 import { AutheticationService } from './service/authentication/authetication.service';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { SliderComponent } from './slider/slider.component';
+import { AboutPageComponent } from './about-page/about-page.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,8 @@ import { SliderComponent } from './slider/slider.component';
     NavigationBarComponent,
     LogoutComponent,
     SliderComponent,
+    AboutPageComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
