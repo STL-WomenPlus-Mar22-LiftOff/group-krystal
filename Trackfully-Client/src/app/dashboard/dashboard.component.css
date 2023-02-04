@@ -3,9 +3,17 @@ section {
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
-	z-index: 2;
+	/* z-index: 2; */
 }
 
+.attribution {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: auto;
+	font-style: italic;
+	padding-top: 60px;
+}
 
 .form-group{
 	text-align: center;
@@ -27,6 +35,11 @@ section {
 	padding-bottom: 30px;
 	align-self: center;
 	text-align: center;
+}
+
+.quote{
+	align-items: center;
+	font-style: italic;
 }
 
 .container {
