@@ -21,6 +21,7 @@
 }
 
 .app-slider {
+	/* margin-left: 50px; */
 	width: 50%;
 	order: 0;
 	/* flex-grow: 1; */
