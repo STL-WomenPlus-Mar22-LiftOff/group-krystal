@@ -14,9 +14,10 @@ Trackfully is a web application that empowers users to manage their own health. 
 - Display symptom tracking data by symptom severity over time on line graph
 - Integrate ChartJS into Angular for data visualization
 - Implement site-wide UI branding
+- Connect to external ZenQuotes API for daily quote on dashboard
 
 ## Future Plans:
-- Allow users to edit or delete user account, symptoms, and/or individual tracking data points
+- Allow users to edit or delete user account and symptoms
 - Allow users to track environmental factors or "triggers" along with symptom occurence
 - Allow users to see symptom tracking data over a selected period of time
 - Host web application 
