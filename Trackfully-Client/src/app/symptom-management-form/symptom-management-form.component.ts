@@ -22,8 +22,7 @@ export class SymptomManagementFormComponent implements OnInit {
   symptomId1: any;
   symptomId2: any;
   symptomId3: any;
-  public response:any;
-  collectSymptoms: String [];
+  displaySymptoms: String [];
 
   constructor(
     private symptomService: SymptomService,
@@ -33,7 +32,7 @@ export class SymptomManagementFormComponent implements OnInit {
     this.symptom = new Symptom;
     this.user = new User;
     this.symptoms = [];
-    this.collectSymptoms = [];
+    this.displaySymptoms = [];
     this.symptomId1 = sessionStorage.getItem("symptomId1");
     this.symptomId2 = sessionStorage.getItem("symptomId2");
     this.symptomId3 = sessionStorage.getItem("symptomId3");
@@ -137,16 +136,18 @@ export class SymptomManagementFormComponent implements OnInit {
   //   // // console.log(this.symptom);
   //   // this.goToSymptomManagementForm();
     onSubmit(symptom: Symptom) {
+      this.checkNumberofSymptoms();
       symptom.user = this.user; //assign logged in user to the symptom being saved
       // console.log(this.symptom);
       console.log(typeof(this.user.id));
       this.symptomService.save(this.symptom).subscribe((result) => {
         this.setSymptomIDInSession();        
       });
+      this.displaySymptoms.push(symptom.symptomName);
       // console.log(this.symptom);
     };
-    }
-  
+    
+  } 
 
 
     

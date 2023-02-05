@@ -33,9 +33,9 @@
         </form>
         
      <div class="form-group2">
-        <div>
+        <div *ngIf="displaySymptoms.length>0">
             <h3>Current Symptoms:</h3>
-            <ul style="text-align:center" *ngFor ="let symptom of collectSymptoms">
+            <ul style="text-align:center" *ngFor ="let symptom of displaySymptoms">
                 <li>{{symptom}}</li>
             </ul>
         </div>
