@@ -22,6 +22,8 @@ export class SymptomManagementFormComponent implements OnInit {
   symptomId1: any;
   symptomId2: any;
   symptomId3: any;
+  public response:any;
+  collectSymptoms: String [];
 
   constructor(
     private symptomService: SymptomService,
@@ -31,6 +33,7 @@ export class SymptomManagementFormComponent implements OnInit {
     this.symptom = new Symptom;
     this.user = new User;
     this.symptoms = [];
+    this.collectSymptoms = [];
     this.symptomId1 = sessionStorage.getItem("symptomId1");
     this.symptomId2 = sessionStorage.getItem("symptomId2");
     this.symptomId3 = sessionStorage.getItem("symptomId3");
@@ -43,6 +46,35 @@ export class SymptomManagementFormComponent implements OnInit {
     //     // this is called everytime the url changes
     //   }
     // )
+    this.populateSymptomArray();
+  
+    this.getUserSessionId();
+    let userIdNumber = parseInt(this.getUserSessionId() || "");
+    this.userService.getUserByUserID(userIdNumber).subscribe(result => this.user = result);
+   
+
+    this.checkNumberofSymptoms();
+    // console.log(this.symptom.user.id);
+    // console.log(typeof(sessionStorage.getItem("symptomId1")));
+    // console.log(sessionStorage.getItem("symptomId2"));
+    // console.log(sessionStorage.getItem("symptomId3"));
+  
+  }
+
+  public checkNumberofSymptoms(): Boolean {
+    let userIdNumber = parseInt(this.getUserSessionId() || "");
+    this.symptomService.checkNumberOfSymptoms(userIdNumber).subscribe((result) => {
+      if (result === true) {
+        this.newSymptom = true;
+        return true;
+      } else {this.newSymptom = false; };
+      return false;
+      // console.log("this is the result"+result);
+    })
+    return false;
+  }
+
+  populateSymptomArray() {
     if (this.symptomId1 !== "undefined") {
       this.symptomService.getSymptomById(parseInt(this.symptomId1)).subscribe(response => {this.symptoms.push(response.symptomName)});
      }
@@ -55,21 +87,8 @@ export class SymptomManagementFormComponent implements OnInit {
       if (this.symptomId3 !== "undefined") {
        this.symptomService.getSymptomById(parseInt(this.symptomId3)).subscribe(response => {this.symptoms.push(response.symptomName)});
       }
+      //console.log(this.symptoms);
 
-    this.getUserSessionId();
-    let userIdNumber = parseInt(this.getUserSessionId() || "");
-    this.userService.getUserByUserID(userIdNumber).subscribe(result => this.user = result);
-    this.symptomService.checkNumberOfSymptoms(userIdNumber).subscribe((result) => {
-      if (result === true) {
-        this.newSymptom = true;
-      } else {this.newSymptom = false;};
-      // console.log("this is the result"+result);
-    })
-    // console.log(this.symptom.user.id);
-    // console.log(typeof(sessionStorage.getItem("symptomId1")));
-    // console.log(sessionStorage.getItem("symptomId2"));
-    // console.log(sessionStorage.getItem("symptomId3"));
-  
   }
 
   goToDashboard() {
@@ -103,14 +122,23 @@ export class SymptomManagementFormComponent implements OnInit {
     });
   }
 
-    onSubmit(symptom: Symptom) {
-      symptom.user = this.user; //assign logged in user to the symptom being saved
-      // console.log(this.symptom);
-      this.symptomService.save(this.symptom).subscribe((result) => {
-        this.setSymptomIDInSession(), console.log("hello"), this.goToSymptomManagementForm()});
-      // console.log(this.symptom);
+  onSubmit(symptom: Symptom) {
+    // this.checkNumberofSymptoms();
+    // this.collectSymptoms.push(symptom.symptomName);
+    
+    symptom.user = this.user; //assign logged in user to the symptom being saved
+    // console.log(this.symptom);
+
+    if(this.checkNumberofSymptoms()) {
+      this.collectSymptoms.push(symptom.symptomName);
+      this.symptomService.save(this.symptom).subscribe((result) => {  
+      this.setSymptomIDInSession()});
+    }
+    // // console.log(this.symptom);
+    // this.goToSymptomManagementForm();
     }
   }
+
 
     
 
