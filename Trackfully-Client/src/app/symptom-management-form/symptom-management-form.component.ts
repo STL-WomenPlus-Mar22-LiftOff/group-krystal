@@ -135,8 +135,9 @@ export class SymptomManagementFormComponent implements OnInit {
   //   }
   //   // // console.log(this.symptom);
   //   // this.goToSymptomManagementForm();
+
     onSubmit(symptom: Symptom) {
-      this.checkNumberofSymptoms();
+     
       symptom.user = this.user; //assign logged in user to the symptom being saved
       // console.log(this.symptom);
       console.log(typeof(this.user.id));
@@ -149,6 +150,4 @@ export class SymptomManagementFormComponent implements OnInit {
     
   } 
 
-
-    
 
