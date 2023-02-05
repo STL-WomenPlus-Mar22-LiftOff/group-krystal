@@ -68,7 +68,10 @@ public class SymptomController {
 
     @PostMapping("")
     void addSymptom(@RequestBody @Valid Symptom symptom, Errors errors) {
-        if (!errors.hasErrors()) {
+
+        Integer userId = symptom.getUser().getId();
+
+        if (!errors.hasErrors() && checkNumberOfSymptoms(userId)) {
             symptomRepository.save(symptom);
         }
     }

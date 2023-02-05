@@ -122,22 +122,31 @@ export class SymptomManagementFormComponent implements OnInit {
     });
   }
 
-  onSubmit(symptom: Symptom) {
-    // this.checkNumberofSymptoms();
-    // this.collectSymptoms.push(symptom.symptomName);
+  // onSubmit(symptom: Symptom) {
+  //   // this.checkNumberofSymptoms();
+  //   // this.collectSymptoms.push(symptom.symptomName);
     
-    symptom.user = this.user; //assign logged in user to the symptom being saved
-    // console.log(this.symptom);
+  //   symptom.user = this.user; //assign logged in user to the symptom being saved
+  //   // console.log(this.symptom);
 
-    if(this.checkNumberofSymptoms()) {
-      this.collectSymptoms.push(symptom.symptomName);
-      this.symptomService.save(this.symptom).subscribe((result) => {  
-      this.setSymptomIDInSession()});
+  //   if(this.checkNumberofSymptoms()) {
+  //     this.collectSymptoms.push(symptom.symptomName);
+  //     this.symptomService.save(this.symptom).subscribe((result) => {  
+  //     this.setSymptomIDInSession()});
+  //   }
+  //   // // console.log(this.symptom);
+  //   // this.goToSymptomManagementForm();
+    onSubmit(symptom: Symptom) {
+      symptom.user = this.user; //assign logged in user to the symptom being saved
+      // console.log(this.symptom);
+      console.log(typeof(this.user.id));
+      this.symptomService.save(this.symptom).subscribe((result) => {
+        this.setSymptomIDInSession();        
+      });
+      // console.log(this.symptom);
+    };
     }
-    // // console.log(this.symptom);
-    // this.goToSymptomManagementForm();
-    }
-  }
+  
 
 
     
