@@ -28,7 +28,8 @@ export class DailyTrackerFormComponent implements OnInit {
   };
   
 
-  currentDate = formatDate(new Date(), 'EEEE, MMMM d, y', 'en');
+  // currentDate = formatDate(new Date(), 'EEEE, MMMM d, y', 'en');
+  currentDate = formatDate((new Date().setDate(new Date().getDate())), 'yyyy-MM-dd', 'en');
   dailyEntry: DailyEntry;
   symptomInfo: Symptom;
   symptomValues = Object.values;
@@ -44,6 +45,7 @@ export class DailyTrackerFormComponent implements OnInit {
               private userService: UserService,
               private router: Router) {
       this.dailyEntry = new DailyEntry;
+      this.dailyEntry.date = this.currentDate;
       this.symptomInfo = new Symptom;
       this.availableSymptoms = {};
       this.symptomValues = Object.values;
@@ -55,7 +57,6 @@ export class DailyTrackerFormComponent implements OnInit {
  
     
   ngOnInit(): void {
-
     if (this.symptomId1 !== "undefined") {
      this.symptomService.getSymptomById(parseInt(this.symptomId1)).subscribe(response => {this.availableSymptoms[`${this.symptomId1}`] = response.symptomName;});
     }
@@ -84,8 +85,8 @@ export class DailyTrackerFormComponent implements OnInit {
 
   onSubmit(symptomName: any) {
     this.selectedSymptomId = this.getSymptomByName(symptomName);
-    console.log("this is what is passed through:"+symptomName);
-    console.log("this is the key"+this.selectedSymptomId);
+    // console.log("this is what is passed through:"+symptomName);
+    // console.log("this is the key"+this.selectedSymptomId);
     this.symptomService.getSymptomById(parseInt(this.selectedSymptomId)).subscribe((result) => {
         this.symptomInfo = result;
         this.dailyEntry.symptom = this.symptomInfo;
