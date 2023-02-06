@@ -8,6 +8,13 @@
 	width: 100vw;
 	margin-left: 75px;
 }
+
+@media (max-width: 768px) {
+	.page-container {
+	  align-items: center;
+	  margin-left: 20px;
+	}
+  }
 .container {
 	width: 50%;
 	order: 1;
@@ -18,7 +25,6 @@
 	width: 50%;
 	order: 0;
 }
-
 .mainTitle{
     color: #aa706a;
     font-family: Amsterdam;

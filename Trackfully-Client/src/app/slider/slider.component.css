@@ -1,7 +1,16 @@
+
+
 .page-container {
 	display: flex;
-    flex-direction: row;
+  flex-direction: row;
+  position: relative;
 }
+
+@media (max-width: 768px) {
+	.page-container{
+	  display: none;
+	}
+  }
 .container {
 	background-color:rgba(213, 185, 177, .53);
 	height: 400px;
@@ -18,7 +27,7 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-    margin-left: 200px;
+  margin-left: 200px;
   }
 
   .container:after {
