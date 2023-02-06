@@ -5,11 +5,13 @@
 	flex-direction: row;
 	align-content: center;
 	flex-wrap: wrap;
-	width: 100vw
+	width: 100vw;
+	margin-left: 75px;
 }
 .container {
 	width: 50%;
 	order: 1;
+	margin-left: 100px;
 }
 
 .app-slider {
