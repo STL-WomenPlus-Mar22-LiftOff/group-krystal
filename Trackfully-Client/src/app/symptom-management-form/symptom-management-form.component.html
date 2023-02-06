@@ -1,7 +1,7 @@
 <div class="mainTitle">Symptom Management</div>
 <section>
 <div class="container col-md-4" >
-    <div *ngIf="displaySymptoms.length<3">
+    <div *ngIf="symptoms.length<3">
         <form #symptomForm="ngForm" (ngSubmit)="onSubmit(symptom); symptomForm.resetForm()">
         
             <div class="form-group1" *ngIf="newSymptom===true">
@@ -35,7 +35,7 @@
      <div class="form-group2">
         <div>
             <h3>Current Symptoms:</h3>
-            <ul style="text-align:center" *ngFor ="let symptom of displaySymptoms">
+            <ul style="text-align:center" *ngFor ="let symptom of symptoms">
                 <li>{{symptom}}</li>
             </ul>
         </div>
