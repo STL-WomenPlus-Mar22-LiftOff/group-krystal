@@ -19,21 +19,12 @@
     <!-- div for right aligned items on navbar (for signed in users only) -->
   
   <div *ngIf="navBarType==='loggedIn'">
-    <ul class="navbar-nav ms-3">
-      <li class="nav-item"> Welcome, {{userName}}!</li>
-      <!-- <li *ngFor="let items of rightAlignedItems" class="nav-item">
-        <a class="nav-link d-flex align-items-center me-3" href="{{items.linkUrl}}">{{items.linkName}}</a> -->
-    </ul>
-  </div>
-
-  <div>
-    <ul class="navbar-nav ms-3">
+    <ul class="navbar-nav">
+      <li class="navbar-text"> Welcome, {{userName}}!</li>
       <li *ngFor="let items of rightAlignedItems" class="nav-item">
-        <a class="nav-link d-flex align-items-center" href="{{items.linkUrl}}">{{items.linkName}}</a>
-      </li>   
+        <a class="nav-link" href="{{items.linkUrl}}">{{items.linkName}}</a>
     </ul>
   </div>
-
 
   <!-- nav bar options for logged out user -->
   <div *ngIf="navBarType==='loggedOut'" class="navbar-collapse collapse" id="navbar">

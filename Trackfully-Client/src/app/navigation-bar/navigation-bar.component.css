@@ -4,18 +4,21 @@
 }
 
 .navbar-brand{
-    color: white;
+    color: rgb(49, 49, 49);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 25px;
+    padding-left: 10px;
 }
 
-.navbar-nav{
-    color: white;
-}
-
-.navbar-nav .nav-item {
-    color: black;
+.navbar-nav .navbar-text {
+    color: rgb(49, 49, 49);
+    padding-right: 50px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .navbar-nav .nav-link {
-    color: black;
+    color: rgb(49, 49, 49);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
 }
 
