@@ -19,6 +19,7 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
 import { SliderComponent } from './slider/slider.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { FooterComponent } from './footer/footer.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -41,9 +42,9 @@ import { FooterComponent } from './footer/footer.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgxSliderModule
+    NgxSliderModule  
   ],
   providers: [AuthGuardService, AutheticationService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
