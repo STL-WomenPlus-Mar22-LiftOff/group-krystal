@@ -75,16 +75,16 @@ export class SymptomManagementFormComponent implements OnInit {
 
   populateSymptomArray() {
     if (this.symptomId1 !== "undefined") {
-      this.symptomService.getSymptomById(parseInt(this.symptomId1)).subscribe(response => {this.symptoms.push(response.symptomName)});
+      this.symptomService.getSymptomById(parseInt(this.symptomId1)).subscribe(response => {this.symptoms.push(response.symptomName), this.displaySymptoms[0]=response.symptomName});
      }
  
      if (this.symptomId2 !== "undefined") {
-       this.symptomService.getSymptomById(parseInt(this.symptomId2)).subscribe(response => {this.symptoms.push(response.symptomName)});
+       this.symptomService.getSymptomById(parseInt(this.symptomId2)).subscribe(response => {this.symptoms.push(response.symptomName), this.displaySymptoms[1]=response.symptomName});
        // this.symptomService.getSymptomById(parseInt(this.symptomId2)).subscribe(response => {this.availableSymptoms.push(response);});
       }
  
       if (this.symptomId3 !== "undefined") {
-       this.symptomService.getSymptomById(parseInt(this.symptomId3)).subscribe(response => {this.symptoms.push(response.symptomName)});
+       this.symptomService.getSymptomById(parseInt(this.symptomId3)).subscribe(response => {this.symptoms.push(response.symptomName), this.displaySymptoms[2]=response.symptomName});
       }
       //console.log(this.symptoms);
 
@@ -92,17 +92,6 @@ export class SymptomManagementFormComponent implements OnInit {
 
   goToDashboard() {
     this.router.navigate([`/dashboard`]); //when called will redirect to this URL path
-  }
-  goToSymptomManagementForm() {
-    this.router.navigated = false;
-
-    this.router.navigate(['/dashboard']).then(() => { this.router.navigate([`symptom-manage-form`]); })
-
-//when called will redirect to this URL path
-  }
-
-  reloadCurrentPage(){
-    window.location.reload();
   }
 
   getUserSessionId() {
@@ -120,21 +109,6 @@ export class SymptomManagementFormComponent implements OnInit {
       // console.log(sessionStorage.getItem("symptomId3"));
     });
   }
-
-  // onSubmit(symptom: Symptom) {
-  //   // this.checkNumberofSymptoms();
-  //   // this.collectSymptoms.push(symptom.symptomName);
-    
-  //   symptom.user = this.user; //assign logged in user to the symptom being saved
-  //   // console.log(this.symptom);
-
-  //   if(this.checkNumberofSymptoms()) {
-  //     this.collectSymptoms.push(symptom.symptomName);
-  //     this.symptomService.save(this.symptom).subscribe((result) => {  
-  //     this.setSymptomIDInSession()});
-  //   }
-  //   // // console.log(this.symptom);
-  //   // this.goToSymptomManagementForm();
 
     onSubmit(symptom: Symptom) {
      
