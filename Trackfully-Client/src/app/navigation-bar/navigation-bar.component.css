@@ -11,7 +11,11 @@
     color: white;
 }
 
-.navbar-nav .nav-item-right .nav-item {
+.navbar-nav .nav-item {
     color: black;
-    padding-left: 50px;
 }
+
+.navbar-nav .nav-link {
+    color: black;
+}
+

@@ -14,16 +14,23 @@
         <a class="nav-link" href="{{items.linkUrl}}">{{items.linkName}} <span class="sr-only"></span></a>
       </li>
     </ul>
+  </div>
 
     <!-- div for right aligned items on navbar (for signed in users only) -->
+  
+  <div *ngIf="navBarType==='loggedIn'">
+    <ul class="navbar-nav ms-3">
+      <li class="nav-item"> Welcome, {{userName}}!</li>
+      <!-- <li *ngFor="let items of rightAlignedItems" class="nav-item">
+        <a class="nav-link d-flex align-items-center me-3" href="{{items.linkUrl}}">{{items.linkName}}</a> -->
+    </ul>
   </div>
-  <div *ngIf="navBarType==='loggedIn'" class="collapse navbar-collapse align-items-center">
-    <ul class="navbar-nav mr-auto align-items-center">
-      <li class="nav-item-right"> Welcome, {{userName}}!</li>
-      <li *ngFor="let items of rightAlignedItems" class="nav-item-right">
-        <a class="nav-item" href="{{items.linkUrl}}">{{items.linkName}}</a>
-      </li>
-      
+
+  <div>
+    <ul class="navbar-nav ms-3">
+      <li *ngFor="let items of rightAlignedItems" class="nav-item">
+        <a class="nav-link d-flex align-items-center" href="{{items.linkUrl}}">{{items.linkName}}</a>
+      </li>   
     </ul>
   </div>
 
