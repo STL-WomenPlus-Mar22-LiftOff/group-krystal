@@ -20,6 +20,7 @@ Trackfully is a web application that empowers users to manage their own health. 
 - Allow users to edit or delete user account and symptoms
 - Allow users to track environmental factors or "triggers" along with symptom occurence
 - Allow users to see symptom tracking data over a selected period of time
+- Allow users to add notes to daily tracker form and to view notes on graph by hovering over the data point
 - Host web application 
 - Implement Single Sign On
 
