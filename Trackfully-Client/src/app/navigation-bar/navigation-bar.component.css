@@ -5,9 +5,10 @@
 
 .navbar-brand{
     color: rgb(49, 49, 49);
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-family: Amsterdam;
     font-size: 25px;
     padding-left: 10px;
+    padding-bottom: 10px;
 }
 
 .navbar-nav .navbar-text {
