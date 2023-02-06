@@ -2,3 +2,24 @@
     display: flex;
     justify-content: flex-end;
 }
+
+.navbar-brand{
+    color: rgb(49, 49, 49);
+    font-family: Amsterdam;
+    font-size: 25px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+.navbar-nav .navbar-text {
+    color: rgb(49, 49, 49);
+    padding-right: 50px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.navbar-nav .nav-link {
+    color: rgb(49, 49, 49);
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding-right: 20px;
+}
+

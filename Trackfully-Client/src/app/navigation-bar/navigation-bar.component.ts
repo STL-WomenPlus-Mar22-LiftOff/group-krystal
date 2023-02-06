@@ -13,13 +13,16 @@ export class NavigationBarComponent implements OnInit {
     {linkId: 1, linkName: 'Dashboard', linkUrl: 'dashboard'},
     {linkId: 2, linkName: 'Daily Tracker', linkUrl: 'daily-tracker-form'}, 
     {linkId: 3, linkName: 'Manage Symptoms', linkUrl: 'symptom-manage-form'},
-    {linkId: 4, linkName: 'Sign Out', linkUrl: 'logout'}
   ];
 
   loggedOutMenuItems = [
     {linkId: 1, linkName: 'Log In', linkUrl: ''},
     {linkId: 2, linkName: 'Register', linkUrl: 'sign-up'}, 
   ];
+
+  rightAlignedItems = [
+    {linkId: 1, linkName: 'Sign Out', linkUrl: 'logout'}
+  ]
 
     userName : String = ""; 
     navBarType : String = "loggedIn";
