@@ -31,3 +31,9 @@
 .navbar-nav{
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
