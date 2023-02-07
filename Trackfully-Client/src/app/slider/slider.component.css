@@ -1,9 +1,9 @@
 
 
 .page-container {
-	display: flex;
+	/* display: flex;
   flex-direction: row;
-  position: relative;
+  position: relative; */
   float:right;
 }
 
@@ -28,7 +28,7 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-  margin-left: 200px;
+  /* margin-left: 30% */
   }
 
   .container:after {
