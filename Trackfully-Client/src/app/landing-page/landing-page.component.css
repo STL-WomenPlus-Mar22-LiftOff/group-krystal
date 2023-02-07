@@ -29,7 +29,8 @@
 	align-content: center;
 	flex-wrap: wrap;
 	/* width: 100vw; */
-	/* margin-left: 75px; */
+	margin-left: 275px;
+	margin-right: 300px;
 	float: center;
 	row-gap: 75px;
 }
@@ -80,6 +81,7 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
+	/* margin-left: 100px; */
   }
 
   .container:after {
@@ -101,3 +103,4 @@
 	  flex-direction: column;
 	}
   }
+
