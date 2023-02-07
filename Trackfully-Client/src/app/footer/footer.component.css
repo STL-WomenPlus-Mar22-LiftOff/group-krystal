@@ -13,20 +13,19 @@ footer {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+
 .container {
     display: flex;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 15px;
+    padding-left: 10px; 
     max-width: 1500px;
-    margin: auto;
-    color: white;
+    /* margin: auto; */
 }
 
 .container h3 {
-    font-size: 20px;
-    padding-bottom: 10px;
+    font-size: 25px;
+    padding-top: 10px;
 }
 
 .title {
@@ -34,6 +33,7 @@ footer {
     flex-basis: 30%;
     font-family: Amsterdam;
     padding-top:10px;
+    color: rgb(49, 49, 49);
 }
 
 .about {
@@ -42,10 +42,11 @@ footer {
     padding-left: 10px;
     padding-right: 10px;
     margin: 0 20px;
+    color: rgb(49, 49, 49);
 }
 
 .about a {
-    color: white;
+    color: rgb(49, 49, 49);
     text-decoration: underline;
 
 }
@@ -73,7 +74,7 @@ footer {
 }
 
 .resources a {
-    color: white;
+    color: rgb(49, 49, 49);
     text-decoration: underline;
 
 }

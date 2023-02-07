@@ -115,12 +115,16 @@ ul {
     background: #519188;
     color: #aa706a;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    font-size: 20px;
-
-    
+    font-size: 20px;  
   }
 
   .custom-slider .ngx-slider .ngx-slider-tick.ngx-slider-selected {
-    background: o#aa706a;
+    background: #aa706a;
   }
+
+ .gradient-custom{
+    background: linear-gradient(to right, #519188 , white);
+ }
+
+
 

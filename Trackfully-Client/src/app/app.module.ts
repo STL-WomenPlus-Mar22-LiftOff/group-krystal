@@ -16,8 +16,10 @@ import { LogoutComponent } from './logout/logout.component';
 import { AuthGuardService } from './service/auth-guard.service';
 import { AutheticationService } from './service/authentication/authetication.service';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { SliderComponent } from './slider/slider.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { FooterComponent } from './footer/footer.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -31,6 +33,7 @@ import { FooterComponent } from './footer/footer.component';
     ChartsComponent,
     NavigationBarComponent,
     LogoutComponent,
+    SliderComponent,
     AboutPageComponent,
     FooterComponent,
   ],
@@ -39,9 +42,9 @@ import { FooterComponent } from './footer/footer.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
-    NgxSliderModule
+    NgxSliderModule  
   ],
   providers: [AuthGuardService, AutheticationService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

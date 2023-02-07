@@ -1,7 +1,7 @@
-<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light p-2">
+<nav class="navbar sticky-top navbar-expand-lg navbar-dark gradient-custom">
   <a *ngIf="navBarType==='loggedIn'" class="navbar-brand" href="/dashboard">Trackfully</a>
   <!-- displays user name if user loggedIn -->
-  <ul *ngIf="navBarType==='loggedIn'" class="navbar-nav ms-auto p-2"> Welcome, {{userName}}!</ul>
+  
   <a *ngIf="navBarType==='loggedOut'" class="navbar-brand" href="">Trackfully</a>
   <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar">
     <span class="navbar-toggler-icon"></span>
@@ -13,6 +13,16 @@
       <li *ngFor="let items of loggedInMenuItems" class="nav-item">
         <a class="nav-link" href="{{items.linkUrl}}">{{items.linkName}} <span class="sr-only"></span></a>
       </li>
+    </ul>
+  </div>
+
+    <!-- div for right aligned items on navbar (for signed in users only) -->
+  
+  <div *ngIf="navBarType==='loggedIn'">
+    <ul class="navbar-nav">
+      <li class="navbar-text"> Welcome, {{userName}}!</li>
+      <li *ngFor="let items of rightAlignedItems" class="nav-item">
+        <a class="nav-link" href="{{items.linkUrl}}">{{items.linkName}}</a>
     </ul>
   </div>
 
