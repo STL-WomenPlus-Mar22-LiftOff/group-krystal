@@ -16,6 +16,7 @@ import { LogoutComponent } from './logout/logout.component';
 import { AuthGuardService } from './service/auth-guard.service';
 import { AutheticationService } from './service/authentication/authetication.service';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { SliderComponent } from './slider/slider.component';
 import { AboutPageComponent } from './about-page/about-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
@@ -32,6 +33,7 @@ import { RouterModule } from '@angular/router';
     ChartsComponent,
     NavigationBarComponent,
     LogoutComponent,
+    SliderComponent,
     AboutPageComponent,
     FooterComponent,
   ],

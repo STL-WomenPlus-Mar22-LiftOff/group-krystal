@@ -15,6 +15,7 @@ import { AutheticationService } from '../service/authentication/authetication.se
   providers: [ UserService ]
 
 })
+
 export class LandingPageComponent implements OnInit {
   isValidForm = true;
   
