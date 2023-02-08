@@ -3,15 +3,12 @@ package org.launchcode.TrackfullyServer.controllers;
 import org.launchcode.TrackfullyServer.data.SymptomRepository;
 import org.launchcode.TrackfullyServer.data.SymptomTrackerRepository;
 import org.launchcode.TrackfullyServer.models.Rating;
-import org.launchcode.TrackfullyServer.models.Symptom;
 import org.launchcode.TrackfullyServer.models.SymptomTracker;
-import org.launchcode.TrackfullyServer.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
@@ -48,12 +45,6 @@ public class SymptomTrackerController {
                 if (i.getDate().isAfter(range) && i.getDate().isBefore(today.plus(Period.ofDays(1)))) {
                     dataset.put(i.getDate(), i.getRating());
                 }
-//                for (LocalDate j = range ; j.isBefore(today) ; j.plus(Period.ofDays(1))){
-//                    if (i.getRating() == null){
-//                        dataset.put(j,null);
-//                    }
-//                    dataset.put(j,i.getRating());
-//                }
             }
         }
 
@@ -87,8 +78,6 @@ public class SymptomTrackerController {
         System.out.println("data");
         return data;
     }
-
-
 
     @PostMapping("add-daily")
     public void addDailySymptomData (@RequestBody @Valid SymptomTracker dailyEntry, Errors errors) {

@@ -6,8 +6,6 @@
        
         <div class="row form-group">
             <label for="date" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Date:</label>
-            <!-- <input type="text" id="date" class="form-control" name="selected_date" value={{currentDate}} [(ngModel)]="dailyEntry.dateToday"/> -->
-            <!-- once we allow users to select their own date instead of default value, use simple date picker instead:-->
                 <input type="date" 
                        id="date" 
                        name="selected_date" 
@@ -50,6 +48,7 @@
                 #rating="ngModel"
                 [options]="options"></ngx-slider>
             </div>
+            
             <!-- Validation added here but user cannot reasonably see these as scale automatically starts at 0 -->
             <div *ngIf="rating.errors">   
                 <small class="text-danger" *ngIf="rating.errors.required && rating.touched">

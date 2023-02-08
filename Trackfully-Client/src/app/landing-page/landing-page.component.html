@@ -10,6 +10,7 @@
             <small class="text-danger" *ngIf="!isValidForm">Username or password was incorrect. Please try
               again.</small>
             <form #signInForm="ngForm">
+              
               <!-- Email input -->
               <div class="form-outline mb-4 form-group">
                 <input type="email" placeholder="Enter email" id="email" #email="ngModel" [(ngModel)]="user.email"

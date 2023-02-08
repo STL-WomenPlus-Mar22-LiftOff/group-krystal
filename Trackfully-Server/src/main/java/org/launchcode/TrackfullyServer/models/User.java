@@ -25,11 +25,6 @@ public class User extends AbstractEntity{
     
     public User(){};
 
-//    public User(String email, String password) {
-//        this.email = email;
-//        this.pwHash = encoder.encode(password);
-//    }
-
     public User(String name, String email, String password) {
         this.name = name;
         this.email = email;
