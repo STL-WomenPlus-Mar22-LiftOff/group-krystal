@@ -1,63 +1,56 @@
-<section class="landing-page">
-  <div class="container py-5 h-100">
-    <div class="row d-flex align-items-center justify-content-center h-100">
-      <div class="mainTitle">Trackfully</div>
-      <div class="col-md-8 col-lg-7 col-xl-6">
-        <img src="https://www.excel-easy.com/examples/images/line-chart/line-chart-with-one-data-series.png" alt="hello">
-      </div>
+<div class="mainTitle">Trackfully</div>
+<div class="page-container">
+    <div class="app-slider">
+        <app-slider></app-slider>
+    </div>
 
-
-      <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-        <h2>Login</h2>
-        <small class="text-danger" *ngIf="!isValidForm">Username or password was incorrect. Please try again.</small>
-        <form #signInForm="ngForm">
-          <!-- Email input -->
-          <div class="form-outline mb-4 form-group">
-            <input type="email"
-              placeholder="Enter email"
-              id="email" 
-              #email="ngModel" 
-              [(ngModel)]="user.email" 
-              required [pattern]="emailPattern"
-              name="email" 
-              class="form-control form-control-lg"
-              />
-              <div *ngIf="email.errors"> 
-                <small class="text-danger" *ngIf="email.errors.required && email.touched"> 
+        <div class="container">
+          <div class="login-container">
+            <h2>Login</h2>
+            <small class="text-danger" *ngIf="!isValidForm">Username or password was incorrect. Please try
+              again.</small>
+            <form #signInForm="ngForm">
+              <!-- Email input -->
+              <div class="form-outline mb-4 form-group">
+                <input type="email" placeholder="Enter email" id="email" #email="ngModel" [(ngModel)]="user.email"
+                  required [pattern]="emailPattern" name="email" class="form-control form-control-lg" />
+                <div *ngIf="email.errors">
+                  <small class="text-danger" *ngIf="email.errors.required && email.touched">
                     Email is required.
-                </small>			   
-                <small class="text-danger" *ngIf="email.errors.pattern"> 
+                  </small>
+                  <small class="text-danger" *ngIf="email.errors.pattern">
                     Email is not valid.
-                </small>	
-             </div> 
+                  </small>
+                </div>
 
-            </div> 
-
-
-          <!-- Password input -->
-          <div class="form-outline mb-4">
-            <input type="password" 
-              placeholder="Enter password"
-              id="pwHash" 
-              #pwHash="ngModel" 
-              [(ngModel)]="user.pwHash"
-              name="pwHash" 
-              class="form-control form-control-lg"
-              [ngClass]="{ 'is-invalid': pwHash.touched && pwHash.invalid}" 
-              required/>
-              <!-- [ngClass] above is making the text entry box red when the password is not meeting requirements. -->
-              <div *ngIf="pwHash.errors && (pwHash.invalid && pwHash.touched)">
-                <small class="text-danger" *ngIf="pwHash.errors.required">Password is required</small>	
               </div>
+
+
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                <input type="password" placeholder="Enter password" id="pwHash" #pwHash="ngModel"
+                  [(ngModel)]="user.pwHash" name="pwHash" class="form-control form-control-lg"
+                  [ngClass]="{ 'is-invalid': pwHash.touched && pwHash.invalid}" required />
+                <!-- [ngClass] above is making the text entry box red when the password is not meeting requirements. -->
+                <div *ngIf="pwHash.errors && (pwHash.invalid && pwHash.touched)">
+                  <small class="text-danger" *ngIf="pwHash.errors.required">Password is required</small>
+                </div>
+              </div>
+
+
+              <!--logingUser() Connects login button to get request-->
+              <div class="text-center text-lg-start mt-4 pt-2">
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary btn-lg"
+                    style="padding-left: 2.5rem; padding-right: 2.5rem;" (click)="checkLogin()">Login
+                  </button>
+                </div>
+                <p class="small fw-bold mt-2 pt-1 mb-0"
+                  style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: #aa706a;">
+                  Don't have an account? <a href="/sign-up" style="color: #519188;">Register</a></p>
+              </div>
+            </form>
           </div>
-        
-        
-      <!--logingUser() Connects login button to get request-->
-        <div class="text-center text-lg-start mt-4 pt-2">
-          <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-lg"
-              style="padding-left: 2.5rem; padding-right: 2.5rem;" 
-              (click)="checkLogin()">Login
-            </button>
-          </div>
-          <p class="small fw-bold mt-2 pt-1 mb-0" style="font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; color: #aa706a;">Don't have an account? <a href="/sign-up" style="color: #519188;">Register</a></p>     
+        </div>
+</div>
+
