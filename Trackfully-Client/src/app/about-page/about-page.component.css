@@ -36,7 +36,7 @@ p {
     padding-left: 30px;
     padding-right: 30px;
     padding-top: 20px;
-    font-size: 18px;
+    font-size: 15px;
 }
 
 .about-trackfully {
@@ -72,9 +72,4 @@ p {
 .resources a:hover {
     color: white;
     text-decoration: underline;
-}
-
-.image{
-    display: flex;
-    flex-wrap: wrap;
 }
