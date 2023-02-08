@@ -58,3 +58,11 @@ Trackfully is a web application that empowers users to manage their own health. 
 - Marina Nambiar, Full Stack Developer & Tech Co-lead
 - Jenny Ryoo, Full Stack Developer & Tech Co-lead
 - Krystal White, Liftoff Mentor
+
+
+
+
+https://user-images.githubusercontent.com/107590151/217414822-bf82bd26-c811-4a78-abf1-fd460690f28a.mp4
+
+Video music created by Erik Diaz - https://www.facebook.com/erikdiazmusic1
+
