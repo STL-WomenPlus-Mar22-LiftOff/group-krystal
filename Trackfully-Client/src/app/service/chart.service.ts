@@ -8,8 +8,8 @@ import { Observable } from 'rxjs';
 
 export class ChartService {
 
-    private baseUrl:string; //backend endpoint
-   
+    private baseUrl:string;
+    
     constructor(private http: HttpClient) { 
       this.baseUrl = "http://localhost:8080/symptom-tracker";
     }

@@ -3,17 +3,13 @@ package org.launchcode.TrackfullyServer.controllers;
 import org.launchcode.TrackfullyServer.data.SymptomRepository;
 import org.launchcode.TrackfullyServer.data.UserRepository;
 import org.launchcode.TrackfullyServer.models.Symptom;
-import org.launchcode.TrackfullyServer.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Optional;
-
-import static java.lang.Integer.parseInt;
 
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")

@@ -46,7 +46,6 @@ getTrackerData(storageKey: string) {
     if (symptomId) {
       this.chartService.getData(symptomId).subscribe((data: any) => {
       this.addData(this.chart,data,result.symptomName);
-      // console.log(data)
     })}
   });
 };

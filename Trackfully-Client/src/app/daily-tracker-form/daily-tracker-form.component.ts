@@ -8,7 +8,6 @@ import { Symptom } from '../model/symptom';
 import { SymptomService } from '../service/symptom/symptom.service';
 import { Observable } from 'rxjs';
 import { identifierModuleUrl } from '@angular/compiler';
-import { User } from '../model/user';
 import { UserService } from '../service/user/user.service';
 import { Options } from '@angular-slider/ngx-slider';
 
@@ -27,8 +26,6 @@ export class DailyTrackerFormComponent implements OnInit {
     showTicksValues: true
   };
   
-
-  // currentDate = formatDate(new Date(), 'EEEE, MMMM d, y', 'en');
   currentDate = formatDate((new Date().setDate(new Date().getDate())), 'yyyy-MM-dd', 'en');
   dailyEntry: DailyEntry;
   symptomInfo: Symptom;
@@ -63,16 +60,11 @@ export class DailyTrackerFormComponent implements OnInit {
 
     if (this.symptomId2 !== "undefined") {
       this.symptomService.getSymptomById(parseInt(this.symptomId2)).subscribe(response => {this.availableSymptoms[`${this.symptomId2}`] = response.symptomName;});
-      // this.symptomService.getSymptomById(parseInt(this.symptomId2)).subscribe(response => {this.availableSymptoms.push(response);});
      }
 
      if (this.symptomId3 !== "undefined") {
       this.symptomService.getSymptomById(parseInt(this.symptomId3)).subscribe(response => {this.availableSymptoms[`${this.symptomId3}`] = response.symptomName;});
      }
-    // console.log(sessionStorage.getItem("symptomId1"));
-    // console.log(sessionStorage.getItem("symptomId2"));
-    // console.log(sessionStorage.getItem("symptomId3"));
-    // console.log(this.availableSymptoms);
   }
 
   goToDashboard() {
@@ -85,8 +77,6 @@ export class DailyTrackerFormComponent implements OnInit {
 
   onSubmit(symptomName: any) {
     this.selectedSymptomId = this.getSymptomByName(symptomName);
-    // console.log("this is what is passed through:"+symptomName);
-    // console.log("this is the key"+this.selectedSymptomId);
     this.symptomService.getSymptomById(parseInt(this.selectedSymptomId)).subscribe((result) => {
         this.symptomInfo = result;
         this.dailyEntry.symptom = this.symptomInfo;

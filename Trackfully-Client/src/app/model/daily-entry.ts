@@ -1,5 +1,4 @@
 import { SubjectSubscriber } from "rxjs/internal/Subject";
-import { User } from "./user";
 import { Symptom } from "./symptom";
 import { nullSafeIsEquivalent } from "@angular/compiler/src/output/output_ast";
 

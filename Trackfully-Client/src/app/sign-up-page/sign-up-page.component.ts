@@ -13,20 +13,14 @@ export class SignUpPageComponent implements OnInit {
 
   user: User;
   emailAvailable = true;
-
-  // users: User[] = [];
-
-  //same as landing page
-  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$"; //regex for email validation
-  
-  namePattern = "^[a-zA-Z].*[\s\.]*$" //regex for name verification
-
-  pwHashPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}$"; //regex for password validation
+  emailPattern = "^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$";
+    namePattern = "^[a-zA-Z].*[\s\.]*$";
+  pwHashPattern = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,32}$";
 
    
   constructor(private userService: UserService, private loginservice: AutheticationService,
-    private router: Router, //connects component with URL
-    private activatedRoute: ActivatedRoute ) { //provides access to info in this route/component pair such as path and URL params 
+    private router: Router,
+    private activatedRoute: ActivatedRoute ) {
     this.user = new User; 
   }
 

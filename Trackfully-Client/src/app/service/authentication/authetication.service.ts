@@ -19,8 +19,6 @@ export class AutheticationService {
   }
 
   //checks if user is signed in, if not, will return null
-
-  
   isUserLoggedIn() {
     let user = sessionStorage.getItem('id');
     // console.log("logged in with " + user);
@@ -35,9 +33,6 @@ export class AutheticationService {
     sessionStorage.removeItem('symptomId3');
     sessionStorage.removeItem('email');
     sessionStorage.removeItem('name');
-    // items to check that user has been logged out:
-    // console.log(sessionStorage.getItem('id')+": should be null");
-    // return console.log("user has been logged out");
   }
 
   getUserByEmail(email: string): Observable<JSON>{

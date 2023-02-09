@@ -53,10 +53,6 @@ const appRoutes: Routes = [
     path: 'sign-up',
     component: SignUpPageComponent
   },
-  {
-    path: 'chart',
-    component: ChartsComponent
-  },
 
   {
     path: 'logout',
@@ -68,10 +64,6 @@ const appRoutes: Routes = [
     component: AboutPageComponent
   }
 
-  // {
-  //   path: 'what will show up on the URL aka the mapping',
-  //   component: name of the component in angular formatted like above
-  // }
 ];
 
 @NgModule({
